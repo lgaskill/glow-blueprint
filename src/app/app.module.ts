@@ -2,26 +2,21 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatToolbarModule
-} from "@angular/material";
-
 import { AppComponent } from "./app.component";
+import { AppRoutingModule } from "./app-routing.module";
+import { HomeModule } from "./home/home.module";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    MatToolbarModule
+    AppRoutingModule,
+    SharedModule,
+    HomeModule
   ],
-  exports: [MatButtonModule, MatCardModule, MatIconModule, MatToolbarModule],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })
