@@ -1,1 +1,1 @@
-# GlowBlueprint
+# GLOW blueprint
