@@ -1,47 +1,6 @@
 @import "~@angular/material/theming";
 
-.app-bar {
-  align-items: start;
-  background-image: url("../../assets/images/background-palm-leaves.jpg");
-  background-size: cover;
-  display: flex;
-  height: 560px;
-  padding-top: 16px;
-}
-
-// .app-bar::after {
-//   content: "";
-//   background-image: url("../../assets/images/background-palm-leaves.jpg");
-//   background-size: cover;
-//   opacity: 0.5;
-
-//   z-index: 10000;
-// }
-
-.app-bar-container {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 100%;
-}
-
-.app-bar-toolbar {
-  display: flex;
-  flex-direction: row;
-}
-
-.app-bar-content {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  justify-content: center;
-}
-
-.bordered-title {
-  border-style: solid;
-  padding: 36px;
-}
+$break-small: 600px;
 
 .expand {
   flex: 100;
@@ -74,11 +33,6 @@
   flex-grow: 20;
   padding-top: 24px;
   padding-bottom: 24px;
-}
-
-.toolbar-button {
-  margin-left: 8px;
-  margin-right: 8px;
 }
 
 .grow {

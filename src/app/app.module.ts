@@ -10,9 +10,12 @@ import { SharedModule } from "./shared/shared.module";
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    // Angular Modules
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+
+    // My awesome modules
     SharedModule,
     HomeModule
   ],
