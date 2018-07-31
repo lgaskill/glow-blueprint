@@ -6,8 +6,10 @@ import {
   MatIconModule,
   MatToolbarModule
 } from "@angular/material";
+import { CommonModule } from "@angular/common";
 
 const sharedModules = [
+  CommonModule,
   MatButtonModule,
   MatCardModule,
   MatIconModule,
