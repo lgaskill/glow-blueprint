@@ -6,6 +6,7 @@ import { Component, HostListener } from "@angular/core";
   styleUrls: ["./app-bar.component.scss"]
 })
 export class AppBarComponent {
+  navOpen: boolean = false;
   screenWidth: number;
   constructor() {
     this.onResize();

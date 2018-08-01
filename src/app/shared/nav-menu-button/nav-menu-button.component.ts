@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "nav-menu-button",
@@ -6,10 +6,13 @@ import { Component } from "@angular/core";
   styleUrls: ["./nav-menu-button.component.scss"]
 })
 export class NavMenuButtonComponent {
-  open: boolean = false;
+  @Input() open: boolean = false;
+  @Output() openChange: EventEmitter<boolean> = new EventEmitter();
+
   constructor() {}
 
   handleClick = () => {
     this.open = !this.open;
+    this.openChange.emit(this.open);
   };
 }
