@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./shared/shared.module";
+import { BlogViewModule } from "./blog-view/blog-view.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { SharedModule } from "./shared/shared.module";
 
     // My awesome modules
     SharedModule,
-    HomeModule
+    HomeModule,
+    BlogViewModule
   ],
   exports: [],
   providers: [],

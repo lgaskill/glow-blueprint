@@ -4,7 +4,7 @@
       <a mat-button class='toolbar-button' href="">Home</a>
     </div>
     <div class='side-nav-button-wrapper'>
-      <a mat-button class='toolbar-button' href="">Blog</a>
+      <a mat-button class='toolbar-button' href="blog">Blog</a>
     </div>
     <div class='side-nav-button-wrapper'>
       <a mat-stroked-button class='toolbar-button' href="">Learn More</a>
@@ -17,7 +17,7 @@
         <nav-menu-button *ngIf="screenWidth <= 600" [(open)]='navOpen'></nav-menu-button>
 
         <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' href="">Home</a>
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' href="">Blog</a>
+        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' href="blog">Blog</a>
         <a mat-stroked-button *ngIf="screenWidth > 600" class='toolbar-button' href="">Learn More</a>
       </div>
       <div class='app-bar-content'>

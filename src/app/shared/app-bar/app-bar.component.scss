@@ -12,6 +12,12 @@ $break-small: 600px;
   padding-top: 16px;
 }
 
+@media only screen and (max-width: 600px) {
+  .app-bar {
+    height: 360px;
+  }
+}
+
 .app-bar-container {
   display: flex;
   flex-direction: column;
@@ -61,10 +67,12 @@ $break-small: 600px;
 
 .side-nav {
   padding-top: 36px;
+  min-width: 250px;
 }
 
 .side-nav-button-wrapper {
   margin: 16px;
+  text-align: center;
 }
 
 .toolbar-button {
