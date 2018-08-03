@@ -9,6 +9,11 @@ var app = express();
 app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "dist")));
 
+app.all("/*", function(req, res, next) {
+  // Just send the index.html for other files to support HTML5Mode
+  res.sendFile("dist/index.html", { root: __dirname });
+});
+
 app.set("port", port);
 
 var server = http.createServer(app);
