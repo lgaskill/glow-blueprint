@@ -16,9 +16,10 @@ $break-small: 600px;
   justify-content: center;
 }
 
-.story-card-title-text {
+.story-card-title-button {
   border-style: solid;
   border-width: 2px;
+  font: inherit;
   margin: 8px;
   padding: 16px;
   text-transform: uppercase;
