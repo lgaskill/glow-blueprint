@@ -3,7 +3,8 @@
 $break-small: 600px;
 
 .category-panel {
-  background-color: #96f6d3;
+  background-size: cover;
+  background-position: center;
   display: flex;
   height: 360px;
   width: 250px;
@@ -15,15 +16,27 @@ $break-small: 600px;
   text-align: center;
 }
 
+.background-exercise {
+  background-image: url(../../assets/images/stock-exercise.jpg);
+}
+
+.background-lifestyle {
+  background-image: url(../../assets/images/stock-lifestyle.jpg);
+}
+
+.background-nutrition {
+  background-image: url(../../assets/images/stock-food.jpg);
+}
+
 .category-panel-diamond {
   display: flex;
   width: 0;
   height: 0;
   border: 100px solid transparent;
-  border-bottom: 150px solid #ffffff;
+  border-bottom: 150px solid rgba(255, 255, 255, 0.6);
   justify-content: center;
   position: relative;
-  top: -70px;
+  top: -120px;
 }
 
 .category-panel-diamond:after {
@@ -34,12 +47,13 @@ $break-small: 600px;
   width: 0;
   height: 0;
   border: 100px solid transparent;
-  border-top: 150px solid #ffffff;
+  border-top: 150px solid rgba(255, 255, 255, 0.6);
 }
 
 .category-panel-text {
   font-size: 24px;
   margin-top: 108px;
+  white-space: pre-wrap;
   z-index: 1;
 }
 
@@ -58,8 +72,8 @@ $break-small: 600px;
 
   .category-panel-diamond {
     border: 66px solid transparent;
-    border-bottom: 100px solid #ffffff;
-    top: -45px;
+    border-bottom: 100px solid rgba(255, 255, 255, 0.6);
+    top: -80px;
   }
 
   .category-panel-diamond:after {
@@ -67,11 +81,47 @@ $break-small: 600px;
     left: -66px;
     top: 100px;
     border: 66px solid transparent;
-    border-top: 100px solid #ffffff;
+    border-top: 100px solid rgba(255, 255, 255, 0.6);
   }
 
   .category-panel-text {
     font-size: 18px;
     margin-top: 50px;
+  }
+
+  .category-panel-wrapper {
+    padding: 16px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .category-panel {
+    height: 175px;
+    width: 116px;
+  }
+
+  .category-panel-diamond {
+    border: 42px solid transparent;
+    border-bottom: 78px solid rgba(255, 255, 255, 0.6);
+    top: -60px;
+  }
+
+  .category-panel-diamond:after {
+    content: "";
+    left: -42px;
+    top: 78px;
+    border: 42px solid transparent;
+    border-top: 78px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .category-panel-text {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-top: 50px;
+  }
+
+  .category-panel-wrapper {
+    padding: 8px;
   }
 }
