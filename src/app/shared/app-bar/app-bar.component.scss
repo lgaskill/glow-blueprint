@@ -5,7 +5,7 @@ $break-small: 600px;
 .app-bar {
   align-items: start;
   background-image: url("../../../assets/images/pineapples.jpg");
-  background-repeat-y: no-repeat;
+  background-repeat: repeat-x;
   background-position: bottom;
   background-color: #e3dedb;
   background-size: contain;
