@@ -4,9 +4,11 @@ $break-small: 600px;
 
 .app-bar {
   align-items: start;
-  background-blend-mode: hard-light;
-  background-image: url("../../../assets/images/background-palm-leaves.jpg");
-  background-size: cover;
+  background-image: url("../../../assets/images/pineapples.jpg");
+  background-repeat-y: no-repeat;
+  background-position: bottom;
+  background-color: #e3dedb;
+  background-size: contain;
   display: flex;
   height: 560px;
   padding-top: 16px;

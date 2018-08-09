@@ -3,12 +3,39 @@
 $break-small: 600px;
 
 .story-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 48px 18px;
+  width: 40%;
 }
 
 .story-card-content {
   font-size: 20px;
   text-align: center;
+}
+
+.story-card-img {
+  flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  width: 60%;
+}
+
+.story-card-img-story {
+  background-image: url("../../assets/images/pregnant-sweater.jpg");
+}
+
+.story-card-img-blog {
+  background-image: url("../../assets/images/stock-food-2.jpg");
+}
+
+.story-card-img-coaching {
+  background-image: url("../../assets/images/stock-exercise.jpg");
+}
+
+.story-card-img-glow {
+  background-image: url("../../assets/images/stock-lifestyle.jpg");
 }
 
 .story-card-title {
@@ -23,4 +50,17 @@ $break-small: 600px;
   margin: 8px;
   padding: 16px;
   text-transform: uppercase;
+}
+
+.story-card-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 100;
+  min-height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+  .story-card-content {
+    font-size: 18px;
+  }
 }
