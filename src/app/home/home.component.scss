@@ -44,12 +44,14 @@ $break-small: 600px;
 }
 
 .story-card-title-button {
-  border-style: solid;
+  border-radius: 0;
   border-width: 2px;
   font: inherit;
-  margin: 8px;
+  margin-bottom: 8px;
+  margin-top: 8px;
   padding: 16px;
   text-transform: uppercase;
+  white-space: pre-line;
 }
 
 .story-card-wrapper {
@@ -62,5 +64,9 @@ $break-small: 600px;
 @media only screen and (max-width: 600px) {
   .story-card-content {
     font-size: 18px;
+  }
+
+  .story-card-title-button {
+    font-size: 20px;
   }
 }
