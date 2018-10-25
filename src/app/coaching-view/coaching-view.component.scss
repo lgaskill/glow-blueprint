@@ -1,0 +1,87 @@
+@import "~@angular/material/theming";
+
+$break-small: 600px;
+
+.category-panel {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  height: 360px;
+  width: 250px;
+  justify-content: center;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.background-exercise {
+  background-image: url(../../assets/images/stock-exercise.jpg);
+}
+
+.background-lifestyle {
+  background-image: url(../../assets/images/stock-lifestyle.jpg);
+}
+
+.background-nutrition {
+  background-image: url(../../assets/images/stock-food.jpg);
+}
+
+.category-panel-text-wrapper {
+  padding: 25%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.category-panel-text {
+  font-size: 24px;
+  white-space: pre-wrap;
+  z-index: 1;
+}
+
+.category-panel-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 48px 16px;
+}
+
+@media only screen and (max-width: 875px) {
+  .category-panel {
+    height: 240px;
+    width: 175px;
+  }
+  .category-panel-text-wrapper {
+    padding: 20%;
+  }
+
+  .category-panel-text {
+    font-size: 18px;
+  }
+
+  .category-panel-wrapper {
+    padding: 16px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .category-panel {
+    height: 175px;
+    width: 116px;
+  }
+
+  .category-panel-text-wrapper {
+    line-height: 28px;
+    padding: 10%;
+  }
+
+  .category-panel-text {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+  }
+
+  .category-panel-wrapper {
+    padding: 8px;
+  }
+}

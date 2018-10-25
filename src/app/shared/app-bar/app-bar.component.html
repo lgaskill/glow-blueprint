@@ -1,13 +1,21 @@
 <mat-drawer-container class='drawer-container' autosize>
   <mat-drawer class='side-nav' [(opened)]='navOpen' mode='slide'>
     <div class='side-nav-button-wrapper'>
-      <a mat-button class='toolbar-button' href="">Home</a>
+      <a mat-button class='toolbar-button' [routerLink]="['']">Home</a>
     </div>
     <div class='side-nav-button-wrapper'>
-      <a mat-button class='toolbar-button' href="blog">Blog</a>
+      <a mat-button class='toolbar-button' [routerLink]="['/blog']">Blog</a>
     </div>
     <div class='side-nav-button-wrapper'>
-      <a mat-stroked-button class='toolbar-button' href="">Learn More</a>
+      <a mat-button class='toolbar-button' [routerLink]="['/coaching']">Coaching</a>
+    </div>
+    <div class='side-nav-button-wrapper'>
+      <a mat-button class='toolbar-button' [routerLink]="['']">Learn More</a>
+    </div>
+    <div class='side-nav-button-wrapper'>
+      <a mat-icon-button href="https://www.instagram.com/theglowblueprint">
+        <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
+      </a>
     </div>
   </mat-drawer>
   <mat-toolbar class='app-bar'>
@@ -16,9 +24,13 @@
         <span class='expand'></span>
         <nav-menu-button *ngIf="screenWidth <= 600" [(open)]='navOpen'></nav-menu-button>
 
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' href="">Home</a>
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' href="/blog">Blog</a>
-        <a mat-stroked-button *ngIf="screenWidth > 600" class='toolbar-button' href="">Learn More</a>
+        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['']">Home</a>
+        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/blog']">Blog</a>
+        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/coaching']">Coaching</a>
+        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['']">Learn More</a>
+        <a mat-icon-button *ngIf="screenWidth > 600" class='toolbar-button' href="https://www.instagram.com/theglowblueprint">
+          <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
+        </a>
       </div>
       <div class='app-bar-content'>
         <div class='bordered-title'>the GLOW blueprint</div>

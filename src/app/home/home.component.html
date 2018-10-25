@@ -1,12 +1,29 @@
 <app-bar>
   <div class='story-card-wrapper'>
+    <mat-card class='story-card-full'>
+      <mat-card-content class="story-card-content">
+        <span class="lemon-tuesday-accent">Welcome, gorgeous.</span> I am so glad your path has led you here to
+        intersect with mine. Hi, I'm Abby. Mom of two. Exercise specialist. Recipe creator. Enthusiast about living a
+        lifestyle that feeds all spectrums of mine and my family's health. And I am passionate about helping others
+        create their healthiest, most joy-filled lives through proper nutrition, pleasurable physical activity,
+        rich relationships, meaningful careers, and a thoughtful spiritual practice.
+        <div class="story-highlight">
+          Mama, let’s map out your personal blueprint to a life full of love, joy,
+          and that ever sought after “glow”.
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class='story-card-wrapper'>
     <div class='story-card-img story-card-img-story'></div>
     <mat-card class='story-card'>
       <mat-card-title class='story-card-title'>
-        <button mat-stroked-button class='story-card-title-button'>My Story</button>
+        <button mat-button class='story-card-title-button'>My Story</button>
       </mat-card-title>
       <mat-card-content class="story-card-content">
-        Hello I'm Abby Gaskill and I'm really cool, I know it because I like trouncing around going doot, doot, doot. I have kids
+        Hello I'm Abby Gaskill and I'm really cool, I know it because I like trouncing around going doot, doot, doot. I
+        have kids
         and stuff and food is life. Also coffee is life. Hashtag #ImHangryNeedCoffeeNowYallFrrrrt
       </mat-card-content>
     </mat-card>
@@ -15,32 +32,34 @@
   <div class='story-card-wrapper'>
     <mat-card class='story-card'>
       <mat-card-title class='story-card-title'>
-        <a mat-stroked-button routerLink="/blog" class='story-card-title-button'>Blog</a>
+        <a mat-button [routerLink]="['/coaching']" class='story-card-title-button'>Coaching</a>
       </mat-card-title>
       <mat-card-content class="story-card-content">
-        I like to write about my thoughts and dreams. Also my feelings, I have a lot of those, so I write about them #LikeABoss
-      </mat-card-content>
-    </mat-card>
-    <div class='story-card-img story-card-img-blog'></div>
-  </div>
-
-  <div class='story-card-wrapper'>
-    <div class='story-card-img story-card-img-coaching'></div>
-    <mat-card class='story-card'>
-      <mat-card-title class='story-card-title'>
-        <button mat-stroked-button class='story-card-title-button'>Coaching</button>
-      </mat-card-title>
-      <mat-card-content class="story-card-content">
-        Oh yeah, did I not mention the coaching yet!? I'm like a super great health coach 'n stuff and I can whip your sad butt into
+        Oh yeah, did I not mention the coaching yet!? I'm like a super great health coach 'n stuff and I can whip your
+        sad butt into
         shape! Now...DROP DOWN AND GIVE ME TWENTY!!!
       </mat-card-content>
     </mat-card>
+    <div class='story-card-img story-card-img-coaching'></div>
+  </div>
+
+  <div class='story-card-wrapper'>
+    <div class='story-card-img story-card-img-blog'></div>
+    <mat-card class='story-card'>
+      <mat-card-title class='story-card-title'>
+        <a mat-button [routerLink]="['/blog']" class='story-card-title-button'>Blog</a>
+      </mat-card-title>
+      <mat-card-content class="story-card-content">
+        I like to write about my thoughts and dreams. Also my feelings, I have a lot of those, so I write about them
+        #LikeABoss
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <div class='story-card-wrapper'>
     <mat-card class='story-card'>
       <mat-card-title class='story-card-title'>
-        <button mat-stroked-button class='story-card-title-button'>Grow Your Glow</button>
+        <button mat-button class='story-card-title-button'>Grow Your Glow</button>
       </mat-card-title>
       <mat-card-content class="story-card-content">
         I'm not super sure what it means yet...but it's going to be great! Trust Me.
@@ -48,5 +67,7 @@
     </mat-card>
     <div class='story-card-img story-card-img-glow'></div>
   </div>
+
+  <instagram-panel></instagram-panel>
 
 </app-bar>
