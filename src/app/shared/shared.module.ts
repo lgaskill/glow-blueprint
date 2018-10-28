@@ -8,7 +8,6 @@ import {
   MatSidenavModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
-import { RouterModule } from "@angular/router";
 
 const sharedModules = [
   CommonModule,
@@ -17,7 +16,6 @@ const sharedModules = [
   MatIconModule,
   MatSidenavModule,
   MatToolbarModule
-  // RouterModule
 ];
 
 @NgModule({

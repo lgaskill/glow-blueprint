@@ -1,0 +1,19 @@
+<div class="panel-wrapper">
+    <div class="panel-title">
+        <a mat-button href="https://www.instagram.com/theglowblueprint">
+            <div class="follow-button-content">
+                <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
+                <h2 class='mat-h2 follow-button-text'>
+                    Follow the glow
+                </h2>
+            </div>
+        </a>
+    </div>
+    <div class="panel-content">
+        <div *ngFor="let recentImageKey of recentImageKeys">
+            <a mat-button href="https://www.instagram.com/p/{{recentImageKey}}/?utm_source=ig_web_button_share_sheet">
+                <img class="insta-img" src="https://instagram.com/p/{{recentImageKey}}/media/?size=t" />
+            </a>
+        </div>
+    </div>
+</div>
