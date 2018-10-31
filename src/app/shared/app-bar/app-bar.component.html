@@ -18,24 +18,26 @@
       </a>
     </div>
   </mat-drawer>
-  <mat-toolbar class='app-bar'>
-    <div class='app-bar-container'>
-      <div class='app-bar-toolbar'>
-        <span class='expand'></span>
-        <nav-menu-button *ngIf="screenWidth <= 600" [(open)]='navOpen'></nav-menu-button>
+  <mat-drawer-content class="drawer-content">
+    <mat-toolbar class='app-bar'>
+      <div class='app-bar-container'>
+        <div class='app-bar-toolbar'>
+          <span class='expand'></span>
+          <nav-menu-button *ngIf="screenWidth <= 600" [(open)]='navOpen'></nav-menu-button>
 
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['']">Home</a>
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/blog']">Blog</a>
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/coaching']">Coaching</a>
-        <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/my-story']">My Story</a>
-        <a mat-icon-button *ngIf="screenWidth > 600" class='toolbar-button' href="https://www.instagram.com/theglowblueprint">
-          <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
-        </a>
+          <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['']">Home</a>
+          <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/blog']">Blog</a>
+          <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/coaching']">Coaching</a>
+          <a mat-button *ngIf="screenWidth > 600" class='toolbar-button' [routerLink]="['/my-story']">My Story</a>
+          <a mat-icon-button *ngIf="screenWidth > 600" class='toolbar-button' href="https://www.instagram.com/theglowblueprint">
+            <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
+          </a>
+        </div>
+        <div class='app-bar-content'>
+          <a mat-button [routerLink]="['']" class='bordered-title'>the GLOW blueprint</a>
+        </div>
       </div>
-      <div class='app-bar-content'>
-        <div class='bordered-title'>the GLOW blueprint</div>
-      </div>
-    </div>
-  </mat-toolbar>
-  <ng-content></ng-content>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-drawer-content>
 </mat-drawer-container>

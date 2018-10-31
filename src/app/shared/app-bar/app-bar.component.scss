@@ -41,24 +41,31 @@ $break-small: 600px;
 }
 
 .bordered-title {
+  border-radius: 50%;
+  box-sizing: content-box;
   color: #b65b6f;
   font-family: "lemonTuesday";
   font-size: 84px;
   font-weight: bold;
   line-height: 96px;
-  padding: 0 56px 56px 56px;
+  padding: 56px;
   text-align: center;
+  text-decoration: none;
   white-space: pre-wrap;
   @media screen and (max-width: $break-small) {
     width: 160px;
     font-size: 48px;
     line-height: 52px;
-    padding: 0 36px 36px 36px;
+    margin: 0 36px 36px 36px;
   }
 }
 
 .drawer-container {
   margin: -8px;
+}
+
+.drawer-content {
+  overflow-x: hidden;
 }
 
 .expand {
