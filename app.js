@@ -1,30 +1,30 @@
-var port = process.env.PORT || 3000;
-var http = require("http");
-var path = require("path");
-var express = require("express");
-var favicon = require("serve-favicon");
-var fs = require("fs");
+const port = process.env.PORT || 3000;
+const http = require("http");
+const path = require("path");
+const express = require("express");
+const favicon = require("serve-favicon");
+const fs = require("fs");
 
-var log = function(entry) {
+const router = require("./src/server/routes/routes.js");
+
+const log = function(entry) {
   fs.appendFileSync(
     "/tmp/the-glow-blueprint.log",
     new Date().toISOString() + " - " + entry + "\n"
   );
 };
 
-var app = express();
+const app = express();
 app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
 app.use(express.static(path.join(__dirname, "dist")));
 
-app.all("/*", function(req, res, next) {
-  // Just send the index.html for other files to support HTML5Mode
-  res.sendFile("dist/index.html", { root: __dirname });
-  log(req);
-});
+// Initialize the router
+app.use("/", router);
 
+// Set the Port
 app.set("port", port);
 
-var server = http.createServer(app);
+const server = http.createServer(app);
 
 server.listen(port);
 
