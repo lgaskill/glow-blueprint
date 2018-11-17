@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const favicon = require("serve-favicon");
 const fs = require("fs");
+const bodyParser = require("body-parser");
 
 const router = require("./src/server/routes/routes.js");
 const mongoService = require("./src/server/services/mongoService.js");
@@ -26,6 +27,14 @@ async function run() {
   app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
   app.use(express.static(path.join(__dirname, "dist")));
 
+  // Body Parser Config
+  app.use(
+    bodyParser.urlencoded({
+      extended: true
+    })
+  );
+  app.use(bodyParser.json());
+
   // Initialize the router
   app.use("/", router);
 
@@ -33,7 +42,12 @@ async function run() {
   app.set("port", port);
 
   // Initialize DB Client
-  await mongoService.initClient();
+  try {
+    await mongoService.initClient();
+  } catch (err) {
+    console.error("Failed to connect to mongo instance", err);
+    return;
+  }
 
   const server = http.createServer(app);
   server.listen(port);

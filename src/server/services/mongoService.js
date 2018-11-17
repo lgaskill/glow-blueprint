@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const BlogPost = require("../models/blogPost.js");
 
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
@@ -12,26 +13,12 @@ exports.initClient = async () => {
   return new Promise((resolve, reject) => {
     client.connect(function(err) {
       if (err) {
-        reject();
+        reject(err);
         return;
       }
       resolve();
     });
   });
-};
-
-exports.test = () => {
-  const db = client.db(DB_NAME);
-
-  const collection = db.collection("api_keys");
-  collection
-    .find({})
-    .toArray()
-    .then(values => {
-      console.log(values);
-    });
-
-  client.close();
 };
 
 exports.validateApiKey = async apiKey => {
@@ -40,4 +27,28 @@ exports.validateApiKey = async apiKey => {
   const collection = db.collection("api_keys");
   const keyRec = await collection.findOne({ key: apiKey });
   return !!keyRec;
+};
+
+exports.getBlogPosts = async apiKey => {
+  const db = client.db(DB_NAME);
+
+  const collection = db.collection("blog_posts");
+  const blogPosts = await collection.find({}).toArray();
+  if (!blogPosts) {
+    return [];
+  }
+
+  return blogPosts;
+};
+
+exports.insertBlogPost = async blogPost => {
+  if (!BlogPost.schema.isValid(blogPost)) {
+    return false;
+  }
+
+  const db = client.db(DB_NAME);
+  const collection = db.collection("blog_posts");
+  const res = await collection.insertOne(blogPost);
+  console.log("bla");
+  return !!res && res.insertedCount > 0;
 };
