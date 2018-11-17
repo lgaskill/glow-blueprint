@@ -1,4 +1,3 @@
-const port = process.env.PORT || 3000;
 const http = require("http");
 const path = require("path");
 const express = require("express");
@@ -8,6 +7,8 @@ const bodyParser = require("body-parser");
 
 const router = require("./src/server/routes/routes.js");
 const mongoService = require("./src/server/services/mongoService.js");
+
+const SERVER_PORT = process.env.PORT || 3000;
 
 const log = function(entry) {
   fs.appendFileSync(
@@ -39,7 +40,7 @@ async function run() {
   app.use("/", router);
 
   // Set the Port
-  app.set("port", port);
+  app.set("port", SERVER_PORT);
 
   // Initialize DB Client
   try {
@@ -50,7 +51,7 @@ async function run() {
   }
 
   const server = http.createServer(app);
-  server.listen(port);
+  server.listen(SERVER_PORT);
 
-  console.log("Server running at http://127.0.0.1:" + port + "/");
+  console.log("Server running at http://127.0.0.1:" + SERVER_PORT + "/");
 }
