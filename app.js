@@ -28,6 +28,24 @@ async function run() {
   app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
   app.use(express.static(path.join(__dirname, "dist")));
 
+  app.use(function(req, res, next) {
+    console.log(req, res);
+    // TODO: make this env-specific
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "X-Requested-With,content-type"
+    );
+    res.setHeader("Access-Control-Allow-Credentials", true);
+
+    next();
+  });
+
   // Body Parser Config
   app.use(
     bodyParser.urlencoded({

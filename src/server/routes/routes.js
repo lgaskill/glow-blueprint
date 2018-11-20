@@ -11,7 +11,7 @@ router.all("/#/*", function(req, res, next) {
 
 router.get("/test_db", function(req, res) {
   validateRequest(req, res, async function valid() {
-    res.send("Healthy");
+    res.status(200).send("Healthy");
   });
 });
 
@@ -19,7 +19,7 @@ router.get("/blog_post", function(req, res) {
   validateRequest(req, res, async function valid() {
     try {
       const blogPosts = await mongoService.getBlogPosts();
-      res.send(blogPosts);
+      res.status(200).send(blogPosts);
     } catch (err) {
       res.status(500).send("Failed to get blog posts");
     }

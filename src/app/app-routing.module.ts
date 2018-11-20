@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./home/home.component";
-import { BlogViewComponent } from "./blog-view/blog-view.component";
-import { CoachingViewComponent } from "./coaching-view/coaching-view.component";
-import { MyStoryViewComponent } from "./my-story-view/my-story-view.component";
+import { HomeComponent } from "./components/home/home.component";
+import { BlogViewComponent } from "./components/blog-view/blog-view.component";
+import { CoachingViewComponent } from "./components/coaching-view/coaching-view.component";
+import { MyStoryViewComponent } from "./components/my-story-view/my-story-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },

@@ -1,7 +1,7 @@
 const yup = require("yup");
 
 exports.schema = yup.object().shape({
-  id: yup.string(),
+  _id: yup.string(),
   title: yup.string().required(),
   body: yup.string().required(),
   createdAt: yup.date().default(function() {

@@ -6,11 +6,13 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { HomeModule } from "./home/home.module";
-import { SharedModule } from "./shared/shared.module";
-import { BlogViewModule } from "./blog-view/blog-view.module";
-import { CoachingViewModule } from "./coaching-view/coaching-view.module";
-import { MyStoryViewModule } from "./my-story-view/my-story-view.module";
+import { HomeModule } from "./components/home/home.module";
+import { SharedModule } from "./components/shared/shared.module";
+import { BlogViewModule } from "./components/blog-view/blog-view.module";
+import { CoachingViewModule } from "./components/coaching-view/coaching-view.module";
+import { MyStoryViewModule } from "./components/my-story-view/my-story-view.module";
+import { BlogService } from "./services/blog.service";
+import { ApiService } from "./services/api.service";
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,7 @@ import { MyStoryViewModule } from "./my-story-view/my-story-view.module";
     MyStoryViewModule
   ],
   exports: [],
-  providers: [],
+  providers: [ApiService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
