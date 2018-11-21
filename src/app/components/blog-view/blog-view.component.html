@@ -1,25 +1,32 @@
 <app-bar>
-  <div class='category-panel-wrapper'>
-    <button mat-button class='category-panel background-nutrition'>
-      <div class='category-panel-text-wrapper'>
-        <span class='category-panel-text mat-title'>
-          Nutrition &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Recipes
-        </span>
-      </div>
-    </button>
-    <button mat-button class='category-panel background-lifestyle'>
-      <div class='category-panel-text-wrapper'>
-        <span class='category-panel-text mat-title'>
-          Lifestyle &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balance
-        </span>
-      </div>
-    </button>
-    <button mat-button class='category-panel background-exercise'>
-      <div class='category-panel-text-wrapper'>
-        <span class='category-panel-text mat-title'>
-          Exercise &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; & &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Body
-        </span>
-      </div>
-    </button>
-  </div>
+  <mat-grid-list cols="3" rowHeight="240" gutterSize="16" class="category-grid">
+    <mat-grid-tile>
+      <button mat-button class="category-button background-nutrition">
+        <div class="category-button-content">
+          <p>Nutrition</p>
+          <p>&</p>
+          <p>Recipes</p>
+        </div>
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-button class="category-button background-lifestyle">
+        <div class="category-button-content">
+          <p>Lifestyle</p>
+          <p>&</p>
+          <p>Balance</p>
+        </div>
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-button class="category-button background-exercise">
+        <div class="category-button-content">
+          <p>Exercise</p>
+          <p>&</p>
+          <p>Body</p>
+        </div>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <blog-list></blog-list>
 </app-bar>

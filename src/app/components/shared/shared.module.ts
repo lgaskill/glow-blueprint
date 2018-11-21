@@ -5,7 +5,8 @@ import {
   MatCardModule,
   MatIconModule,
   MatToolbarModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatGridListModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 
@@ -15,7 +16,8 @@ const sharedModules = [
   MatCardModule,
   MatIconModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatGridListModule
 ];
 
 @NgModule({

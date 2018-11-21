@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const mongoService = require("../services/mongoService");
-const blogPost = require("../models/blogPost");
+const BlogPost = require("../models/blogPost");
 
 router.all("/#/*", function(req, res, next) {
   // Send the transpiled angular page for any routes under the hash
@@ -15,6 +15,7 @@ router.get("/test_db", function(req, res) {
   });
 });
 
+// GET blog posts
 router.get("/blog_post", function(req, res) {
   validateRequest(req, res, async function valid() {
     try {
@@ -26,15 +27,21 @@ router.get("/blog_post", function(req, res) {
   });
 });
 
+// POST blog post
 router.post("/blog_post", function(req, res) {
   validateRequest(req, res, async function valid() {
-    if (!blogPost.schema.isValid(req.body)) {
+    const blogPost = req.body;
+    if (!BlogPost.schema.isValid(blogPost)) {
       res.status(400).send("Invalid request format");
       return;
     }
 
+    // Set default values
+    blogPost.createdAt = new Date();
+    blogPost.active = false;
+
     try {
-      const created = await mongoService.insertBlogPost(req.body);
+      const created = await mongoService.insertBlogPost(blogPost);
       created
         ? res.status(202).send()
         : res.status(500).send("Failed to create blog post");
