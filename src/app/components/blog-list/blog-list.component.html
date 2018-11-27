@@ -1,5 +1,6 @@
-<div>
-  <mat-card *ngFor="let blogPost of blogPosts">
+<div class="card-wrapper">
+  <mat-card class="card mat-elevation-z" *ngFor="let blogPost of blogPosts">
+    <img mat-card-image [src]="blogPost.titleImageUrl" />
     <mat-card-content>{{ blogPost.title }}</mat-card-content>
   </mat-card>
 </div>

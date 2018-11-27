@@ -13,6 +13,9 @@ export class BlogListComponent {
   async ngOnInit() {
     try {
       this.blogPosts = await this.blogService.getAllBlogPosts();
+      for (const bp of this.blogPosts) {
+        bp.titleImageUrl = "../../assets/images/stock-food.jpg";
+      }
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
