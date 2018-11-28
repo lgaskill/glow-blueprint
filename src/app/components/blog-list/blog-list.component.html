@@ -1,9 +1,16 @@
 <div class="card-wrapper">
-  <mat-card class="card mat-elevation-z" *ngFor="let blogPost of blogPosts">
+  <mat-card
+    mat-ripple
+    *ngFor="let blogPost of blogPosts"
+    class="card mat-elevation-z"
+    routerLink="/blog/{{blogPost._id}}"
+  >
     <img mat-card-image [src]="blogPost.titleImageUrl" />
     <mat-card-content class="card-content">
       <div class="card-category">{{ blogPost.category }}</div>
       <h1 class="card-title">{{ blogPost.title }}</h1>
+      <div class="card-date">{{ blogPost.createdAt | timeFromNow }}</div>
     </mat-card-content>
+    <div class="card-overlay"></div>
   </mat-card>
 </div>

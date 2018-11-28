@@ -6,9 +6,11 @@ import {
   MatIconModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatGridListModule
+  MatGridListModule,
+  MatRippleModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
+import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
 
 const sharedModules = [
   CommonModule,
@@ -17,13 +19,14 @@ const sharedModules = [
   MatIconModule,
   MatSidenavModule,
   MatToolbarModule,
-  MatGridListModule
+  MatGridListModule,
+  MatRippleModule
 ];
 
 @NgModule({
   imports: sharedModules,
-  exports: sharedModules,
-  declarations: [],
+  exports: [...sharedModules, TimeFromNowPipe],
+  declarations: [TimeFromNowPipe],
   providers: []
 })
 export class SharedModule {}

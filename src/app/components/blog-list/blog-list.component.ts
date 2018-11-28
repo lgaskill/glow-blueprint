@@ -16,6 +16,11 @@ export class BlogListComponent {
       for (const bp of this.blogPosts) {
         bp.titleImageUrl = "../../assets/images/stock-food.jpg";
       }
+
+      // Sort by create date
+      this.blogPosts.sort((a, b) => {
+        return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
+      });
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
