@@ -4,16 +4,30 @@ $break-small: 600px;
 
 .card {
   @include mat-elevation(8);
-  width: 33%;
+  font-family: typewriter;
+  width: 400px;
   margin: 16px;
   @media screen and (max-width: $break-small) {
     width: 100%;
   }
 }
 
+.card-category {
+  text-decoration: underline;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card-title {
+  justify-content: center;
+}
+
 .card-wrapper {
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
+  justify-content: center;
   padding: 16px;
 }
