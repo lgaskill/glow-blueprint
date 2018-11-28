@@ -14,6 +14,7 @@ import { MyStoryViewModule } from "./components/my-story-view/my-story-view.modu
 import { BlogService } from "./services/blog.service";
 import { ApiService } from "./services/api.service";
 import { BlogListModule } from "./components/blog-list/blog-list.module";
+import { BlogPostViewModule } from "./components/blog-post-view/coaching-view.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +31,8 @@ import { BlogListModule } from "./components/blog-list/blog-list.module";
     BlogViewModule,
     CoachingViewModule,
     MyStoryViewModule,
-    BlogListModule
+    BlogListModule,
+    BlogPostViewModule
   ],
   exports: [],
   providers: [ApiService, BlogService],
