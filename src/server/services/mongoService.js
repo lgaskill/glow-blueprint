@@ -52,3 +52,5 @@ exports.insertBlogPost = async blogPost => {
   console.log("bla");
   return !!res && res.insertedCount > 0;
 };
+
+exports.uploadImage = async;

@@ -1,6 +1,7 @@
 const http = require("http");
 const path = require("path");
 const express = require("express");
+const multer = require("multer");
 const favicon = require("serve-favicon");
 const fs = require("fs");
 const bodyParser = require("body-parser");
@@ -27,6 +28,9 @@ async function run() {
   const app = express();
   app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
   app.use(express.static(path.join(__dirname, "dist")));
+
+  // Initialize multer to handle uploads of multi-part files
+  app.use(multer({ dest: "/tmp/uploads/" }).any());
 
   app.use(function(req, res, next) {
     console.log(req, res);

@@ -1,8 +1,17 @@
 const express = require("express");
-const router = express.Router();
+const fs = require("fs");
 
 const mongoService = require("../services/mongoService");
 const BlogPost = require("../models/blogPost");
+
+const router = express.Router();
+
+const ALLOWED_IMG_TYPE_LOOKUP = {
+  "image/jpg": true,
+  "image/jpeg": true,
+  "image/png": true,
+  "image/gif": true
+};
 
 router.all("/#/*", function(req, res, next) {
   // Send the transpiled angular page for any routes under the hash
@@ -49,6 +58,25 @@ router.post("/blog_post", function(req, res) {
       console.log(err);
       res.status(500).send("Failed to create blog posts");
     }
+  });
+});
+
+// POST image
+router.post("/image", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    if (!req.files || req.files.length !== 1) {
+      res.status(400).send("Invalid image request");
+      return;
+    }
+    const file = req.files[0];
+
+    const contentType = file.mimeType;
+    if (!ALLOWED_IMG_TYPE_LOOKUP[contentType]) {
+      res.status(400).send("Image type " + contentType + " not allowed");
+      return;
+    }
+
+    // TODO: write to mongo
   });
 });
 
