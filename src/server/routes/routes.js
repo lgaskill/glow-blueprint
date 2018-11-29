@@ -2,7 +2,6 @@ const express = require("express");
 const fs = require("fs");
 
 const mongoService = require("../services/mongoService");
-const BlogPost = require("../models/blogPost");
 
 const router = express.Router();
 
@@ -40,15 +39,10 @@ router.get("/blog_post", function(req, res) {
 router.post("/blog_post", function(req, res) {
   validateRequest(req, res, async function valid() {
     const blogPost = req.body;
-    if (!BlogPost.schema.isValid(blogPost)) {
+    if (!blogPost || !blogPost.title || !blogPost.body || !blogPost.category) {
       res.status(400).send("Invalid request format");
       return;
     }
-
-    // Set default values
-    blogPost.createdAt = new Date();
-    blogPost.active = false;
-
     try {
       const created = await mongoService.insertBlogPost(blogPost);
       created

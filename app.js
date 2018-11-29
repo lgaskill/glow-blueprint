@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 
 const router = require("./src/server/routes/routes.js");
 const mongoService = require("./src/server/services/mongoService.js");
+const database = require("./src/server/services/database");
 
 const SERVER_PORT = process.env.PORT || 3000;
 
@@ -64,13 +65,13 @@ async function run() {
   // Set the Port
   app.set("port", SERVER_PORT);
 
-  // Initialize DB Client
-  try {
-    await mongoService.initClient();
-  } catch (err) {
-    console.error("Failed to connect to mongo instance", err);
-    return;
-  }
+  // // Initialize DB Client
+  // try {
+  //   await mongoService.initClient();
+  // } catch (err) {
+  //   console.error("Failed to connect to mongo instance", err);
+  //   return;
+  // }
 
   const server = http.createServer(app);
   server.listen(SERVER_PORT);

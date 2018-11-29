@@ -1,14 +1,23 @@
-const yup = require("yup");
+const mongoose = require("mongoose");
 
-exports.schema = yup.object().shape({
-  _id: yup.string(),
-  title: yup.string().required(),
-  body: yup.string().required(),
-  createdAt: yup.date().default(function() {
-    return new Date();
-  }),
-  lastUpdatedAt: yup.date().default(function() {
-    return new Date();
-  }),
-  category: yup.string().required()
+const blogPostSchema = new mongoose.Schema({
+  title: String,
+  body: String,
+  createdAt: Date,
+  lastUpdatedAt: Date,
+  category: String
 });
+
+blogPostSchema.pre("save", function(next) {
+  let now = Date.now();
+
+  // Generate dates
+  this.lastUpdatedAt = now;
+  if (!this.createdAt) {
+    this.createdAt = now;
+  }
+
+  next();
+});
+
+module.exports = mongoose.model("BlogPost", blogPostSchema);
