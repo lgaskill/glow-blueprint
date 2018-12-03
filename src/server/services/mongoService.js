@@ -30,5 +30,3 @@ exports.insertBlogPost = async blogPost => {
   const res = await blogPostModel.save();
   return !!res;
 };
-
-// exports.uploadImage = async;

@@ -2,6 +2,8 @@ const express = require("express");
 const fs = require("fs");
 
 const mongoService = require("../services/mongoService");
+const BlogPostModel = require("../models/blogPost");
+const FileModel = require("../models/file");
 
 const router = express.Router();
 
@@ -23,7 +25,7 @@ router.get("/test_db", function(req, res) {
   });
 });
 
-// GET blog posts
+// GET all blog posts
 router.get("/blog_post", function(req, res) {
   validateRequest(req, res, async function valid() {
     try {
@@ -31,6 +33,23 @@ router.get("/blog_post", function(req, res) {
       res.status(200).send(blogPosts);
     } catch (err) {
       res.status(500).send("Failed to get blog posts");
+    }
+  });
+});
+
+// GET blog post by id
+router.get("/blog_post/:id", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    if (!req.params.id) {
+      res.status(400).send();
+      return;
+    }
+
+    try {
+      const blogPost = await BlogPostModel.findOne({ _id: req.params.id });
+      res.status(200).send(blogPost);
+    } catch (err) {
+      res.status(500).send("Failed to get blog post " + id);
     }
   });
 });
@@ -49,28 +68,112 @@ router.post("/blog_post", function(req, res) {
         ? res.status(202).send()
         : res.status(500).send("Failed to create blog post");
     } catch (err) {
+      console.error(err);
+      res.status(500).send("Failed to create blog posts");
+    }
+  });
+});
+
+// PATCH blog post
+router.patch("/blog_post/:id", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    const blogPostId = req.params.id;
+    const blogPostUpdate = req.body;
+    if (!blogPostId || !blogPostUpdate) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
+
+    try {
+      // First, make sure the thing exists
+      const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
+      if (!existingPost) {
+        res.status(400).send("Intended blog post not found");
+        return;
+      }
+
+      try {
+        const result = await BlogPostModel.update(
+          { _id: blogPostId },
+          blogPostUpdate
+        );
+        res.status(204).send();
+      } catch (err) {
+        res.status(500).send("Failed to update blog post");
+      }
+    } catch (err) {
       console.log(err);
       res.status(500).send("Failed to create blog posts");
     }
   });
 });
 
-// POST image
+//
+/**
+ * GET image by id
+ *
+ * @param {String} id The requested image's ObjectId
+ *
+ */
+router.get("/image/:id", function(req, res) {
+  validateRequest(req, res, async function() {
+    if (!req.params.id) {
+      res.status(400).send("Invalid image request");
+      return;
+    }
+
+    let imageFile;
+    try {
+      imageFile = await FileModel.findOne({ _id: req.params.id });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Failed to get image");
+      return;
+    }
+
+    if (!imageFile) {
+      res.status(404).send("Image not found");
+      return;
+    }
+
+    res.writeHead(200, { "Content-Type": imageFile.contentType });
+    res.end(imageFile.data, "binary");
+  });
+});
+
+/**
+ * POST image
+ *
+ * @param {String} blogPostId (Optional) the id to the associtated blog post
+ */
 router.post("/image", function(req, res) {
-  validateRequest(req, res, async function valid() {
+  validateRequest(req, res, async function() {
     if (!req.files || req.files.length !== 1) {
       res.status(400).send("Invalid image request");
       return;
     }
+
     const file = req.files[0];
 
-    const contentType = file.mimeType;
+    const contentType = file.mimetype;
     if (!ALLOWED_IMG_TYPE_LOOKUP[contentType]) {
       res.status(400).send("Image type " + contentType + " not allowed");
       return;
     }
 
-    // TODO: write to mongo
+    const imageFile = new FileModel();
+    imageFile.contentType = contentType;
+    imageFile.data = fs.readFileSync(file.path);
+    imageFile.name = file.originalname;
+    imageFile.blogPostId = req.params.blogPostId ? req.params.blogPostId : null;
+
+    try {
+      await imageFile.save();
+      res.status(202).send({ _id: imageFile._id });
+    } catch (err) {
+      console.err(err);
+      res.status(500).send("Failed to upload image");
+    }
   });
 });
 
