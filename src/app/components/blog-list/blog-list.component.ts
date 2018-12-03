@@ -14,7 +14,7 @@ export class BlogListComponent {
     try {
       this.blogPosts = await this.blogService.getAllBlogPosts();
       for (const bp of this.blogPosts) {
-        bp.titleImageUrl = "../../assets/images/stock-food.jpg";
+        bp.mainImageId = "../../assets/images/stock-food.jpg";
       }
 
       // Sort by create date

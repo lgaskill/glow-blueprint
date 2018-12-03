@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const blogPostSchema = new mongoose.Schema({
-  title: String,
   body: String,
+  category: String,
   createdAt: Date,
   lastUpdatedAt: Date,
-  category: String
+  mainImageId: String,
+  title: String
 });
 
 blogPostSchema.pre("save", function(next) {

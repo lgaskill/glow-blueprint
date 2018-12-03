@@ -23,7 +23,14 @@
     </div>
   </mat-drawer>
   <mat-drawer-content class="drawer-content">
-    <mat-toolbar class="app-bar">
+    <mat-toolbar
+      class="app-bar"
+      [ngStyle]="{
+        'background-image': imageUrl
+          ? 'url(' + imageUrl + ')'
+          : 'url(\'../../../../assets/images/pineapples.jpg\')'
+      }"
+    >
       <div class="app-bar-container">
         <div class="app-bar-toolbar">
           <span class="expand"></span>

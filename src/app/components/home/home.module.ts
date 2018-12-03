@@ -5,6 +5,7 @@ import { AppBarModule } from "../shared/app-bar/app-bar.module";
 import { InstagramPanelModule } from "../shared/instagram-panel/instagram-panel.module";
 import { ScrollAnimationModule } from "../shared/scroll-animation/scroll-animation.module";
 import { RouterModule } from "@angular/router";
+import { GbImageModule } from "../shared/gb-image/gb-image.module";
 
 @NgModule({
   imports: [

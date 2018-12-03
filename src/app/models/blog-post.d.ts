@@ -6,5 +6,5 @@ declare interface BlogPost {
   createdAt: Date;
   lastUpdatedAt: Date;
   category: string;
-  titleImageUrl: string;
+  mainImageId: string;
 }
