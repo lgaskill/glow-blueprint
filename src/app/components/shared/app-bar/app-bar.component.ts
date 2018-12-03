@@ -21,7 +21,6 @@ export class AppBarComponent {
 
   ngOnInit() {
     // Generate the custom image URL
-    debugger;
     if (!this.imageId) {
       return;
     }

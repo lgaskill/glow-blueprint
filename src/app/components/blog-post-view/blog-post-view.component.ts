@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { BlogService } from "src/app/services/blog.service";
 
 @Component({
   selector: "blog-post-view",
@@ -8,12 +9,21 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class BlogPostViewComponent {
   blogPostId: string = null;
-  constructor(private route: ActivatedRoute) {}
+  blogPost: BlogPost = null;
 
-  ngOnInit() {
-    // TODO: How's this going to hold-up to navigating between posts?
+  constructor(
+    private route: ActivatedRoute,
+    private blogService: BlogService
+  ) {}
+
+  async ngOnInit() {
+    // TODO: How's this going to hold-up when navigating between posts?
+
     this.blogPostId = this.route.snapshot.paramMap.get("id");
+    if (!this.blogPostId) {
+      return;
+    }
 
-    // TODO: Get blog post by id
+    this.blogPost = await this.blogService.getBlogPostById(this.blogPostId);
   }
 }

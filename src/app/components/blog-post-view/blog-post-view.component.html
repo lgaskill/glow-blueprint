@@ -1,3 +1,7 @@
-<app-bar>
-  <div>Sup {{ blogPostId }}</div>
-</app-bar>
+<div *ngIf="!blogPost">shit</div>
+<div *ngIf="blogPost">
+  <app-bar [imageId]="blogPost.mainImageId">
+    <h1>{{ blogPost.title }}</h1>
+    <div [innerHtml]="blogPost.body | safeHtml"></div>
+  </app-bar>
+</div>

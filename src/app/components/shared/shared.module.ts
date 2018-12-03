@@ -23,10 +23,12 @@ const sharedModules = [
   MatRippleModule
 ];
 
+const pipes = [TimeFromNowPipe];
+
 @NgModule({
   imports: sharedModules,
-  exports: [...sharedModules, TimeFromNowPipe],
-  declarations: [TimeFromNowPipe],
+  exports: [...sharedModules, ...pipes],
+  declarations: [...pipes],
   providers: []
 })
 export class SharedModule {}
