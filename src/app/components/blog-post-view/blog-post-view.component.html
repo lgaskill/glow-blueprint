@@ -1,7 +1,7 @@
-<div *ngIf="!blogPost">shit</div>
+<div *ngIf="!blogPost">Loading...</div>
 <div *ngIf="blogPost">
-  <app-bar [imageId]="blogPost.mainImageId">
+  <app-bar [collapsed]="true">
     <h1>{{ blogPost.title }}</h1>
-    <div [innerHtml]="blogPost.body | safeHtml"></div>
+    <div [innerHtml]="blogPost.body"></div>
   </app-bar>
 </div>

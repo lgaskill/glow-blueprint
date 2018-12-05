@@ -114,31 +114,34 @@ router.patch("/blog_post/:id", function(req, res) {
  *
  * @param {String} id The requested image's ObjectId
  *
+ * @todo This is not currently authenticated to allow image urls to be used without authentication params,
+ *  Need to determine if this is ok going forward
+ *
  */
-router.get("/image/:id", function(req, res) {
-  validateRequest(req, res, async function() {
-    if (!req.params.id) {
-      res.status(400).send("Invalid image request");
-      return;
-    }
+router.get("/image/:id", async function(req, res) {
+  //validateRequest(req, res, async function() {
+  if (!req.params.id) {
+    res.status(400).send("Invalid image request");
+    return;
+  }
 
-    let imageFile;
-    try {
-      imageFile = await FileModel.findOne({ _id: req.params.id });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Failed to get image");
-      return;
-    }
+  let imageFile;
+  try {
+    imageFile = await FileModel.findOne({ _id: req.params.id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Failed to get image");
+    return;
+  }
 
-    if (!imageFile) {
-      res.status(404).send("Image not found");
-      return;
-    }
+  if (!imageFile) {
+    res.status(404).send("Image not found");
+    return;
+  }
 
-    res.writeHead(200, { "Content-Type": imageFile.contentType });
-    res.end(imageFile.data, "binary");
-  });
+  res.writeHead(200, { "Content-Type": imageFile.contentType });
+  res.end(imageFile.data, "binary");
+  //});
 });
 
 /**

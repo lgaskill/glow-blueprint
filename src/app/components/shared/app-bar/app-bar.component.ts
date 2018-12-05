@@ -9,28 +9,13 @@ import { environment } from "src/environments/environment";
 })
 export class AppBarComponent {
   @Input()
-  imageId: String = null;
+  collapsed: Boolean = false;
 
   navOpen: boolean = false;
   screenWidth: number;
-  imageUrl: String;
 
   constructor() {
     this.onResize();
-  }
-
-  ngOnInit() {
-    // Generate the custom image URL
-    if (!this.imageId) {
-      return;
-    }
-
-    const apiKey: String = Constants.API_KEY;
-    const hostUrl: string = environment.production
-      ? Constants.API_HOST_PROD
-      : Constants.API_HOST_LOCAL;
-
-    this.imageUrl = `${hostUrl}/image/${this.imageId}?key=${apiKey}`;
   }
 
   @HostListener("window:resize", ["$event"])

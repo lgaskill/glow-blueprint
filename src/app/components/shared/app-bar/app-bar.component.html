@@ -24,15 +24,20 @@
   </mat-drawer>
   <mat-drawer-content class="drawer-content">
     <mat-toolbar
-      class="app-bar"
-      [ngStyle]="{
-        'background-image': imageUrl
-          ? 'url(' + imageUrl + ')'
-          : 'url(\'../../../../assets/images/pineapples.jpg\')'
+      [ngClass]="{
+        'app-bar-collapsed': collapsed,
+        'app-bar-expanded': !collapsed
       }"
     >
       <div class="app-bar-container">
         <div class="app-bar-toolbar">
+          <a
+            mat-button
+            [routerLink]="['']"
+            *ngIf="collapsed"
+            class="bordered-title-collapsed"
+            >{{ screenWidth <= 600 ? "GB" : "the GLOW blueprint" }}</a
+          >
           <span class="expand"></span>
           <nav-menu-button
             *ngIf="screenWidth <= 600"
@@ -76,13 +81,15 @@
             <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
           </a>
         </div>
-        <div class="app-bar-content">
+        <div *ngIf="!collapsed" class="app-bar-content">
           <a mat-button [routerLink]="['']" class="bordered-title"
             >the GLOW blueprint</a
           >
         </div>
       </div>
     </mat-toolbar>
-    <ng-content></ng-content>
+    <div [ngClass]="{ 'app-content-wrapper': collapsed }">
+      <div class="app-content"><ng-content></ng-content></div>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>
