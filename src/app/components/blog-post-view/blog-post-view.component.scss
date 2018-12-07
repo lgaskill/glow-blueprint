@@ -1,3 +1,66 @@
 @import "~@angular/material/theming";
 
-$break-small: 600px;
+$break-small: 800px;
+
+.body {
+  max-width: 640px;
+  padding: 16px;
+}
+
+.body-wrapper {
+  font-family: typewriter;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.content {
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+
+.image-wrapper {
+  text-align: center;
+}
+
+.image {
+  height: 360px;
+}
+
+.main-content {
+  flex-direction: column;
+}
+
+.side-content {
+  flex-direction: column;
+  width: 260px;
+
+  @media screen and (max-width: $break-small) {
+    display: none;
+  }
+}
+
+.title-panel {
+  padding: 16px;
+  text-align: center;
+}
+
+.title-panel-category {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  color: #b65b6f;
+  font-family: lemonTuesday;
+  font-size: 24px;
+}
+
+.title-panel-date {
+  font-family: typewriter;
+  font-size: 16px;
+  color: #6d6d6d;
+}
+
+.title-panel-title {
+  font-family: typewriter;
+  font-size: 36px;
+}

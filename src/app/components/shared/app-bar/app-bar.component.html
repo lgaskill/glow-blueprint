@@ -36,45 +36,45 @@
             [routerLink]="['']"
             *ngIf="collapsed"
             class="bordered-title-collapsed"
-            >{{ screenWidth <= 600 ? "GB" : "the GLOW blueprint" }}</a
+            >{{ screenWidth <= 800 ? "GB" : "the GLOW blueprint" }}</a
           >
           <span class="expand"></span>
           <nav-menu-button
-            *ngIf="screenWidth <= 600"
+            *ngIf="screenWidth <= 800"
             [(open)]="navOpen"
           ></nav-menu-button>
 
           <a
             mat-button
-            *ngIf="screenWidth > 600"
+            *ngIf="screenWidth > 800"
             class="toolbar-button"
             [routerLink]="['']"
             >Home</a
           >
           <a
             mat-button
-            *ngIf="screenWidth > 600"
+            *ngIf="screenWidth > 800"
             class="toolbar-button"
             [routerLink]="['/blog']"
             >Blog</a
           >
           <a
             mat-button
-            *ngIf="screenWidth > 600"
+            *ngIf="screenWidth > 800"
             class="toolbar-button"
             [routerLink]="['/coaching']"
             >Coaching</a
           >
           <a
             mat-button
-            *ngIf="screenWidth > 600"
+            *ngIf="screenWidth > 800"
             class="toolbar-button"
             [routerLink]="['/my-story']"
             >My Story</a
           >
           <a
             mat-icon-button
-            *ngIf="screenWidth > 600"
+            *ngIf="screenWidth > 800"
             class="toolbar-button"
             href="https://www.instagram.com/theglowblueprint"
           >
