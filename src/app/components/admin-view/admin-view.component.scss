@@ -1,0 +1,32 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.accent-text {
+  color: #b65b6f;
+  font-size: 24px;
+  margin: 48px 16px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.content {
+  font-family: typewriter;
+  line-height: 1.5rem;
+  margin: 16px;
+}
+
+.content p {
+  margin-block-end: 2rem;
+  margin-block-start: 2rem;
+}
+
+.title {
+  background-color: inherit;
+  font-family: lemonTuesday;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 32px 0;
+}

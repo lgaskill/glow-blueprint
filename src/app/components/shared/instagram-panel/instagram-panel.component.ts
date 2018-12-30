@@ -1,4 +1,4 @@
-import { Component, HostListener } from "@angular/core";
+import { Component, HostListener, Input } from "@angular/core";
 
 @Component({
   selector: "instagram-panel",
@@ -6,8 +6,10 @@ import { Component, HostListener } from "@angular/core";
   styleUrls: ["./instagram-panel.component.scss"]
 })
 export class InstagramPanelComponent {
-  constructor() {
-  }
+  @Input()
+  isSideNav: boolean = false;
+
+  constructor() {}
 
   recentImageKeys: string[] = [
     "BpDolmzAKh1",
@@ -21,5 +23,4 @@ export class InstagramPanelComponent {
     "BnxKHIxHDJO",
     "BoNZdTYgJzM"
   ];
-  
 }

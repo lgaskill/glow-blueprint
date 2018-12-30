@@ -4,6 +4,7 @@ const fs = require("fs");
 const mongoService = require("../services/mongoService");
 const BlogPostModel = require("../models/blogPost");
 const FileModel = require("../models/file");
+const UserModel = require("../models/user");
 
 const router = express.Router();
 
@@ -22,6 +23,52 @@ router.all("/#/*", function(req, res, next) {
 router.get("/test_db", function(req, res) {
   validateRequest(req, res, async function valid() {
     res.status(200).send("Healthy");
+  });
+});
+
+// Authentication
+router.post("/authenticate", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    const { username, password } = req.body;
+    if (!username || !password) {
+      res.status(400).send("No username/password provided");
+      return;
+    }
+
+    // Get user by username
+    let user;
+    try {
+      user = await UserModel.findOne({ username });
+    } catch (err) {
+      res.status(500).send("Failed to get user record");
+      return;
+    }
+
+    if (user.password !== password) {
+      res.status(401).send("Failed to authenticate user");
+      return;
+    }
+
+    res.send(user);
+  });
+});
+
+// Get all users
+router.get("/users", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    // TODO:
+    //      Authenticate username/password
+
+    // Get all users
+    let users;
+    try {
+      users = await UserModel.find({});
+    } catch (err) {
+      res.status(500).send("Failed to get user records");
+      return;
+    }
+
+    res.send(users);
   });
 });
 

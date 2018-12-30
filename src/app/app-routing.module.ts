@@ -5,9 +5,11 @@ import { BlogViewComponent } from "./components/blog-view/blog-view.component";
 import { CoachingViewComponent } from "./components/coaching-view/coaching-view.component";
 import { MyStoryViewComponent } from "./components/my-story-view/my-story-view.component";
 import { BlogPostViewComponent } from "./components/blog-post-view/blog-post-view.component";
+import { AdminViewComponent } from "./components/admin-view/admin-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
+  { path: "boss-mama", component: AdminViewComponent },
   { path: "blog", component: BlogViewComponent },
   {
     path: "blog/:id",
