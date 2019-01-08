@@ -19,3 +19,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
   font-family: typewriter;
   src: url(assets/fonts/typewriter.otf) format("opentype");
 }
+
+body {
+  margin: 0;
+}
