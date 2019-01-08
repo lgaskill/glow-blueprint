@@ -6,6 +6,7 @@ import { InstagramPanelModule } from "../shared/instagram-panel/instagram-panel.
 import { ScrollAnimationModule } from "../shared/scroll-animation/scroll-animation.module";
 import { RouterModule } from "@angular/router";
 import { GbImageModule } from "../shared/gb-image/gb-image.module";
+import { BlogListModule } from "../blog-list/blog-list.module";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { GbImageModule } from "../shared/gb-image/gb-image.module";
     RouterModule,
     AppBarModule,
     InstagramPanelModule,
-    ScrollAnimationModule
+    ScrollAnimationModule,
+    BlogListModule
   ],
   declarations: [HomeComponent],
   providers: []

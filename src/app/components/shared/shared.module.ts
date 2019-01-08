@@ -7,7 +7,8 @@ import {
   MatToolbarModule,
   MatSidenavModule,
   MatGridListModule,
-  MatRippleModule
+  MatRippleModule,
+  MatTooltipModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
@@ -20,7 +21,8 @@ const sharedModules = [
   MatSidenavModule,
   MatToolbarModule,
   MatGridListModule,
-  MatRippleModule
+  MatRippleModule,
+  MatTooltipModule
 ];
 
 const pipes = [TimeFromNowPipe];

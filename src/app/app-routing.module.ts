@@ -9,7 +9,8 @@ import { AdminViewComponent } from "./components/admin-view/admin-view.component
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "boss-mama", component: AdminViewComponent },
+  // TODO:
+  // { path: "boss-mama", component: AdminViewComponent },
   { path: "blog", component: BlogViewComponent },
   {
     path: "blog/:id",

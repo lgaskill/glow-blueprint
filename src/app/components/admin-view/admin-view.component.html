@@ -1,4 +1,18 @@
-<app-bar>
-  <mat-toolbar class="title"> Hello! </mat-toolbar>
-  <div class="content"><p>sup</p></div>
+<app-bar [collapsed]="true">
+  <div class="container">
+    <div class="sidenav">
+      <h4>Post 1</h4>
+      <h4>Post 2</h4>
+      <h4>Post 3</h4>
+    </div>
+    <div class="content">
+      <mat-toolbar class="toolbar">
+        Boss Mama <span class="toolbar-grow"></span>
+        <button mat-icon-button matTooltip="Create New Post">
+          <mat-icon class="toolbar-icon">add</mat-icon>
+        </button>
+      </mat-toolbar>
+      <div class="content"><p>sup</p></div>
+    </div>
+  </div>
 </app-bar>
