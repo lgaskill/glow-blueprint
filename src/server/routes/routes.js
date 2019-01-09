@@ -20,6 +20,10 @@ router.all("/#/*", function(req, res, next) {
   res.sendFile("dist/index.html", { root: __dirname });
 });
 
+router.get("/test", function(req, res) {
+  res.status(200).send("Alive");
+});
+
 router.get("/test_db", function(req, res) {
   validateRequest(req, res, async function valid() {
     res.status(200).send("Healthy");

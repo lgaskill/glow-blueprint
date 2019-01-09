@@ -7,10 +7,9 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 
 const router = require("./src/server/routes/routes.js");
-const mongoService = require("./src/server/services/mongoService.js");
 const database = require("./src/server/services/database");
 
-const SERVER_PORT = process.env.PORT || 3000;
+const SERVER_PORT = process.env.PORT || 8081;
 
 const log = function(entry) {
   fs.appendFileSync(
@@ -22,10 +21,10 @@ const log = function(entry) {
 try {
   run();
 } catch (err) {
-  log("Failed to start server", err);
+  log("Failed to start server" + err);
 }
 
-async function run() {
+function run() {
   const app = express();
   app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
   app.use(express.static(path.join(__dirname, "dist")));
@@ -34,7 +33,6 @@ async function run() {
   app.use(multer({ dest: "/tmp/uploads/" }).any());
 
   app.use(function(req, res, next) {
-    console.log(req, res);
     // TODO: make this env-specific
     res.setHeader("Access-Control-Allow-Origin", "*");
 
@@ -64,14 +62,6 @@ async function run() {
 
   // Set the Port
   app.set("port", SERVER_PORT);
-
-  // // Initialize DB Client
-  // try {
-  //   await mongoService.initClient();
-  // } catch (err) {
-  //   console.error("Failed to connect to mongo instance", err);
-  //   return;
-  // }
 
   const server = http.createServer(app);
   server.listen(SERVER_PORT);

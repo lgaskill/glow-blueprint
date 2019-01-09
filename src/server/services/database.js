@@ -1,4 +1,5 @@
-let mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const fs = require("fs");
 
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
@@ -16,11 +17,11 @@ class Database {
         URL,
         { useNewUrlParser: true }
       );
+
+      console.log("Sup mongo");
     } catch (err) {
       console.error("Mongo's on fire! " + err);
     }
-
-    console.log("Sup mongo");
   }
 }
 
