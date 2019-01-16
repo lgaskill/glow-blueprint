@@ -106,58 +106,58 @@ router.get("/blog_post/:id", function(req, res) {
 });
 
 // POST blog post
-// router.post("/blog_post", function(req, res) {
-//   validateRequest(req, res, async function valid() {
-//     const blogPost = req.body;
-//     if (!blogPost || !blogPost.title || !blogPost.body || !blogPost.category) {
-//       res.status(400).send("Invalid request format");
-//       return;
-//     }
-//     try {
-//       const created = await mongoService.insertBlogPost(blogPost);
-//       created
-//         ? res.status(202).send()
-//         : res.status(500).send("Failed to create blog post");
-//     } catch (err) {
-//       console.error(err);
-//       res.status(500).send("Failed to create blog posts");
-//     }
-//   });
-// });
+router.post("/blog_post", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    const blogPost = req.body;
+    if (!blogPost || !blogPost.title || !blogPost.body || !blogPost.category) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
+    try {
+      const created = await mongoService.insertBlogPost(blogPost);
+      created
+        ? res.status(202).send()
+        : res.status(500).send("Failed to create blog post");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Failed to create blog posts");
+    }
+  });
+});
 
 // PATCH blog post
-// router.patch("/blog_post/:id", function(req, res) {
-//   validateRequest(req, res, async function valid() {
-//     const blogPostId = req.params.id;
-//     const blogPostUpdate = req.body;
-//     if (!blogPostId || !blogPostUpdate) {
-//       res.status(400).send("Invalid request format");
-//       return;
-//     }
+router.patch("/blog_post/:id", function(req, res) {
+  validateRequest(req, res, async function valid() {
+    const blogPostId = req.params.id;
+    const blogPostUpdate = req.body;
+    if (!blogPostId || !blogPostUpdate) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
 
-//     try {
-//       // First, make sure the thing exists
-//       const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
-//       if (!existingPost) {
-//         res.status(400).send("Intended blog post not found");
-//         return;
-//       }
+    try {
+      // First, make sure the thing exists
+      const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
+      if (!existingPost) {
+        res.status(400).send("Intended blog post not found");
+        return;
+      }
 
-//       try {
-//         const result = await BlogPostModel.update(
-//           { _id: blogPostId },
-//           blogPostUpdate
-//         );
-//         res.status(204).send();
-//       } catch (err) {
-//         res.status(500).send("Failed to update blog post");
-//       }
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).send("Failed to create blog posts");
-//     }
-//   });
-// });
+      try {
+        const result = await BlogPostModel.update(
+          { _id: blogPostId },
+          blogPostUpdate
+        );
+        res.status(204).send();
+      } catch (err) {
+        res.status(500).send("Failed to update blog post");
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Failed to create blog posts");
+    }
+  });
+});
 
 //
 /**
@@ -200,36 +200,36 @@ router.get("/image/:id", async function(req, res) {
  *
  * @param {String} blogPostId (Optional) the id to the associtated blog post
  */
-// router.post("/image", function(req, res) {
-//   validateRequest(req, res, async function() {
-//     if (!req.files || req.files.length !== 1) {
-//       res.status(400).send("Invalid image request");
-//       return;
-//     }
+router.post("/image", function(req, res) {
+  validateRequest(req, res, async function() {
+    if (!req.files || req.files.length !== 1) {
+      res.status(400).send("Invalid image request");
+      return;
+    }
 
-//     const file = req.files[0];
+    const file = req.files[0];
 
-//     const contentType = file.mimetype;
-//     if (!ALLOWED_IMG_TYPE_LOOKUP[contentType]) {
-//       res.status(400).send("Image type " + contentType + " not allowed");
-//       return;
-//     }
+    const contentType = file.mimetype;
+    if (!ALLOWED_IMG_TYPE_LOOKUP[contentType]) {
+      res.status(400).send("Image type " + contentType + " not allowed");
+      return;
+    }
 
-//     const imageFile = new FileModel();
-//     imageFile.contentType = contentType;
-//     imageFile.data = fs.readFileSync(file.path);
-//     imageFile.name = file.originalname;
-//     imageFile.blogPostId = req.params.blogPostId ? req.params.blogPostId : null;
+    const imageFile = new FileModel();
+    imageFile.contentType = contentType;
+    imageFile.data = fs.readFileSync(file.path);
+    imageFile.name = file.originalname;
+    imageFile.blogPostId = req.params.blogPostId ? req.params.blogPostId : null;
 
-//     try {
-//       await imageFile.save();
-//       res.status(202).send({ _id: imageFile._id });
-//     } catch (err) {
-//       console.err(err);
-//       res.status(500).send("Failed to upload image");
-//     }
-//   });
-// });
+    try {
+      await imageFile.save();
+      res.status(202).send({ _id: imageFile._id });
+    } catch (err) {
+      console.err(err);
+      res.status(500).send("Failed to upload image");
+    }
+  });
+});
 
 router.all("*", function(req, res) {
   res.status(404).send("LOL, wut");

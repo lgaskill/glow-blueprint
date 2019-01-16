@@ -25,11 +25,12 @@ $break-small: 800px;
 }
 
 .image {
-  height: 360px;
+  width: calc(100% - 32px);
 }
 
 .main-content {
   flex-direction: column;
+  width: 100%;
 }
 
 .side-content {

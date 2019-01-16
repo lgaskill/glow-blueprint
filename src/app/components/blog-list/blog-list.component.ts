@@ -13,12 +13,9 @@ export class BlogListComponent {
   async ngOnInit() {
     try {
       this.blogPosts = await this.blogService.getAllBlogPosts();
-      for (const bp of this.blogPosts) {
-        bp.mainImageId = "../../assets/images/stock-food.jpg";
-      }
 
       // Sort by create date
-      this.blogPosts.sort((a, b) => {
+      this.blogPosts = this.blogPosts.sort((a, b) => {
         return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
       });
     } catch (err) {

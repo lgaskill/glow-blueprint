@@ -3,7 +3,7 @@
     mat-ripple
     *ngFor="let blogPost of blogPosts"
     class="card mat-elevation-z"
-    routerLink="/blog/{{blogPost._id}}"
+    routerLink="/blog/{{ blogPost._id }}"
   >
     <gb-image class="mat-card-image" [id]="blogPost.mainImageId"></gb-image>
     <mat-card-content class="card-content">
