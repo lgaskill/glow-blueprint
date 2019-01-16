@@ -21,31 +21,33 @@
   </scroll-animation>
 
   <scroll-animation direction="right">
-    <div class="story-card-wrapper">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/my-story']"
+      class="story-card-wrapper story-card-clickable"
+    >
       <div class="story-card-img story-card-img-story"></div>
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <a
-            mat-button
-            [routerLink]="['/my-story']"
-            class="story-card-title-button"
-            >My Story</a
-          >
+          <div class="story-card-title-button">My Story</div>
         </mat-card-title>
       </mat-card>
     </div>
   </scroll-animation>
 
   <scroll-animation direction="left">
-    <div class="story-card-wrapper">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/coaching']"
+      class="story-card-wrapper story-card-clickable"
+    >
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <a
-            mat-button
-            [routerLink]="['/coaching']"
-            class="story-card-title-button"
-            >Coaching</a
-          >
+          <div class="story-card-title-button">Coaching</div>
         </mat-card-title>
       </mat-card>
       <div class="story-card-img story-card-img-coaching"></div>
@@ -53,13 +55,17 @@
   </scroll-animation>
 
   <scroll-animation direction="right">
-    <div class="story-card-wrapper">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/blog']"
+      class="story-card-wrapper story-card-clickable"
+    >
       <div class="story-card-img story-card-img-blog"></div>
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <a mat-button [routerLink]="['/blog']" class="story-card-title-button"
-            >Blog</a
-          >
+          <div class="story-card-title-button">Blog</div>
         </mat-card-title>
       </mat-card>
     </div>

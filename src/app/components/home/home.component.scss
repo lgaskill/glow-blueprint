@@ -21,6 +21,18 @@ $break-small: 800px;
   width: 40%;
 }
 
+.story-card-clickable {
+  cursor: pointer;
+  position: relative;
+
+  > :hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+.story-card-clickable:focus {
+  outline: none;
+}
+
 .story-card-full {
   display: flex;
   flex-direction: column;
