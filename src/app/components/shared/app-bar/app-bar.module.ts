@@ -17,7 +17,19 @@ export class AppBarModule {
     iconRegistry.addSvgIcon(
       "instagram-logo",
       sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/images/instagram-logo.svg"
+        "assets/images/icons/instagram-logo.svg"
+      )
+    );
+    iconRegistry.addSvgIcon(
+      "gb-logo-1",
+      sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/images/icons/gb-logo-1.svg"
+      )
+    );
+    iconRegistry.addSvgIcon(
+      "gb-logo-2",
+      sanitizer.bypassSecurityTrustResourceUrl(
+        "assets/images/icons/gb-logo-2.svg"
       )
     );
   }

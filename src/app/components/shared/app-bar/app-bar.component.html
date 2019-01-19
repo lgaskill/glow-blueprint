@@ -30,18 +30,25 @@
       }"
     >
       <div class="app-bar-container">
-        <div class="app-bar-toolbar">
-          <a
-            mat-button
-            [routerLink]="['']"
-            *ngIf="collapsed"
-            class="bordered-title-collapsed"
-            >{{ screenWidth <= 800 ? "GB" : "the GLOW blueprint" }}</a
-          >
+        <div
+          [ngClass]="{
+            'app-bar-toolbar-collapsed': collapsed,
+            'app-bar-toolbar-expanded': !collapsed
+          }"
+        >
+          <a mat-button [routerLink]="['']" *ngIf="collapsed">
+            <mat-icon
+              svgIcon="gb-logo-2"
+              class="title-icon-collapsed"
+            ></mat-icon>
+          </a>
           <span class="expand"></span>
           <nav-menu-button
             *ngIf="screenWidth <= 800"
             [(open)]="navOpen"
+            [ngClass]="{
+              'nav-button': !collapsed
+            }"
           ></nav-menu-button>
 
           <a
@@ -82,9 +89,12 @@
           </a>
         </div>
         <div *ngIf="!collapsed" class="app-bar-content">
-          <a mat-button [routerLink]="['']" class="bordered-title"
+          <a mat-button [routerLink]="['']" class="title-wrapper">
+            <mat-icon svgIcon="gb-logo-1" class="title-icon"></mat-icon>
+          </a>
+          <!-- <a mat-button [routerLink]="['']" class="bordered-title"
             >the GLOW blueprint</a
-          >
+          > -->
         </div>
       </div>
     </mat-toolbar>

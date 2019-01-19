@@ -1,6 +1,7 @@
 @import "~@angular/material/theming";
 
 .gb-image {
+  max-width: inherit;
   width: inherit;
   height: inherit;
   margin-top: inherit;

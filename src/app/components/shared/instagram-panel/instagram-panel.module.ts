@@ -16,7 +16,7 @@ export class InstagramPanelModule {
     iconRegistry.addSvgIcon(
       "instagram-logo",
       sanitizer.bypassSecurityTrustResourceUrl(
-        "assets/images/instagram-logo.svg"
+        "assets/images/icons/instagram-logo.svg"
       )
     );
   }
