@@ -1,0 +1,23 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.accent-text {
+  color: #b65b6f;
+  font-size: 24px;
+  margin: 48px 16px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex-direction: column;
+  flex-grow: 1;
+}

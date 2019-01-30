@@ -6,11 +6,17 @@ import { CoachingViewComponent } from "./components/coaching-view/coaching-view.
 import { MyStoryViewComponent } from "./components/my-story-view/my-story-view.component";
 import { BlogPostViewComponent } from "./components/blog-post-view/blog-post-view.component";
 import { AdminViewComponent } from "./components/admin-view/admin-view.component";
+import { AuthGuard } from "./guards/auth.guard";
+import { LoginViewComponent } from "./components/login-view/login-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
-  // TODO:
-  // { path: "boss-mama", component: AdminViewComponent },
+  { path: "login", component: LoginViewComponent },
+  {
+    path: "boss-mama",
+    component: AdminViewComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "blog", component: BlogViewComponent },
   {
     path: "blog/:id",
