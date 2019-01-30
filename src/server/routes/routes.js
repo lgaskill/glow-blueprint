@@ -1,10 +1,14 @@
 const express = require("express");
 const fs = require("fs");
+const passport = require("passport");
 
 const mongoService = require("../services/mongoService");
+const auth = require("../services/auth");
 const BlogPostModel = require("../models/blogPost");
 const FileModel = require("../models/file");
 const UserModel = require("../models/user");
+
+require("../config/passport-config");
 
 const router = express.Router();
 
@@ -15,23 +19,29 @@ const ALLOWED_IMG_TYPE_LOOKUP = {
   "image/gif": true
 };
 
-router.all("/#/*", function(req, res, next) {
+router.all("/#/*", auth.optional, (req, res) => {
   // Send the transpiled angular page for any routes under the hash
   res.sendFile("dist/index.html", { root: __dirname });
 });
 
-router.get("/test", function(req, res) {
+router.get("/test", auth.optional, (req, res) => {
   res.status(200).send("Alive");
 });
 
-router.get("/test_db", function(req, res) {
+router.get("/test_db", auth.optional, (req, res) => {
   validateRequest(req, res, async function valid() {
     res.status(200).send("Healthy");
   });
 });
 
+router.get("/test_auth", auth.required, (req, res) => {
+  validateRequest(req, res, async function valid() {
+    res.status(200).send("You're good");
+  });
+});
+
 // Authentication
-router.post("/authenticate", function(req, res) {
+router.post("/authenticate", auth.optional, (req, res, next) => {
   validateRequest(req, res, async function valid() {
     const { username, password } = req.body;
     if (!username || !password) {
@@ -39,21 +49,54 @@ router.post("/authenticate", function(req, res) {
       return;
     }
 
-    // Get user by username
+    return passport.authenticate(
+      "local",
+      { session: false },
+      (err, passportUser, info) => {
+        if (err) {
+          return next(err);
+        }
+
+        if (passportUser) {
+          const user = passportUser;
+          user.token = passportUser.generateJWT();
+
+          return res.json({ user: user.toAuthJSON() });
+        }
+
+        return status(400).info;
+      }
+    )(req, res, next);
+  });
+});
+
+// POST user
+router.post("/user", auth.optional, (req, res) => {
+  validateRequest(req, res, async function valid() {
+    const { username, password, email } = req.body;
+    if (!username || !password || !email) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
+
     let user;
     try {
-      user = await UserModel.findOne({ username });
+      user = new UserModel({ username, email });
     } catch (err) {
-      res.status(500).send("Failed to get user record");
-      return;
+      res.status(400).send("Invalid user format");
     }
 
-    if (user.password !== password) {
-      res.status(401).send("Failed to authenticate user");
-      return;
-    }
+    user.setPassword(password);
 
-    res.send(user);
+    try {
+      const created = await user.save();
+      !!created
+        ? res.status(202).send()
+        : res.status(500).send("Failed to create user");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Failed to create blog posts");
+    }
   });
 });
 
@@ -77,7 +120,7 @@ router.post("/authenticate", function(req, res) {
 // });
 
 // GET all blog posts
-router.get("/blog_post", function(req, res) {
+router.get("/blog_post", auth.optional, (req, res) => {
   validateRequest(req, res, async function valid() {
     try {
       const blogPosts = await mongoService.getBlogPosts();
@@ -89,7 +132,7 @@ router.get("/blog_post", function(req, res) {
 });
 
 // GET blog post by id
-router.get("/blog_post/:id", function(req, res) {
+router.get("/blog_post/:id", auth.optional, (req, res) => {
   validateRequest(req, res, async function valid() {
     if (!req.params.id) {
       res.status(400).send();
@@ -106,7 +149,7 @@ router.get("/blog_post/:id", function(req, res) {
 });
 
 // POST blog post
-router.post("/blog_post", function(req, res) {
+router.post("/blog_post", auth.required, (req, res) => {
   validateRequest(req, res, async function valid() {
     const blogPost = req.body;
     if (!blogPost || !blogPost.title || !blogPost.body || !blogPost.category) {
@@ -126,7 +169,7 @@ router.post("/blog_post", function(req, res) {
 });
 
 // PATCH blog post
-router.patch("/blog_post/:id", function(req, res) {
+router.patch("/blog_post/:id", auth.required, (req, res) => {
   validateRequest(req, res, async function valid() {
     const blogPostId = req.params.id;
     const blogPostUpdate = req.body;
@@ -200,7 +243,7 @@ router.get("/image/:id", async function(req, res) {
  *
  * @param {String} blogPostId (Optional) the id to the associtated blog post
  */
-router.post("/image", function(req, res) {
+router.post("/image", auth.optional, (req, res) => {
   validateRequest(req, res, async function() {
     if (!req.files || req.files.length !== 1) {
       res.status(400).send("Invalid image request");
@@ -231,7 +274,7 @@ router.post("/image", function(req, res) {
   });
 });
 
-router.all("*", function(req, res) {
+router.all("*", auth.optional, (req, res) => {
   res.status(404).send("LOL, wut");
 });
 

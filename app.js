@@ -55,10 +55,18 @@ function run() {
       extended: true
     })
   );
+
   app.use(bodyParser.json());
 
   // Initialize the router
   app.use("/", router);
+
+  // Error Handling
+  app.use((err, req, res, next) => {
+    if (err.name === "UnauthorizedError") {
+      res.status(401).send("Who do you know here?");
+    }
+  });
 
   // Set the Port
   app.set("port", SERVER_PORT);
