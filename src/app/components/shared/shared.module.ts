@@ -8,13 +8,19 @@ import {
   MatSidenavModule,
   MatGridListModule,
   MatRippleModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 const sharedModules = [
   CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
   MatButtonModule,
   MatCardModule,
   MatIconModule,
@@ -22,7 +28,10 @@ const sharedModules = [
   MatToolbarModule,
   MatGridListModule,
   MatRippleModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule
 ];
 
 const pipes = [TimeFromNowPipe];

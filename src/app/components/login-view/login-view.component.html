@@ -1,1 +1,32 @@
-<app-bar [collapsed]="true"> <div>Log yo self</div> </app-bar>
+<app-bar [collapsed]="true">
+  <div class="content">
+    <div class="title">Log Yo Self</div>
+    <form class="form" [formGroup]="loginForm">
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Username" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Password"
+          />
+          <mat-icon matSuffix (click)="handleTogglePasswordVisibility()">{{
+            showPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button class="login-button" (click)="handleLogin()">
+          Sign In
+        </button>
+      </div>
+    </form>
+  </div>
+</app-bar>

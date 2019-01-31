@@ -3,7 +3,6 @@
 $break-small: 800px;
 
 .accent-text {
-  color: #b65b6f;
   font-size: 24px;
   margin: 48px 16px;
 }
@@ -20,4 +19,29 @@ $break-small: 800px;
 .content {
   flex-direction: column;
   flex-grow: 1;
+  text-align: center;
+}
+
+.form-field {
+  max-width: 400px;
+  width: 80%;
+}
+
+.login-button {
+  background-color: #e7abb6;
+  color: #fff;
+  font-family: typewriter;
+  font-size: 18px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 4px 32px;
+}
+
+.title {
+  color: #b65b6f;
+  font-family: lemonTuesday;
+  font-size: 24px;
+  font-size: 42px;
+  margin-top: 56px;
+  margin-bottom: 56px;
 }

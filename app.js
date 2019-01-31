@@ -5,6 +5,7 @@ const multer = require("multer");
 const favicon = require("serve-favicon");
 const fs = require("fs");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const router = require("./src/server/routes/routes.js");
 const database = require("./src/server/services/database");
@@ -32,22 +33,16 @@ function run() {
   // Initialize multer to handle uploads of multi-part files
   app.use(multer({ dest: "/tmp/uploads/" }).any());
 
-  app.use(function(req, res, next) {
-    // TODO: make this env-specific
-    res.setHeader("Access-Control-Allow-Origin", "*");
-
-    res.setHeader(
-      "Access-Control-Allow-Methods",
-      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-    );
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "X-Requested-With,content-type"
-    );
-    res.setHeader("Access-Control-Allow-Credentials", true);
-
-    next();
-  });
+  // CORS Config
+  var whitelist = ["http://localhost:4200", "https://www.theglowblueprint.com"];
+  var corsOptions = {
+    origin: function(origin, callback) {
+      var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+      callback(null, originIsWhitelisted);
+    },
+    credentials: true
+  };
+  app.use(cors(corsOptions));
 
   // Body Parser Config
   app.use(

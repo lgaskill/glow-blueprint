@@ -8,11 +8,12 @@ export class AuthService {
   constructor(private http: HttpClient, private apiService: ApiService) {}
 
   async login(username: string, password: string): Promise<User> {
-    const user: User = await this.apiService.post<any>("/authenticate", {
+    const response = await this.apiService.post<any>("/authenticate", {
       username: username,
       password: password
     });
 
+    const { user } = response;
     if (!user || !user.token) {
       return null;
     }
