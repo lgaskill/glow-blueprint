@@ -2,7 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { RouterModule } from "@angular/router";
+
+import { QuillModule } from "ngx-quill";
 
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
@@ -30,6 +31,8 @@ import { LoginViewModule } from "./components/login-view/login-view.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+
+    // QuillModule.forRoot(),
 
     // My awesome modules
     SharedModule,

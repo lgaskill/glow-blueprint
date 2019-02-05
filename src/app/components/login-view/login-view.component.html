@@ -17,13 +17,13 @@
             [type]="showPassword ? 'text' : 'password'"
             placeholder="Password"
           />
-          <mat-icon matSuffix (click)="handleTogglePasswordVisibility()">{{
+          <mat-icon matSuffix (click)="onTogglePasswordVisibility()">{{
             showPassword ? "visibility_off" : "visibility"
           }}</mat-icon>
         </mat-form-field>
       </div>
       <div>
-        <button mat-raised-button class="login-button" (click)="handleLogin()">
+        <button mat-raised-button class="login-button" (click)="onLogin()">
           Sign In
         </button>
       </div>

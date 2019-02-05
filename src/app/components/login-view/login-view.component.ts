@@ -41,11 +41,11 @@ export class LoginViewComponent {
       this.activatedRoute.snapshot.queryParams["returnUrl"] || "/";
   }
 
-  handleTogglePasswordVisibility(): void {
+  onTogglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
 
-  async handleLogin(): Promise<void> {
+  async onLogin(): Promise<void> {
     if (!this.loginForm.valid) {
       return;
     }
