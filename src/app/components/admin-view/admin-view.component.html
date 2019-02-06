@@ -14,6 +14,27 @@
       </div>
       <div class="main-content">
         <form [formGroup]="form">
+          <mat-form-field class="title-field" appearance="outline">
+            <mat-label class="title-label">Title</mat-label>
+            <input matInput formControlName="title" />
+          </mat-form-field>
+          <mat-form-field class="category-field" appearance="outline">
+            <mat-label class="category-label">Category</mat-label>
+            <input
+              matInput
+              formControlName="category"
+              [matAutocomplete]="autoComplete"
+            />
+            <mat-autocomplete #autoComplete="matAutocomplete">
+              <mat-option
+                *ngFor="let category of categories"
+                [value]="category"
+                class="category-field"
+              >
+                {{ category }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
           <quill-editor class="editor" formControlName="editor"></quill-editor>
         </form>
       </div>

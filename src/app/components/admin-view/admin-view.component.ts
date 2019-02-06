@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { ApiService } from "src/app/services/api.service";
+import { BlogService } from "src/app/services/blog.service";
 
 @Component({
   selector: "admin-view",
@@ -7,14 +9,25 @@ import { FormGroup, FormBuilder } from "@angular/forms";
   styleUrls: ["./admin-view.component.scss"]
 })
 export class AdminViewComponent {
+  categories: String[] = [];
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private blogService: BlogService,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.form = this.formBuilder.group({
-      editor: [""]
+      category: ["", Validators.required],
+      editor: [""],
+      title: ["", Validators.required]
     });
+
+    const blogPosts: BlogPost[] = await this.blogService.getAllBlogPosts();
+
+    // Generate a list of unique categories
+    this.categories = Array.from(new Set(blogPosts.map(bp => bp.category)));
   }
 
   onCreate() {

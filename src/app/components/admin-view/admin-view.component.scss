@@ -8,6 +8,10 @@ $break-small: 800px;
   margin: 48px 16px;
 }
 
+.category-field {
+  font-family: typewriter;
+}
+
 .centered-text {
   text-align: center;
 }
@@ -38,6 +42,20 @@ $break-small: 800px;
   flex-direction: column;
   min-width: 300px;
   width: 300px;
+}
+
+.title-field {
+  font-family: typewriter;
+  width: 100%;
+
+  input {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
+.title-label {
+  font-size: 28px;
 }
 
 .toolbar-grow {
