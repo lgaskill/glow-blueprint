@@ -18,15 +18,3 @@ exports.getBlogPosts = async () => {
 exports.getBlogPostById = blogPostId => {
   return BlogPostModel.findOne({ _id: blogPostId });
 };
-
-exports.insertBlogPost = async blogPost => {
-  let blogPostModel;
-  try {
-    blogPostModel = new BlogPostModel(blogPost);
-  } catch (err) {
-    return false;
-  }
-
-  const res = await blogPostModel.save();
-  return !!res;
-};

@@ -2,16 +2,21 @@
   <div class="container">
     <mat-toolbar class="toolbar">
       Boss Mama <span class="toolbar-grow"></span>
-      <button mat-icon-button matTooltip="Create New Post" (click)="onCreate()">
+      <button
+        mat-icon-button
+        class="add-button"
+        matTooltip="Create New Post"
+        (click)="onCreate()"
+      >
         <mat-icon class="toolbar-icon">add</mat-icon>
       </button>
     </mat-toolbar>
     <div class="content">
-      <div class="sidenav">
+      <!-- <div class="sidenav">
         <h4>Post 1</h4>
         <h4>Post 2</h4>
         <h4>Post 3</h4>
-      </div>
+      </div> -->
       <div class="main-content">
         <form [formGroup]="form">
           <mat-form-field class="title-field" appearance="outline">
@@ -35,6 +40,15 @@
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
+          <div>
+            <dropzone
+              class="image-dropzone"
+              [config]="dropzoneConfig"
+              message="Upload an Image"
+              (reset)="onReset($event)"
+              (success)="onUploadSuccess($event)"
+            ></dropzone>
+          </div>
           <quill-editor class="editor" formControlName="editor"></quill-editor>
         </form>
       </div>

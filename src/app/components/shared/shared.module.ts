@@ -18,6 +18,7 @@ import { CommonModule } from "@angular/common";
 import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { QuillModule } from "ngx-quill";
+import { DropzoneModule } from "ngx-dropzone-wrapper";
 
 const sharedModules = [
   CommonModule,
@@ -36,7 +37,8 @@ const sharedModules = [
   MatSnackBarModule,
   MatAutocompleteModule,
 
-  QuillModule
+  QuillModule,
+  DropzoneModule
 ];
 
 const pipes = [TimeFromNowPipe];

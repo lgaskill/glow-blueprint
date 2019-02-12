@@ -156,10 +156,18 @@ router.post("/blog_post", auth.required, (req, res) => {
       res.status(400).send("Invalid request format");
       return;
     }
+
+    let blogPostModel;
     try {
-      const created = await mongoService.insertBlogPost(blogPost);
-      created
-        ? res.status(202).send()
+      blogPostModel = new BlogPostModel(blogPost);
+    } catch (err) {
+      res.status(400).send("Invalid blog post format");
+    }
+
+    try {
+      const created = await blogPostModel.save();
+      !!created
+        ? res.status(202).send(created)
         : res.status(500).send("Failed to create blog post");
     } catch (err) {
       console.error(err);
@@ -238,11 +246,7 @@ router.get("/image/:id", async function(req, res) {
   //});
 });
 
-/**
- * POST image
- *
- * @param {String} blogPostId (Optional) the id to the associtated blog post
- */
+// POST image
 router.post("/image", auth.optional, (req, res) => {
   validateRequest(req, res, async function() {
     if (!req.files || req.files.length !== 1) {
@@ -270,6 +274,38 @@ router.post("/image", auth.optional, (req, res) => {
     } catch (err) {
       console.err(err);
       res.status(500).send("Failed to upload image");
+    }
+  });
+});
+
+// DELETE image
+router.post("/image/:id", auth.optional, (req, res) => {
+  validateRequest(req, res, async function() {
+    if (!req.params.id) {
+      res.status(400).send("Invalid request");
+      return;
+    }
+
+    let imageFile;
+    try {
+      imageFile = await FileModel.findOne({ _id: req.params.id }, { _id: 1 });
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Invalid image");
+      return;
+    }
+
+    if (!imageFile) {
+      res.status(404).send("Image not found");
+      return;
+    }
+
+    try {
+      await imageFile.remove().exec();
+      res.status(204).send();
+    } catch (err) {
+      console.err(err);
+      res.status(500).send("Failed to delete image");
     }
   });
 });

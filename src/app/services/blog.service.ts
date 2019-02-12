@@ -3,10 +3,14 @@ import { HttpClient } from "@angular/common/http";
 import { Constants } from "../config/constants";
 import { environment } from "../../environments/environment";
 import { ApiService } from "./api.service";
+import { AuthService } from "./auth.service";
 
 @Injectable()
 export class BlogService {
-  constructor(private apiService: ApiService) {}
+  constructor(
+    private apiService: ApiService,
+    private authService: AuthService
+  ) {}
 
   async getAllBlogPosts(): Promise<BlogPost[]> {
     const blogPosts: BlogPost[] = await this.apiService.get<BlogPost[]>(

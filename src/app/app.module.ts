@@ -3,6 +3,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
+import { DropzoneModule } from "ngx-dropzone-wrapper";
+import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomeModule } from "./components/home/home.module";
@@ -20,6 +24,18 @@ import { AuthGuard } from "./guards/auth.guard";
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { LoginViewModule } from "./components/login-view/login-view.module";
+import { environment } from "src/environments/environment";
+import { Constants } from "./config/constants";
+
+const BASE_URL = environment.production
+  ? Constants.API_HOST_PROD
+  : Constants.API_HOST_LOCAL;
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  url: `${BASE_URL}/image?key=${Constants.API_KEY}`,
+  maxFilesize: 50,
+  acceptedFiles: "image/*"
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -48,7 +64,8 @@ import { LoginViewModule } from "./components/login-view/login-view.module";
     AuthGuard,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: DROPZONE_CONFIG, useValue: DEFAULT_DROPZONE_CONFIG }
   ],
   bootstrap: [AppComponent]
 })

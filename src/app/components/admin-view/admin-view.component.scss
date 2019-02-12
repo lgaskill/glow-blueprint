@@ -8,6 +8,10 @@ $break-small: 800px;
   margin: 48px 16px;
 }
 
+.add-button {
+  margin-right: 16px;
+}
+
 .category-field {
   font-family: typewriter;
 }
@@ -29,6 +33,14 @@ $break-small: 800px;
 
 .editor {
   min-height: 500px;
+}
+
+.image-dropzone {
+  font-family: typewriter;
+  font-size: 15px;
+  max-width: 200px;
+  height: 100%;
+  margin-bottom: 16px;
 }
 
 .main-content {
