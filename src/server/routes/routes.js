@@ -7,6 +7,7 @@ const auth = require("../services/auth");
 const BlogPostModel = require("../models/blogPost");
 const FileModel = require("../models/file");
 const UserModel = require("../models/user");
+const ConfigModel = require("../models/config");
 
 require("../config/passport-config");
 
@@ -101,11 +102,8 @@ router.post("/user", auth.optional, (req, res) => {
 });
 
 // Get all users
-// router.get("/users", function(req, res) {
+// router.get("/users", auth.required,function(req, res) {
 //   validateRequest(req, res, async function valid() {
-//     // TODO:
-//     //      Authenticate username/password
-
 //     // Get all users
 //     let users;
 //     try {
@@ -306,6 +304,85 @@ router.post("/image/:id", auth.optional, (req, res) => {
     } catch (err) {
       console.err(err);
       res.status(500).send("Failed to delete image");
+    }
+  });
+});
+
+// GET Active Config
+router.get("/config", auth.required, (req, res) => {
+  validateRequest(req, res, async function valid() {
+    // Get the active config
+    try {
+      const config = await ConfigModel.findOne({ active: true });
+      if (!config) {
+        res.status(400).send("Active config not found");
+        return;
+      }
+
+      res.status(200).send(config);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Failed to get config");
+    }
+  });
+});
+
+// POST config
+router.post("/config", auth.required, (req, res) => {
+  validateRequest(req, res, async function valid() {
+    const config = req.body;
+    if (!config) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
+
+    let configModel;
+    try {
+      configModel = new ConfigModel(config);
+    } catch (err) {
+      res.status(400).send("Invalid blog post format");
+    }
+
+    // TODO: Inactivate any other active configs
+    try {
+      const created = await configModel.save();
+      !!created
+        ? res.status(202).send(created)
+        : res.status(500).send("Failed to create config");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Failed to create config");
+    }
+  });
+});
+
+// PATCH Config
+router.patch("/config/:id", auth.required, (req, res) => {
+  validateRequest(req, res, async function valid() {
+    const configId = req.params.id;
+    const configUpdate = req.body;
+    if (!configId || !configUpdate) {
+      res.status(400).send("Invalid request format");
+      return;
+    }
+
+    // Get the active config
+    try {
+      const config = await ConfigModel.findOne({ _id: configId });
+      if (!config) {
+        res.status(400).send("Intended config not found");
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Failed to update config");
+    }
+
+    try {
+      const result = await ConfigModel.update({ _id: configId }, configUpdate);
+      res.status(204).send();
+    } catch (err) {
+      res.status(500).send("Failed to update config");
     }
   });
 });

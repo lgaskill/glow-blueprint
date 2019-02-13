@@ -46,6 +46,6 @@ export class AuthService {
   isAdmin(): boolean {
     const currentUser: User = this.getCurrentUser();
 
-    return !!currentUser && currentUser.isAdmin;
+    return !!currentUser && !!currentUser.isAdmin;
   }
 }

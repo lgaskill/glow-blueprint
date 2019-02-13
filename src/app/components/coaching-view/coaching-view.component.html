@@ -1,5 +1,16 @@
 <app-bar>
-  <mat-toolbar class="title"> Coaching </mat-toolbar>
+  <mat-toolbar class="title">
+    Coaching
+    <button
+      *ngIf="isAdmin"
+      mat-icon-button
+      class="edit-button"
+      matTooltip="Edit This Page"
+      (click)="onEdit()"
+    >
+      <mat-icon class="edit-icon">edit</mat-icon>
+    </button>
+  </mat-toolbar>
   <div class="content">
     <p>
       Welcome, gorgeous. I am so glad your path has led you here to intersect

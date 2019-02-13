@@ -53,7 +53,7 @@ function run() {
 
   app.use(bodyParser.json());
 
-  // Initialize the router
+  // Initialize the routers
   app.use("/", router);
 
   // Error Handling

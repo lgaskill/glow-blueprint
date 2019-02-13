@@ -2,8 +2,13 @@ const ApiKeyModel = require("../models/apiKey");
 const BlogPostModel = require("../models/blogPost.js");
 
 exports.validateApiKey = async apiKey => {
-  const keyRec = await ApiKeyModel.findOne({ key: apiKey });
-  return !!keyRec;
+  try {
+    const keyRec = await ApiKeyModel.findOne({ key: apiKey });
+    return !!keyRec;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
 };
 
 exports.getBlogPosts = async () => {

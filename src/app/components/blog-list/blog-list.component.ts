@@ -21,7 +21,5 @@ export class BlogListComponent {
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
-
-    console.log("Get BP's response:", this.blogPosts);
   }
 }
