@@ -26,6 +26,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { LoginViewModule } from "./components/login-view/login-view.module";
 import { environment } from "src/environments/environment";
 import { Constants } from "./config/constants";
+import { AdminGuard } from "./guards/admin.guard";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -62,6 +63,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ApiService,
     BlogService,
     AuthGuard,
+    AdminGuard,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

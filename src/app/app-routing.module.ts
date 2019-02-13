@@ -8,6 +8,7 @@ import { BlogPostViewComponent } from "./components/blog-post-view/blog-post-vie
 import { AdminViewComponent } from "./components/admin-view/admin-view.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { LoginViewComponent } from "./components/login-view/login-view.component";
+import { AdminGuard } from "./guards/admin.guard";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
   {
     path: "boss-mama",
     component: AdminViewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   },
   { path: "blog", component: BlogViewComponent },
   {

@@ -1,7 +1,7 @@
 <div class="card-wrapper">
   <mat-card
     mat-ripple
-    *ngFor="let blogPost of blogPosts"
+    *ngFor="let blogPost of (blogPosts | orderBy: 'createdAt':'desc')"
     class="card mat-elevation-z"
     routerLink="/blog/{{ blogPost._id }}"
   >

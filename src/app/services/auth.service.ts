@@ -42,4 +42,10 @@ export class AuthService {
       localStorage.setItem("currentUser", JSON.stringify(user));
     }
   }
+
+  isAdmin(): boolean {
+    const currentUser: User = this.getCurrentUser();
+
+    return !!currentUser && currentUser.isAdmin;
+  }
 }
