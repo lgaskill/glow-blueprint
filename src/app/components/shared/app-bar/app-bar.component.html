@@ -87,6 +87,14 @@
           >
             <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
           </a>
+          <!-- <button
+            mat-icon-button
+            *ngIf="screenWidth > 800 && currentUser"
+            class="toolbar-button"
+            (click)="onLogout()"
+          >
+            <mat-icon>exit_to_app</mat-icon>
+          </button> -->
         </div>
         <div *ngIf="!collapsed" class="app-bar-content">
           <a mat-button [routerLink]="['']" class="title-wrapper">

@@ -309,7 +309,7 @@ router.post("/image/:id", auth.optional, (req, res) => {
 });
 
 // GET Active Config
-router.get("/config", auth.required, (req, res) => {
+router.get("/config", auth.optional, (req, res) => {
   validateRequest(req, res, async function valid() {
     // Get the active config
     try {

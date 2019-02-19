@@ -1,6 +1,5 @@
 import { Component, HostListener, Input } from "@angular/core";
-import { Constants } from "src/app/config/constants";
-import { environment } from "src/environments/environment";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-bar",
@@ -13,9 +12,18 @@ export class AppBarComponent {
 
   navOpen: boolean = false;
   screenWidth: number;
+  currentUser: User = null;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.onResize();
+  }
+
+  ngOnInit() {
+    this.currentUser = this.authService.getCurrentUser();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   @HostListener("window:resize", ["$event"])
