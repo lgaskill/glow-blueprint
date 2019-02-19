@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { NgModule } from "@angular/core";
+import { NgModule, APP_INITIALIZER } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { DropzoneModule } from "ngx-dropzone-wrapper";
@@ -27,6 +27,7 @@ import { LoginViewModule } from "./components/login-view/login-view.module";
 import { environment } from "src/environments/environment";
 import { Constants } from "./config/constants";
 import { AdminGuard } from "./guards/admin.guard";
+import { ConfigService } from "./services/config.service";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -37,6 +38,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   maxFilesize: 50,
   acceptedFiles: "image/*"
 };
+
+export function configServiceFactory(service: ConfigService) {
+  return () => service.initConfig();
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -65,6 +70,13 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AuthGuard,
     AdminGuard,
     AuthService,
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configServiceFactory,
+      deps: [ConfigService],
+      multi: true
+    },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: DROPZONE_CONFIG, useValue: DEFAULT_DROPZONE_CONFIG }

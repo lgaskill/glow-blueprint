@@ -1,7 +1,4 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Constants } from "../config/constants";
-import { environment } from "../../environments/environment";
 import { ApiService } from "./api.service";
 import { AuthService } from "./auth.service";
 

@@ -1,0 +1,43 @@
+<app-bar>
+  <mat-toolbar class="title">
+    {{ title }}
+    <button
+      *ngIf="isAdmin && !editable"
+      mat-icon-button
+      class="edit-button"
+      matTooltip="Edit This Page"
+      (click)="onEdit()"
+    >
+      <mat-icon class="edit-icon">edit</mat-icon>
+    </button>
+    <button
+      *ngIf="isAdmin && editable"
+      mat-icon-button
+      class="edit-button"
+      matTooltip="Cancel"
+      (click)="onCancel()"
+    >
+      <mat-icon class="edit-icon">cancel</mat-icon>
+    </button>
+    <button
+      *ngIf="isAdmin && editable"
+      mat-icon-button
+      class="edit-button"
+      matTooltip="Save Changes"
+      (click)="onSave()"
+    >
+      <mat-icon class="edit-icon">save</mat-icon>
+    </button>
+  </mat-toolbar>
+  <form [formGroup]="form">
+    <div *ngIf="isAdmin && editable" class="content">
+      <quill-editor class="editor" formControlName="editor"></quill-editor>
+    </div>
+  </form>
+
+  <div
+    *ngIf="!editable"
+    class="content ql-editor"
+    [innerHtml]="body | safeHtml"
+  ></div>
+</app-bar>

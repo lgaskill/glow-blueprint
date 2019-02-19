@@ -1,0 +1,39 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.accent-font {
+  font-family: lemonTuesday;
+}
+
+.accent-text {
+  color: #b65b6f;
+  font-size: 24px;
+  margin: 48px 16px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.content {
+  font-family: typewriter;
+  margin: 16px;
+}
+
+.edit-button {
+  margin-left: 16px;
+}
+
+.edit-icon {
+  font-size: 28px;
+  color: #b65b83;
+}
+
+.title {
+  background-color: inherit;
+  font-family: lemonTuesday;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 32px 0;
+}

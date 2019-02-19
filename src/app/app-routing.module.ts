@@ -23,9 +23,16 @@ const appRoutes: Routes = [
     path: "blog/:id",
     component: BlogPostViewComponent
   },
-  { path: "coaching", component: CoachingViewComponent, pathMatch: "full" },
+  {
+    path: "coaching",
+    component: CoachingViewComponent,
+    pathMatch: "full"
+  },
   { path: "my-story", component: MyStoryViewComponent, pathMatch: "full" },
-  { path: "**", component: HomeComponent }
+  {
+    path: "**",
+    component: HomeComponent
+  }
 ];
 
 @NgModule({

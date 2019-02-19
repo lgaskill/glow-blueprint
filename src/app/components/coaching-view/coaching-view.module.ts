@@ -1,11 +1,10 @@
 import { NgModule } from "@angular/core";
 import { CoachingViewComponent } from "./coaching-view.component";
 import { SharedModule } from "../shared/shared.module";
-import { AppBarModule } from "../shared/app-bar/app-bar.module";
-import { ScrollAnimationModule } from "../shared/scroll-animation/scroll-animation.module";
+import { CustomViewModule } from "../shared/custom-view/custom-view.module";
 
 @NgModule({
-  imports: [SharedModule, AppBarModule, ScrollAnimationModule],
+  imports: [SharedModule, CustomViewModule],
   declarations: [CoachingViewComponent],
   providers: []
 })
