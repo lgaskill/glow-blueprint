@@ -28,6 +28,7 @@ import { environment } from "src/environments/environment";
 import { Constants } from "./config/constants";
 import { AdminGuard } from "./guards/admin.guard";
 import { ConfigService } from "./services/config.service";
+import { WorkViewModule } from "./components/work-view/work-view.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -61,7 +62,8 @@ export function configServiceFactory(service: ConfigService) {
     BlogListModule,
     BlogPostViewModule,
     AdminViewModule,
-    LoginViewModule
+    LoginViewModule,
+    WorkViewModule
   ],
   exports: [],
   providers: [

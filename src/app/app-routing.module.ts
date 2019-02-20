@@ -9,6 +9,7 @@ import { AdminViewComponent } from "./components/admin-view/admin-view.component
 import { AuthGuard } from "./guards/auth.guard";
 import { LoginViewComponent } from "./components/login-view/login-view.component";
 import { AdminGuard } from "./guards/admin.guard";
+import { WorkViewComponent } from "./components/work-view/work-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
     pathMatch: "full"
   },
   { path: "my-story", component: MyStoryViewComponent, pathMatch: "full" },
+  { path: "work-with-me", component: WorkViewComponent, pathMatch: "full" },
   {
     path: "**",
     component: HomeComponent

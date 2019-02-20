@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from "@angular/core";
 import { AuthService } from "src/app/services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-bar",
@@ -14,7 +15,7 @@ export class AppBarComponent {
   screenWidth: number;
   currentUser: User = null;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.onResize();
   }
 
@@ -24,6 +25,13 @@ export class AppBarComponent {
 
   onLogout() {
     this.authService.logout();
+    location.reload();
+  }
+
+  onLogin() {
+    this.router.navigate(["/login"], {
+      queryParams: { returnUrl: this.router.url }
+    });
   }
 
   @HostListener("window:resize", ["$event"])

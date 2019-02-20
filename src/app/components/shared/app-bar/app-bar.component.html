@@ -17,9 +17,38 @@
       >
     </div>
     <div class="side-nav-button-wrapper">
-      <a mat-icon-button href="https://www.instagram.com/theglowblueprint">
+      <a mat-button class="toolbar-button" [routerLink]="['/work-with-me']"
+        >Work With Me</a
+      >
+    </div>
+    <div class="side-nav-button-wrapper">
+      <a
+        mat-icon-button
+        matTooltip="Instagram"
+        href="https://www.instagram.com/theglowblueprint"
+      >
         <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
       </a>
+      <!-- </div>
+    <div class="side-nav-button-wrapper"> -->
+      <button
+        *ngIf="currentUser"
+        mat-icon-button
+        matTooltip="Sign Out"
+        (click)="onLogout()"
+      >
+        <mat-icon class="toolbar-icon">exit_to_app</mat-icon>
+      </button>
+      <!-- </div>
+    <div class="side-nav-button-wrapper"> -->
+      <button
+        *ngIf="!currentUser"
+        mat-icon-button
+        matTooltip="Sign In"
+        (click)="onLogin()"
+      >
+        <mat-icon class="toolbar-icon">person</mat-icon>
+      </button>
     </div>
   </mat-drawer>
   <mat-drawer-content class="drawer-content">
@@ -50,59 +79,73 @@
               'nav-button': !collapsed
             }"
           ></nav-menu-button>
-
           <a
-            mat-button
             *ngIf="screenWidth > 800"
+            mat-button
             class="toolbar-button"
             [routerLink]="['']"
             >Home</a
           >
           <a
-            mat-button
             *ngIf="screenWidth > 800"
+            mat-button
             class="toolbar-button"
             [routerLink]="['/blog']"
             >Blog</a
           >
           <a
-            mat-button
             *ngIf="screenWidth > 800"
+            mat-button
             class="toolbar-button"
             [routerLink]="['/coaching']"
             >Coaching</a
           >
           <a
-            mat-button
             *ngIf="screenWidth > 800"
+            mat-button
             class="toolbar-button"
             [routerLink]="['/my-story']"
             >My Story</a
           >
           <a
-            mat-icon-button
             *ngIf="screenWidth > 800"
+            mat-button
             class="toolbar-button"
+            [routerLink]="['/work-with-me']"
+            >Work With Me</a
+          >
+          <a
+            *ngIf="screenWidth > 800"
+            mat-icon-button
+            matTooltip="Instagram"
+            class="toolbar-icon-button toolbar-button"
             href="https://www.instagram.com/theglowblueprint"
           >
             <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
           </a>
-          <!-- <button
-            mat-icon-button
+          <button
             *ngIf="screenWidth > 800 && currentUser"
-            class="toolbar-button"
+            mat-icon-button
+            matTooltip="Sign Out"
+            class="toolbar-icon-button toolbar-button"
             (click)="onLogout()"
           >
             <mat-icon>exit_to_app</mat-icon>
-          </button> -->
+          </button>
+          <button
+            *ngIf="screenWidth > 800 && !currentUser"
+            mat-icon-button
+            matTooltip="Sign In"
+            class="toolbar-icon-button toolbar-button"
+            (click)="onLogin()"
+          >
+            <mat-icon class="toolbar-icon">person</mat-icon>
+          </button>
         </div>
         <div *ngIf="!collapsed" class="app-bar-content">
           <a mat-button [routerLink]="['']" class="title-wrapper">
             <mat-icon svgIcon="gb-logo-1" class="title-icon"></mat-icon>
           </a>
-          <!-- <a mat-button [routerLink]="['']" class="bordered-title"
-            >the GLOW blueprint</a
-          > -->
         </div>
       </div>
     </mat-toolbar>

@@ -13,7 +13,7 @@ export class CustomViewComponent {
   @Input()
   configFieldId: string;
   @Input()
-  title: string;
+  viewTitle: string;
 
   form: FormGroup;
   body: string = "";
