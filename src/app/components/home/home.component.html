@@ -25,6 +25,23 @@
       matRipple
       [matRippleUnbounded]="false"
       [matRippleCentered]="true"
+      [routerLink]="['/blog']"
+      class="story-card-wrapper story-card-clickable"
+    >
+      <div class="story-card-img story-card-img-blog"></div>
+      <mat-card class="story-card">
+        <mat-card-title class="story-card-title">
+          <div class="story-card-title-button">Blog</div>
+        </mat-card-title>
+      </mat-card>
+    </div>
+  </scroll-animation>
+
+  <scroll-animation direction="right">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
       [routerLink]="['/my-story']"
       class="story-card-wrapper story-card-clickable"
     >
@@ -54,41 +71,24 @@
     </div>
   </scroll-animation>
 
-  <scroll-animation direction="right">
+  <scroll-animation direction="left">
     <div
       matRipple
       [matRippleUnbounded]="false"
       [matRippleCentered]="true"
-      [routerLink]="['/blog']"
+      [routerLink]="['/coaching']"
       class="story-card-wrapper story-card-clickable"
     >
-      <div class="story-card-img story-card-img-blog"></div>
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <div class="story-card-title-button">Blog</div>
+          <button mat-button class="story-card-title-button">
+            Work With ME
+          </button>
         </mat-card-title>
       </mat-card>
+      <div class="story-card-img story-card-img-work-with-me"></div>
     </div>
   </scroll-animation>
-
-  <!--
-    <scroll-animation direction="left">
-      <div class="story-card-wrapper">
-        <mat-card class="story-card">
-          <mat-card-title class="story-card-title">
-            <button mat-button class="story-card-title-button">
-              Grow Your Glow
-            </button>
-          </mat-card-title>
-            <mat-card-content class="story-card-content">
-              I'm not super sure what it means yet...but it's going to be great!
-              Trust Me.
-            </mat-card-content>
-        </mat-card>
-        <div class="story-card-img story-card-img-glow"></div>
-      </div>
-    </scroll-animation>
-  -->
 
   <scroll-animation direction="right">
     <instagram-panel></instagram-panel>

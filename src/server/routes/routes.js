@@ -74,15 +74,29 @@ router.post("/authenticate", auth.optional, (req, res, next) => {
 // POST user
 router.post("/user", auth.optional, (req, res) => {
   validateRequest(req, res, async function valid() {
-    const { username, password, email } = req.body;
+    const { firstName, lastName, username, password, email } = req.body;
     if (!username || !password || !email) {
       res.status(400).send("Invalid request format");
       return;
     }
 
+    // Ensure this isn't a duplicate
+    try {
+      const duplicate = await UserModel.findOne({
+        $or: [{ username }, { email }]
+      });
+      if (!!duplicate) {
+        res.status(303).send("Account already exists");
+        return;
+      }
+    } catch (err) {
+      res.status(500).send("Failed to validate user ");
+      return;
+    }
+
     let user;
     try {
-      user = new UserModel({ username, email });
+      user = new UserModel({ firstName, lastName, username, email });
     } catch (err) {
       res.status(400).send("Invalid user format");
     }
