@@ -14,7 +14,6 @@ export class GbImageComponent {
   @Input()
   imgClass: String = "";
 
-  apiKey: String = Constants.API_KEY;
   hostUrl: string = environment.production
     ? Constants.API_HOST_PROD
     : Constants.API_HOST_LOCAL;

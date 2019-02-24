@@ -12,30 +12,18 @@ export class ApiService {
     : Constants.API_HOST_LOCAL;
 
   async get<T>(url: string): Promise<T> {
-    return this.http
-      .get<T>(this.API_HOST + url, { params: { key: Constants.API_KEY } })
-      .toPromise();
+    return this.http.get<T>(this.API_HOST + url).toPromise();
   }
 
   async post<T>(url: string, postObj: any): Promise<T> {
-    return this.http
-      .post<T>(this.API_HOST + url, postObj, {
-        params: { key: Constants.API_KEY }
-      })
-      .toPromise();
+    return this.http.post<T>(this.API_HOST + url, postObj).toPromise();
   }
 
   async patch<T>(url: string, patchObj: any): Promise<T> {
-    return this.http
-      .patch<T>(this.API_HOST + url, patchObj, {
-        params: { key: Constants.API_KEY }
-      })
-      .toPromise();
+    return this.http.patch<T>(this.API_HOST + url, patchObj).toPromise();
   }
 
   async delete<T>(url: string): Promise<T> {
-    return this.http
-      .delete<T>(this.API_HOST + url, { params: { key: Constants.API_KEY } })
-      .toPromise();
+    return this.http.delete<T>(this.API_HOST + url).toPromise();
   }
 }

@@ -35,7 +35,7 @@ const BASE_URL = environment.production
   : Constants.API_HOST_LOCAL;
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
-  url: `${BASE_URL}/image?key=${Constants.API_KEY}`,
+  url: `${BASE_URL}/image`,
   maxFilesize: 50,
   acceptedFiles: "image/*"
 };
