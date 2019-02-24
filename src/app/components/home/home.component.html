@@ -37,7 +37,43 @@
     </div>
   </scroll-animation>
 
+  <scroll-animation direction="left">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/work-with-me']"
+      class="story-card-wrapper story-card-clickable"
+    >
+      <mat-card class="story-card">
+        <mat-card-title class="story-card-title">
+          <button mat-button class="story-card-title-button">
+            Work With Me
+          </button>
+        </mat-card-title>
+      </mat-card>
+      <div class="story-card-img story-card-img-work-with-me"></div>
+    </div>
+  </scroll-animation>
+
   <scroll-animation direction="right">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/coaching']"
+      class="story-card-wrapper story-card-clickable"
+    >
+      <div class="story-card-img story-card-img-coaching"></div>
+      <mat-card class="story-card">
+        <mat-card-title class="story-card-title">
+          <div class="story-card-title-button">Coaching</div>
+        </mat-card-title>
+      </mat-card>
+    </div>
+  </scroll-animation>
+
+  <scroll-animation direction="left">
     <div
       matRipple
       [matRippleUnbounded]="false"
@@ -45,48 +81,12 @@
       [routerLink]="['/my-story']"
       class="story-card-wrapper story-card-clickable"
     >
-      <div class="story-card-img story-card-img-story"></div>
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
           <div class="story-card-title-button">My Story</div>
         </mat-card-title>
       </mat-card>
-    </div>
-  </scroll-animation>
-
-  <scroll-animation direction="left">
-    <div
-      matRipple
-      [matRippleUnbounded]="false"
-      [matRippleCentered]="true"
-      [routerLink]="['/coaching']"
-      class="story-card-wrapper story-card-clickable"
-    >
-      <mat-card class="story-card">
-        <mat-card-title class="story-card-title">
-          <div class="story-card-title-button">Coaching</div>
-        </mat-card-title>
-      </mat-card>
-      <div class="story-card-img story-card-img-coaching"></div>
-    </div>
-  </scroll-animation>
-
-  <scroll-animation direction="left">
-    <div
-      matRipple
-      [matRippleUnbounded]="false"
-      [matRippleCentered]="true"
-      [routerLink]="['/coaching']"
-      class="story-card-wrapper story-card-clickable"
-    >
-      <mat-card class="story-card">
-        <mat-card-title class="story-card-title">
-          <button mat-button class="story-card-title-button">
-            Work With ME
-          </button>
-        </mat-card-title>
-      </mat-card>
-      <div class="story-card-img story-card-img-work-with-me"></div>
+      <div class="story-card-img story-card-img-story"></div>
     </div>
   </scroll-animation>
 
