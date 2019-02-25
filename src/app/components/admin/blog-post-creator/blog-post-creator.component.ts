@@ -9,11 +9,11 @@ import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "admin-view",
-  templateUrl: "./admin-view.component.html",
-  styleUrls: ["./admin-view.component.scss"]
+  selector: "blog-post-creator",
+  templateUrl: "./blog-post-creator.component.html",
+  styleUrls: ["./blog-post-creator.component.scss"]
 })
-export class AdminViewComponent {
+export class BlogPostCreatorComponent {
   categories: String[] = [];
   form: FormGroup;
 
@@ -55,10 +55,6 @@ export class AdminViewComponent {
 
   onUploadSuccess([ev, res]) {
     this.postBlogPost(res._id);
-  }
-
-  onReset(ev: any) {
-    console.log(ev);
   }
 
   async onCreate() {

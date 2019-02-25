@@ -18,7 +18,7 @@ import { BlogService } from "./services/blog.service";
 import { ApiService } from "./services/api.service";
 import { BlogListModule } from "./components/blog-list/blog-list.module";
 import { BlogPostViewModule } from "./components/blog-post-view/blog-post-view.module";
-import { AdminViewModule } from "./components/admin-view/admin-view.module";
+import { AdminViewModule } from "./components/admin/admin-view/admin-view.module";
 import { AuthService } from "./services/auth.service";
 import { AuthGuard } from "./guards/auth.guard";
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
@@ -29,6 +29,7 @@ import { Constants } from "./config/constants";
 import { AdminGuard } from "./guards/admin.guard";
 import { ConfigService } from "./services/config.service";
 import { WorkViewModule } from "./components/work-view/work-view.module";
+import { BlogPostCreatorModule } from "./components/admin/blog-post-creator/blog-post-creator.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD

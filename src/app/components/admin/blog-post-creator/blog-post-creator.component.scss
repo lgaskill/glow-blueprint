@@ -1,0 +1,59 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.category-field {
+  font-family: typewriter;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.editor {
+  min-height: 500px;
+}
+
+.image-dropzone {
+  font-family: typewriter;
+  font-size: 15px;
+  max-width: 200px;
+  height: 100%;
+  margin-bottom: 16px;
+}
+
+.publish-button {
+  color: #eceaea;
+  background-color: #e7abb6;
+  font-family: lemonTuesday;
+  font-size: 28px;
+  line-height: 48px;
+  margin-top: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.title-field {
+  font-family: typewriter;
+  width: 100%;
+
+  input {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
+.title-label {
+  font-size: 28px;
+}

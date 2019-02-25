@@ -1,0 +1,54 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 16px;
+}
+
+.nav-list-item {
+  color: inherit;
+  font-family: typewriter;
+  font-size: 18px;
+}
+
+.selected {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.sidenav {
+  background-color: #ffc18c;
+  color: white;
+  flex-direction: column;
+  min-width: 250px;
+  width: 250px;
+}
+
+.toolbar {
+  background-color: #7f946d73;
+  color: #fff;
+  font-family: lemonTuesday;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2rem;
+  padding-left: 32px;
+}
+
+.toolbar-grow {
+  flex-grow: 1;
+}

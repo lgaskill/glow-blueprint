@@ -1,0 +1,57 @@
+<app-bar [collapsed]="true">
+  <div class="container">
+    <mat-toolbar class="toolbar">
+      Boss Mama <span class="toolbar-grow"></span>
+    </mat-toolbar>
+    <div class="content">
+      <div class="sidenav">
+        <mat-action-list class="nav-list">
+          <button
+            mat-list-item
+            (click)="onSelectedViewChange('BLOG')"
+            class="nav-list-item"
+            [ngClass]="{ selected: selectedView === 'BLOG' }"
+          >
+            Write a Post
+          </button>
+          <button
+            mat-list-item
+            (click)="onSelectedViewChange('EMAIL')"
+            class="nav-list-item"
+            [ngClass]="{ selected: selectedView === 'EMAIL' }"
+          >
+            Write an Email
+          </button>
+          <button
+            mat-list-item
+            (click)="onSelectedViewChange('USERS')"
+            class="nav-list-item"
+            [ngClass]="{ selected: selectedView === 'USERS' }"
+          >
+            Manage Users
+          </button>
+          <button
+            mat-list-item
+            (click)="onSelectedViewChange('OTHER')"
+            class="nav-list-item"
+            [ngClass]="{ selected: selectedView === 'OTHER' }"
+          >
+            Other Cool Stuff
+          </button>
+        </mat-action-list>
+      </div>
+      <div class="main-content">
+        <blog-post-creator *ngIf="selectedView === 'BLOG'"></blog-post-creator>
+        <div *ngIf="selectedView === 'EMAIL'">
+          Email fun things to cool peeps
+        </div>
+        <div *ngIf="selectedView === 'USERS'">
+          See active users, group them, manage them...COMMAND THEM!
+        </div>
+        <div *ngIf="selectedView === 'OTHER'">
+          Who knows...we could add whatever we want :b
+        </div>
+      </div>
+    </div>
+  </div>
+</app-bar>
