@@ -11,18 +11,27 @@ const getTokenFromHeaders = req => {
   return null;
 };
 
-const auth = {
-  required: jwt({
-    secret: "secret",
-    userProperty: "payload",
-    getToken: getTokenFromHeaders
-  }),
-  optional: jwt({
-    secret: "secret",
-    userProperty: "payload",
-    getToken: getTokenFromHeaders,
-    credentialsRequired: false
-  })
+const required = jwt({
+  secret: "secret",
+  userProperty: "payload",
+  getToken: getTokenFromHeaders
+});
+
+const optional = jwt({
+  secret: "secret",
+  userProperty: "payload",
+  getToken: getTokenFromHeaders,
+  credentialsRequired: false
+});
+
+const admin = (req, res, next) => {
+  const { payload } = req;
+  if (!payload || !payload.isAdmin) {
+    res.status(403).send();
+    return;
+  }
+
+  next();
 };
 
-module.exports = auth;
+module.exports = { required, optional, admin };

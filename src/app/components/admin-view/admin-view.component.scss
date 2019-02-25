@@ -50,6 +50,14 @@ $break-small: 800px;
   margin: 16px;
 }
 
+.nav-list {
+  cursor: pointer;
+
+  :hover {
+    background-color: #b65b6f;
+  }
+}
+
 .sidenav {
   flex-direction: column;
   min-width: 300px;

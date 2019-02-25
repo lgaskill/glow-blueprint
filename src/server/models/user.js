@@ -46,14 +46,18 @@ userSchema.methods.generateJWT = function() {
   const expirationDate = new Date(today);
   expirationDate.setDate(today.getDate() + 60);
 
-  return jwt.sign(
-    {
-      email: this.email,
-      id: this._id,
-      exp: parseInt(expirationDate.getTime() / 1000, 10)
-    },
-    "secret"
-  );
+  const token = {
+    email: this.email,
+    id: this._id,
+    exp: parseInt(expirationDate.getTime() / 1000, 10),
+    isAdmin: this.isAdmin
+  };
+
+  if (this.isAdmin) {
+    token.isAdmin = true;
+  }
+
+  return jwt.sign(token, "secret");
 };
 
 userSchema.methods.toAuthJSON = function() {

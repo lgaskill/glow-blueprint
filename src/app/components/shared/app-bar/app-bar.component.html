@@ -21,6 +21,14 @@
         >Work With Me</a
       >
     </div>
+    <div
+      *ngIf="currentUser && currentUser.isAdmin"
+      class="side-nav-button-wrapper"
+    >
+      <a mat-button class="toolbar-button" [routerLink]="['/boss-mama']"
+        >Boss Things</a
+      >
+    </div>
     <div class="side-nav-button-wrapper">
       <a
         mat-icon-button
@@ -29,8 +37,6 @@
       >
         <mat-icon class="insta-icon" svgIcon="instagram-logo"></mat-icon>
       </a>
-      <!-- </div>
-    <div class="side-nav-button-wrapper"> -->
       <button
         *ngIf="currentUser"
         mat-icon-button
@@ -39,8 +45,6 @@
       >
         <mat-icon class="toolbar-icon">exit_to_app</mat-icon>
       </button>
-      <!-- </div>
-    <div class="side-nav-button-wrapper"> -->
       <button
         *ngIf="!currentUser"
         mat-icon-button
@@ -113,6 +117,13 @@
             class="toolbar-button"
             [routerLink]="['/work-with-me']"
             >Work With Me</a
+          >
+          <a
+            *ngIf="screenWidth > 800 && currentUser && currentUser.isAdmin"
+            mat-button
+            class="toolbar-button"
+            [routerLink]="['/boss-mama']"
+            >Boss Things</a
           >
           <a
             *ngIf="screenWidth > 800"

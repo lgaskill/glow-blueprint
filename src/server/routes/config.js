@@ -1,7 +1,7 @@
 const ConfigModel = require("../models/config");
 
+// Get the active config
 exports.get = async (req, res) => {
-  // Get the active config
   try {
     const config = await ConfigModel.findOne({ active: true });
     if (!config) {
