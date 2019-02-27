@@ -16,14 +16,6 @@
           </button>
           <button
             mat-list-item
-            (click)="onSelectedViewChange('EMAIL')"
-            class="nav-list-item"
-            [ngClass]="{ selected: selectedView === 'EMAIL' }"
-          >
-            Write an Email
-          </button>
-          <button
-            mat-list-item
             (click)="onSelectedViewChange('USERS')"
             class="nav-list-item"
             [ngClass]="{ selected: selectedView === 'USERS' }"
@@ -42,9 +34,6 @@
       </div>
       <div class="main-content">
         <blog-post-creator *ngIf="selectedView === 'BLOG'"></blog-post-creator>
-        <div *ngIf="selectedView === 'EMAIL'">
-          Email fun things to cool peeps
-        </div>
         <div *ngIf="selectedView === 'USERS'">
           See active users, group them, manage them...COMMAND THEM!
         </div>

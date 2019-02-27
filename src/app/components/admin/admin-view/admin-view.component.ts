@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 
 const VIEWS: any = {
   BLOG: "",
-  EMAIL: "",
   USERS: "",
   OTHER: ""
 };

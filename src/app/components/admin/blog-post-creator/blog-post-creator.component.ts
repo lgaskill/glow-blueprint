@@ -7,6 +7,7 @@ import {
 } from "ngx-dropzone-wrapper";
 import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "blog-post-creator",
@@ -24,7 +25,10 @@ export class BlogPostCreatorComponent {
     autoReset: null,
     errorReset: null,
     cancelReset: null,
-    addRemoveLinks: true
+    addRemoveLinks: true,
+    headers: {
+      Authorization: `Token ${this.authService.getCurrentUser().token}`
+    }
   };
 
   @ViewChild(DropzoneComponent) dropzoneRef?: DropzoneComponent;
@@ -33,7 +37,8 @@ export class BlogPostCreatorComponent {
     private blogService: BlogService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   async ngOnInit() {
@@ -47,10 +52,6 @@ export class BlogPostCreatorComponent {
 
     // Generate a list of unique categories
     this.categories = Array.from(new Set(blogPosts.map(bp => bp.category)));
-
-    this.dropzoneRef.directiveRef.dropzone().on("remove", ev => {
-      console.log("lol", ev);
-    });
   }
 
   onUploadSuccess([ev, res]) {
