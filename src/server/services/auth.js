@@ -1,5 +1,7 @@
 const jwt = require("express-jwt");
 
+const UserModel = require("../models/user");
+
 const getTokenFromHeaders = req => {
   const {
     headers: { authorization }
@@ -24,11 +26,23 @@ const optional = jwt({
   credentialsRequired: false
 });
 
-const admin = (req, res, next) => {
+const admin = async (req, res, next) => {
   const { payload } = req;
-  if (!payload || !payload.isAdmin) {
+  if (!payload || !payload.id) {
     res.status(403).send();
     return;
+  }
+
+  let user;
+  try {
+    user = await UserModel.findOne({ _id: payload.id });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send();
+  }
+
+  if (!user || !user.isAdmin) {
+    res.status(403).send();
   }
 
   next();

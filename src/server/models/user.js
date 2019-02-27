@@ -49,8 +49,7 @@ userSchema.methods.generateJWT = function() {
   const token = {
     email: this.email,
     id: this._id,
-    exp: parseInt(expirationDate.getTime() / 1000, 10),
-    isAdmin: this.isAdmin
+    exp: parseInt(expirationDate.getTime() / 1000, 10)
   };
 
   if (this.isAdmin) {
