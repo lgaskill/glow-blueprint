@@ -34,7 +34,11 @@ function run() {
   app.use(multer({ dest: "/tmp/uploads/" }).any());
 
   // CORS Config
-  var whitelist = ["http://localhost:4200", "https://www.theglowblueprint.com"];
+  var whitelist = [
+    "http://localhost:4200",
+    "https://theglowblueprint.com",
+    "https://www.theglowblueprint.com"
+  ];
   var corsOptions = {
     origin: function(origin, callback) {
       var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
