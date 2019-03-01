@@ -7,8 +7,7 @@ require("../config/passport-config");
 exports.authenticate = async (req, res, next) => {
   const { username, password } = req.body;
   if (!username || !password) {
-    res.status(400).send("No username/password provided");
-    return;
+    return res.status(400).send("No username/password provided");
   }
 
   return passport.authenticate(
@@ -35,8 +34,7 @@ exports.authenticate = async (req, res, next) => {
 exports.create = async (req, res) => {
   const { firstName, lastName, username, password, email } = req.body;
   if (!username || !password || !email) {
-    res.status(400).send("Invalid request format");
-    return;
+    return res.status(400).send("Invalid request format");
   }
 
   // Ensure this isn't a duplicate
@@ -45,12 +43,10 @@ exports.create = async (req, res) => {
       $or: [{ username }, { email }]
     });
     if (!!duplicate) {
-      res.status(303).send("Account already exists");
-      return;
+      return res.status(303).send("Account already exists");
     }
   } catch (err) {
-    res.status(500).send("Failed to validate user ");
-    return;
+    return res.status(500).send("Failed to validate user ");
   }
 
   let user;
@@ -79,8 +75,7 @@ exports.getAll = async (req, res) => {
   try {
     users = await UserModel.find({});
   } catch (err) {
-    res.status(500).send("Failed to get user records");
-    return;
+    return res.status(500).send("Failed to get user records");
   }
 
   res.send(users);

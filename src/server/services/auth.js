@@ -29,8 +29,7 @@ const optional = jwt({
 const admin = async (req, res, next) => {
   const { payload } = req;
   if (!payload || !payload.id) {
-    res.status(403).send();
-    return;
+    return res.status(403).send();
   }
 
   let user;

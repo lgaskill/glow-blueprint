@@ -5,7 +5,7 @@ exports.getAll = async (req, res) => {
   try {
     blogPosts = await BlogPostModel.find({});
   } catch (err) {
-    res.status(500).send("Failed to get blog posts");
+    return res.status(500).send("Failed to get blog posts");
   }
   res.status(200).send(blogPosts);
 };
@@ -13,8 +13,7 @@ exports.getAll = async (req, res) => {
 // GET blog post by id
 exports.get = async (req, res) => {
   if (!req.params.id) {
-    res.status(400).send();
-    return;
+    return res.status(400).send();
   }
 
   try {
@@ -29,15 +28,15 @@ exports.get = async (req, res) => {
 exports.create = async (req, res) => {
   const blogPost = req.body;
   if (!blogPost || !blogPost.title || !blogPost.body || !blogPost.category) {
-    res.status(400).send("Invalid request format");
-    return;
+    return res.status(400).send("Invalid request format");
   }
 
   let blogPostModel;
   try {
     blogPostModel = new BlogPostModel(blogPost);
+    await blogPostModel.validate();
   } catch (err) {
-    res.status(400).send("Invalid blog post format");
+    return res.status(400).send("Invalid blog post format");
   }
 
   try {
@@ -56,29 +55,24 @@ exports.update = async (req, res) => {
   const blogPostId = req.params.id;
   const blogPostUpdate = req.body;
   if (!blogPostId || !blogPostUpdate) {
-    res.status(400).send("Invalid request format");
-    return;
+    return res.status(400).send("Invalid request format");
   }
 
+  // First, make sure the thing exists
   try {
-    // First, make sure the thing exists
     const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
     if (!existingPost) {
-      res.status(400).send("Intended blog post not found");
-      return;
-    }
-
-    try {
-      const result = await BlogPostModel.update(
-        { _id: blogPostId },
-        blogPostUpdate
-      );
-      res.status(204).send();
-    } catch (err) {
-      res.status(500).send("Failed to update blog post");
+      return res.status(404).send("Intended blog post not found");
     }
   } catch (err) {
     console.log(err);
-    res.status(500).send("Failed to create blog posts");
+    return res.status(500).send("Failed to validate blog post");
+  }
+
+  try {
+    await BlogPostModel.updateOne({ _id: blogPostId }, blogPostUpdate);
+    res.status(204).send();
+  } catch (err) {
+    res.status(500).send("Failed to update blog post");
   }
 };

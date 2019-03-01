@@ -5,8 +5,7 @@ exports.get = async (req, res) => {
   try {
     const config = await ConfigModel.findOne({ active: true });
     if (!config) {
-      res.status(400).send("Active config not found");
-      return;
+      return res.status(400).send("Active config not found");
     }
 
     res.status(200).send(config);
@@ -20,8 +19,7 @@ exports.get = async (req, res) => {
 exports.create = async (req, res) => {
   const config = req.body;
   if (!config) {
-    res.status(400).send("Invalid request format");
-    return;
+    return res.status(400).send("Invalid request format");
   }
 
   let configModel;
@@ -48,16 +46,14 @@ exports.update = async (req, res) => {
   const configId = req.params.id;
   const configUpdate = req.body;
   if (!configId || !configUpdate) {
-    res.status(400).send("Invalid request format");
-    return;
+    return res.status(400).send("Invalid request format");
   }
 
   // Get the active config
   try {
     const config = await ConfigModel.findOne({ _id: configId });
     if (!config) {
-      res.status(400).send("Intended config not found");
-      return;
+      return res.status(400).send("Intended config not found");
     }
   } catch (err) {
     console.log(err);
@@ -65,7 +61,7 @@ exports.update = async (req, res) => {
   }
 
   try {
-    const result = await ConfigModel.update({ _id: configId }, configUpdate);
+    const result = await ConfigModel.updateOne({ _id: configId }, configUpdate);
     res.status(204).send();
   } catch (err) {
     res.status(500).send("Failed to update config");

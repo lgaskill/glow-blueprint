@@ -19,8 +19,7 @@ const ALLOWED_IMG_TYPE_LOOKUP = {
  */
 exports.get = async (req, res) => {
   if (!req.params.id) {
-    res.status(400).send("Invalid image request");
-    return;
+    return res.status(400).send("Invalid image request");
   }
 
   let imageFile;
@@ -28,13 +27,11 @@ exports.get = async (req, res) => {
     imageFile = await FileModel.findOne({ _id: req.params.id });
   } catch (err) {
     console.error(err);
-    res.status(500).send("Failed to get image");
-    return;
+    return res.status(500).send("Failed to get image");
   }
 
   if (!imageFile) {
-    res.status(404).send("Image not found");
-    return;
+    return res.status(404).send("Image not found");
   }
 
   res.writeHead(200, { "Content-Type": imageFile.contentType });
@@ -44,16 +41,14 @@ exports.get = async (req, res) => {
 // POST image
 exports.create = async (req, res) => {
   if (!req.files || req.files.length !== 1) {
-    res.status(400).send("Invalid image request");
-    return;
+    return res.status(400).send("Invalid image request");
   }
 
   const file = req.files[0];
 
   const contentType = file.mimetype;
   if (!ALLOWED_IMG_TYPE_LOOKUP[contentType]) {
-    res.status(400).send("Image type " + contentType + " not allowed");
-    return;
+    return res.status(400).send("Image type " + contentType + " not allowed");
   }
 
   const imageFile = new FileModel();
@@ -74,8 +69,7 @@ exports.create = async (req, res) => {
 // DELETE image
 exports.delete = async (req, res) => {
   if (!req.params.id) {
-    res.status(400).send("Invalid request");
-    return;
+    return res.status(400).send("Invalid request");
   }
 
   let imageFile;
@@ -83,13 +77,11 @@ exports.delete = async (req, res) => {
     imageFile = await FileModel.findOne({ _id: req.params.id }, { _id: 1 });
   } catch (err) {
     console.error(err);
-    res.status(500).send("Invalid image");
-    return;
+    return res.status(500).send("Invalid image");
   }
 
   if (!imageFile) {
-    res.status(404).send("Image not found");
-    return;
+    return res.status(404).send("Image not found");
   }
 
   try {
