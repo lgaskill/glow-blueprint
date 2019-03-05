@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 const VIEWS: any = {
   BLOG: "",
   USERS: "",
+  USER_GROUPS: "",
   OTHER: ""
 };
 
@@ -12,7 +13,7 @@ const VIEWS: any = {
   styleUrls: ["./admin-view.component.scss"]
 })
 export class AdminViewComponent {
-  selectedView: string = "BLOG";
+  selectedView: string = "USER_GROUPS";
 
   onSelectedViewChange(selected: string) {
     this.selectedView = selected;

@@ -1,13 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
-import { AuthService } from "./auth.service";
 
 @Injectable()
 export class BlogService {
-  constructor(
-    private apiService: ApiService,
-    private authService: AuthService
-  ) {}
+  constructor(private apiService: ApiService) {}
 
   async getAllBlogPosts(): Promise<BlogPost[]> {
     const blogPosts: BlogPost[] = await this.apiService.get<BlogPost[]>(

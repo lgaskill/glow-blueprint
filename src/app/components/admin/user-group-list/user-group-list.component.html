@@ -1,0 +1,46 @@
+<span *ngIf="!userGroups">Loading...</span>
+<div *ngIf="userGroups">
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let userGroup: of(userGroups | orderBy: 'name')"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">
+          <mat-icon class="panel-title-icon" *ngIf="userGroup.type === 'EMAIL'">email</mat-icon>
+          <mat-icon class="panel-title-icon" *ngIf="userGroup.type === 'USER'">person</mat-icon>
+          {{ userGroup.name }} ({{ userGroup.values.length }})
+        </mat-panel-title>
+        <mat-panel-description>
+          <button 
+            mat-icon-button 
+            (click)="onCopyToClipboard(userGroup, copyInput)" 
+            matTooltip="Copy Email Addresses to Clipboard">
+            <mat-icon>assignment</mat-icon>
+          </button>
+          <button 
+            mat-icon-button 
+            (click)="onAddUser($event, userGroup)" 
+            [matTooltip]="'Add ' + (userGroup.type === 'EMAIL' ? 'Email Address' : 'USER') ">
+            <mat-icon>person_add</mat-icon>
+          </button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-list *ngIf="userGroup.type === 'EMAIL'">
+        <mat-list-item
+          role="listItem"
+          *ngFor="let value: of(userGroup.values | orderBy)"
+        >
+          <span class="list-item-text">{{ value }}</span>
+          <button 
+          mat-icon-button 
+          (click)="onRemoveValue(userGroup._id, value)" 
+          [matTooltip]="'Remove ' + (userGroup.type === 'EMAIL' ? 'Email Address' : 'USER')">
+          <mat-icon>delete</mat-icon>
+        </button>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

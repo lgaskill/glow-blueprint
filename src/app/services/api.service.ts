@@ -19,6 +19,10 @@ export class ApiService {
     return this.http.post<T>(this.API_HOST + url, postObj).toPromise();
   }
 
+  async put<T>(url: string, putObj: any): Promise<T> {
+    return this.http.put<T>(this.API_HOST + url, putObj).toPromise();
+  }
+
   async patch<T>(url: string, patchObj: any): Promise<T> {
     return this.http.patch<T>(this.API_HOST + url, patchObj).toPromise();
   }

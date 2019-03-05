@@ -1,0 +1,16 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.list-item-text {
+  flex: 1;
+}
+
+.panel-title {
+  align-items: center;
+  font-weight: 600;
+}
+
+.panel-title-icon {
+  margin-right: 16px
+}

@@ -30,6 +30,7 @@ import { AdminGuard } from "./guards/admin.guard";
 import { ConfigService } from "./services/config.service";
 import { WorkViewModule } from "./components/work-view/work-view.module";
 import { BlogPostCreatorModule } from "./components/admin/blog-post-creator/blog-post-creator.module";
+import { UserGroupService } from "./services/userGroup.service";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -74,6 +75,7 @@ export function configServiceFactory(service: ConfigService) {
     AdminGuard,
     AuthService,
     ConfigService,
+    UserGroupService,
     {
       provide: APP_INITIALIZER,
       useFactory: configServiceFactory,

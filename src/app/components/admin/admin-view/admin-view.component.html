@@ -24,6 +24,14 @@
           </button>
           <button
             mat-list-item
+            (click)="onSelectedViewChange('USER_GROUPS')"
+            class="nav-list-item"
+            [ngClass]="{ selected: selectedView === 'USER_GROUPS' }"
+          >
+            Manage Groups
+          </button>
+          <button
+            mat-list-item
             (click)="onSelectedViewChange('OTHER')"
             class="nav-list-item"
             [ngClass]="{ selected: selectedView === 'OTHER' }"
@@ -35,8 +43,10 @@
       <div class="main-content">
         <blog-post-creator *ngIf="selectedView === 'BLOG'"></blog-post-creator>
         <div *ngIf="selectedView === 'USERS'">
-          See active users, group them, manage them...COMMAND THEM!
+          See active users, manage them...COMMAND THEM!
         </div>
+        <user-group-list *ngIf="selectedView === 'USER_GROUPS'">
+        </user-group-list>
         <div *ngIf="selectedView === 'OTHER'">
           Who knows...we could add whatever we want :b
         </div>
