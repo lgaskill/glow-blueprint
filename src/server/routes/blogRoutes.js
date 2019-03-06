@@ -1,9 +1,15 @@
 const BlogPostModel = require("../models/blogPost");
 
+/**
+ * Gets all blog posts
+ * @param category catagory to filter posts
+ */
 exports.getAll = async (req, res) => {
+  const { category } = req.query;
+
   let blogPosts;
   try {
-    blogPosts = await BlogPostModel.find({});
+    blogPosts = await BlogPostModel.find(category ? { category } : {});
   } catch (err) {
     return res.status(500).send("Failed to get blog posts");
   }

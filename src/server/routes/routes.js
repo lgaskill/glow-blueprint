@@ -60,7 +60,7 @@ router.patch("/blog_post/:id", auth.required, auth.admin, blogRoutes.update);
 //
 router.get("/image/:id", auth.optional, imageRoutes.get);
 router.post("/image", auth.optional, auth.admin, imageRoutes.create);
-router.post("/image/:id", auth.optional, auth.admin, imageRoutes.delete);
+router.delete("/image/:id", auth.optional, auth.admin, imageRoutes.delete);
 
 //
 // Config

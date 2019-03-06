@@ -5,10 +5,11 @@ import { ApiService } from "./api.service";
 export class BlogService {
   constructor(private apiService: ApiService) {}
 
-  async getAllBlogPosts(): Promise<BlogPost[]> {
+  async getAllBlogPosts(category?: string): Promise<BlogPost[]> {
     const blogPosts: BlogPost[] = await this.apiService.get<BlogPost[]>(
-      "/blog_post"
+      "/blog_post" + (category ? `?category=${category}` : "")
     );
+
     if (!blogPosts) {
       return null;
     }

@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { BlogService } from "src/app/services/blog.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "blog-list",
@@ -8,18 +9,24 @@ import { BlogService } from "src/app/services/blog.service";
 })
 export class BlogListComponent {
   blogPosts: BlogPost[];
-  constructor(private blogService: BlogService) {}
+  constructor(
+    private blogService: BlogService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   async ngOnInit() {
-    try {
-      this.blogPosts = await this.blogService.getAllBlogPosts();
+    // Determine if posts should be filtered by category
+    const category = this.activatedRoute.snapshot.queryParams["category"];
 
-      // Sort by create date
-      this.blogPosts = this.blogPosts.sort((a, b) => {
-        return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
-      });
+    try {
+      this.blogPosts = await this.blogService.getAllBlogPosts(category);
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
+
+    // Sort by create date
+    this.blogPosts = this.blogPosts.sort((a, b) => {
+      return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
+    });
   }
 }

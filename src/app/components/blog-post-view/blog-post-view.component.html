@@ -4,10 +4,12 @@
     <div class="content">
       <div class="main-content">
         <div class="title-panel">
-          <a mat-button routerLink="/blog"
-            ><span class="title-panel-category">{{
-              blogPost.category
-            }}</span></a
+          <a
+            mat-button
+            routerLink="/blog"
+            [queryParams]="{ category: blogPost.category }"
+          >
+            <span class="title-panel-category">{{ blogPost.category }}</span></a
           >
           <h1 class="title-panel-title">{{ blogPost.title }}</h1>
           <span class="title-panel-date">{{ blogPost.createdAt | date }}</span>
