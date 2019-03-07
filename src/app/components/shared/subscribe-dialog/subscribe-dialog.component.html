@@ -1,0 +1,26 @@
+<h1 mat-dialog-title class="dialog-title">Get back to basics</h1>
+<div mat-dialog-content>
+  <div class="dialog-text">
+    Sign up for your free four-week guide to self care
+  </div>
+  <form class="form" [formGroup]="emailForm">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          [formControl]="emailForm.controls.email"
+          placeholder="Email"
+        />
+        <mat-error *ngIf="emailForm.controls.email.invalid">{{
+          getEmailErrorMessage()
+        }}</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onSubmit()" class="subscribe-button">
+    Subscribe
+  </button>
+</div>
