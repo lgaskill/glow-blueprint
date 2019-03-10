@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
-import { BlogListComponent } from "./blog-list.component";
-import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
-import { GbImageModule } from "../shared/gb-image/gb-image.module";
+import { BlogListComponent } from "./blog-list.component";
+import { SharedModule } from "../shared.module";
+import { GbImageModule } from "../gb-image/gb-image.module";
 
 @NgModule({
   imports: [RouterModule, SharedModule, GbImageModule],

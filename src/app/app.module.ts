@@ -16,7 +16,7 @@ import { CoachingViewModule } from "./components/coaching-view/coaching-view.mod
 import { MyStoryViewModule } from "./components/my-story-view/my-story-view.module";
 import { BlogService } from "./services/blog.service";
 import { ApiService } from "./services/api.service";
-import { BlogListModule } from "./components/blog-list/blog-list.module";
+import { BlogListModule } from "./components/shared/blog-list/blog-list.module";
 import { BlogPostViewModule } from "./components/blog-post-view/blog-post-view.module";
 import { AdminViewModule } from "./components/admin/admin-view/admin-view.module";
 import { AuthService } from "./services/auth.service";

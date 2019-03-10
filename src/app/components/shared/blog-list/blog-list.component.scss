@@ -6,12 +6,7 @@ $break-small: 800px;
   @include mat-elevation(8);
   cursor: pointer;
   font-family: typewriter;
-  width: 400px;
   margin: 16px;
-
-  @media screen and (max-width: $break-small) {
-    width: 100%;
-  }
 }
 
 .card:hover > .card-overlay {
@@ -41,10 +36,13 @@ $break-small: 800px;
   font-size: 24px;
 }
 
-.card-wrapper {
-  flex-direction: row;
-  flex-wrap: wrap;
+.layout-column {
   display: flex;
-  justify-content: center;
-  padding: 16px;
+  flex-direction: column;
+  flex: 1;
+}
+
+.layout-row {
+  display: flex;
+  flex-direction: row;
 }
