@@ -22,6 +22,7 @@ export class BlogPostCreatorComponent {
     autoProcessQueue: false,
     clickable: true,
     maxFiles: 1,
+    maxFilesize: 50000000,
     autoReset: null,
     errorReset: null,
     cancelReset: null,
