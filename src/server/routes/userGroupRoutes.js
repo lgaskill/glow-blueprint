@@ -155,14 +155,15 @@ exports.addValue = async (req, res) => {
   }
 
   // Ensure this won't create a duplicate
-  if (userGroup.values.indexOf(value) >= 0) {
+  if (userGroup.values.find(v => v.value === value) !== undefined) {
     return res.status(304).send("Nothing to update");
   }
 
+  const userGroupValue = { value, createdAt: new Date() };
   try {
     await UserGroupModel.updateOne(
       { _id: id },
-      { values: [...userGroup.values, value] }
+      { values: [...userGroup.values, userGroupValue] }
     );
     res.status(204).send();
   } catch (err) {
@@ -195,14 +196,14 @@ exports.removeValue = async (req, res) => {
   }
 
   // Ensure the specified value exists
-  if (userGroup.values.indexOf(value) < 0) {
+  if (!userGroup.values.find(v => v.value === value) === undefined) {
     return res.status(304).send("Nothing to update");
   }
 
   try {
     await UserGroupModel.updateOne(
       { _id: id },
-      { values: userGroup.values.filter(v => v !== value) }
+      { values: userGroup.values.filter(v => v.value !== value) }
     );
     res.status(204).send();
   } catch (err) {

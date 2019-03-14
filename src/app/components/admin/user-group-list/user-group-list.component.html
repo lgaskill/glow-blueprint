@@ -2,7 +2,9 @@
 <div *ngIf="userGroups">
   <mat-accordion>
     <mat-expansion-panel
-      *ngFor="let userGroup: of(userGroups | orderBy: 'name')"
+      *ngFor="let userGroup: of(userGroups | orderBy: 'name'); index as listIndex"
+      [expanded]="expandedListIndex === listIndex"
+      (opened)="onListExpanded(listIndex)"
     >
       <mat-expansion-panel-header>
         <mat-panel-title class="panel-title">
@@ -13,7 +15,7 @@
         <mat-panel-description>
           <button 
             mat-icon-button 
-            (click)="onCopyToClipboard(userGroup, copyInput)" 
+            (click)="onCopyToClipboard($event, userGroup, copyInput)" 
             matTooltip="Copy Email Addresses to Clipboard">
             <mat-icon>assignment</mat-icon>
           </button>
@@ -29,9 +31,10 @@
       <mat-list *ngIf="userGroup.type === 'EMAIL'">
         <mat-list-item
           role="listItem"
-          *ngFor="let value: of(userGroup.values | orderBy)"
+          *ngFor="let value: of(userGroup.values | orderBy: 'createdAt':'desc')"
         >
-          <span class="list-item-text">{{ value }}</span>
+          <span mat-line class="list-item-text">{{ value.value }}</span>
+          <p mat-line class="list-item-subtext">{{ value.createdAt | timeFromNow }}</p>
           <button 
           mat-icon-button 
           (click)="onRemoveValue(userGroup._id, value)" 

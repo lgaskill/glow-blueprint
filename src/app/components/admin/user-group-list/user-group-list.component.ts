@@ -13,6 +13,7 @@ import { UserGroupService } from "src/app/services/userGroup.service";
 export class UserGroupListComponent {
   userGroups: UserGroup[] = [];
   copyValue: string = "";
+  expandedListIndex: number = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,9 +31,13 @@ export class UserGroupListComponent {
     this.userGroups = await this.userGroupService.getAllUserGroups();
   }
 
-  async onRemoveValue(userGroupId: string, value: string) {
+  onListExpanded(index: number) {
+    this.expandedListIndex = index;
+  }
+
+  async onRemoveValue(userGroupId: string, userGroupValue: any) {
     try {
-      await this.userGroupService.removeValue(userGroupId, value);
+      await this.userGroupService.removeValue(userGroupId, userGroupValue.value);
     } catch (err) {
       // TODO: show error message
       return;
@@ -43,10 +48,12 @@ export class UserGroupListComponent {
   }
 
   async onAddUser(e: any, userGroup: UserGroup) {
+    e.stopPropagation();
     
   }
 
-  async onCopyToClipboard(userGroup: UserGroup, inputEl: any) {
+  async onCopyToClipboard(e: any, userGroup: UserGroup, inputEl: any) {
+    e.stopPropagation();
 
     this.copyValue = userGroup.values.join(';');
     inputEl.select();
@@ -56,7 +63,5 @@ export class UserGroupListComponent {
     console.log(this.copyValue)
     console.log(userGroup);
     console.log(inputEl);
-
-    debugger;
   }
 }

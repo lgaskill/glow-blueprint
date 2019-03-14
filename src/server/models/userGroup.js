@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
 
+const userGroupValue = new mongoose.Schema({
+  value: String,
+  createdAt: Date,
+  notes: String
+});
+
 const userGroupSchema = new mongoose.Schema({
   name: String,
   type: {
@@ -7,7 +13,7 @@ const userGroupSchema = new mongoose.Schema({
     enum: ["USER", "EMAIL"]
   },
   values: {
-    type: [String],
+    type: [userGroupValue],
     default: []
   },
   deprecated: {
