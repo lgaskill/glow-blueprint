@@ -19,6 +19,8 @@ export class AppComponent {
       return;
     }
 
+    // Display registration modal after 15 seconds
+    // Prevent for logged-in users and anyone who's already registered
     setTimeout(() => {
       const dialogRef = this.dialog.open(SubscribeDialogComponent, {
         data: {}
@@ -29,6 +31,7 @@ export class AppComponent {
           localStorage.setItem("subscribed", "true");
         }
       });
-    }, 15000);
+    }, 500);
+    // }, 15000);
   }
 }

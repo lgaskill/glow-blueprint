@@ -1,4 +1,5 @@
 const UserGroupModel = require("../models/userGroup");
+const emailService = require("../services/emailService");
 
 /**
  * Get all userGroups
@@ -159,6 +160,12 @@ exports.addValue = async (req, res) => {
     return res.status(304).send("Nothing to update");
   }
 
+  // Special case:
+  // Send registration emails for set user group
+  if (id === "5c7897d8064ee548906faee3") {
+    sendSelfCareRegistrationEmail(value);
+  }
+
   try {
     await UserGroupModel.updateOne(
       { _id: id },
@@ -208,4 +215,17 @@ exports.removeValue = async (req, res) => {
   } catch (err) {
     res.status(500).send("Failed to remove value from user group");
   }
+};
+
+/**
+ * Sends registration email
+ */
+sendSelfCareRegistrationEmail = emailAddress => {
+  // emailService.sendEmail({
+  //   from: "abby@theglowblueprint.com",
+  //   to: "abbylgaskill@gmail.com",
+  //   cc: "lgaskill91@gmail.com",
+  //   subject: "Hey Honey Bunz",
+  //   text: "You So Fine ;)"
+  // });
 };
