@@ -1,6 +1,12 @@
 <div class="layout-row">
   <div class="layout-column" *ngFor="let column of columns; index as i">
-    <div class="layout-row" *ngFor="let blogPost of blogPosts; index as j">
+    <div
+      class="layout-row"
+      *ngFor="
+        let blogPost of blogPosts | orderBy: 'createdAt':'desc');
+        index as j
+      "
+    >
       <div *ngIf="j % columns.length === i">
         <mat-card
           mat-ripple
