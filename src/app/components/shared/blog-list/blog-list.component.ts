@@ -34,11 +34,6 @@ export class BlogListComponent {
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
-
-    // Sort by create date
-    this.blogPosts = this.blogPosts.sort((a, b) => {
-      return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
-    });
   }
 
   truncate(val: number): number {
