@@ -20,6 +20,10 @@ export class BlogService {
     return blogPosts;
   }
 
+  async getCategories(): Promise<string[]> {
+    return this.apiService.get<string[]>("/blog_post/categories");
+  }
+
   async getBlogPostById(blogPostID: string): Promise<BlogPost> {
     return this.apiService.get<BlogPost>(`/blog_post/${blogPostID}`);
   }

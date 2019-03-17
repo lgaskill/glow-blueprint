@@ -15,7 +15,8 @@ import {
   MatAutocompleteModule,
   MatDialogModule,
   MatListModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
@@ -44,6 +45,7 @@ const sharedModules = [
   MatDialogModule,
   MatListModule,
   MatExpansionModule,
+  MatSelectModule,
 
   DropzoneModule
 ];

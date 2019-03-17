@@ -1,20 +1,21 @@
-<app-bar imageId="5c0494f3eb2ff65e2cd6618b">
-  <!-- TODO Bring back sometime -->
-  <!--
-    <mat-grid-list cols="3" rowHeight="240" gutterSize="16" class="category-grid">
-      <mat-grid-tile>
-        <button mat-button class="category-button background-nutrition"></button>
-        <div class="label"><span class="label-text">Food</span></div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-button class="category-button background-lifestyle"></button>
-        <div class="label"><span class="label-text">Lifestyle</span></div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-button class="category-button background-exercise"></button>
-        <div class="label"><span class="label-text">Exercise & Body</span></div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  -->
-  <blog-list></blog-list>
+<app-bar [collapsed]="true">
+  <div class="title">The Blog</div>
+  <div class="category-wrapper">
+    <mat-form-field class="typewriter">
+      <mat-select
+        class="typewriter"
+        placeholder="Category"
+        [(value)]="category"
+      >
+        <mat-option class="typewriter" [value]="">All</mat-option>
+        <mat-option
+          class="typewriter"
+          *ngFor="let cat of (categories | orderBy)"
+          [value]="cat"
+          >{{ cat }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <blog-list [category]="category"></blog-list>
 </app-bar>

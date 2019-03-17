@@ -51,6 +51,7 @@ router.put(
 // Blog
 //
 router.get("/blog_post", auth.optional, blogRoutes.getAll);
+router.get("/blog_post/categories", auth.optional, blogRoutes.getCategories);
 router.get("/blog_post/:id", auth.optional, blogRoutes.get);
 router.post("/blog_post", auth.required, auth.admin, blogRoutes.create);
 router.patch("/blog_post/:id", auth.required, auth.admin, blogRoutes.update);

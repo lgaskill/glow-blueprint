@@ -49,10 +49,8 @@ export class BlogPostCreatorComponent {
       title: ["", Validators.required]
     });
 
-    const blogPosts: BlogPost[] = await this.blogService.getAllBlogPosts();
-
-    // Generate a list of unique categories
-    this.categories = Array.from(new Set(blogPosts.map(bp => bp.category)));
+    // Get all known categories
+    this.categories = await this.blogService.getCategories();
   }
 
   onUploadSuccess([ev, res]) {
