@@ -25,6 +25,7 @@ router.post("/user", auth.optional, userRoutes.create);
 //
 // User Groups
 //
+router.post("/subscribe_mc/:id", auth.optional, userGroupRoutes.mc_subscribe);
 router.get("/user_group", auth.required, auth.admin, userGroupRoutes.getAll);
 router.get(
   "/user_group/:id",

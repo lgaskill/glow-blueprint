@@ -1,4 +1,44 @@
 const UserGroupModel = require("../models/userGroup");
+const request = require("request");
+
+const MC_API_KEY = process.env.MC_API_KEY;
+/**
+ * Subscribe email address to mail chimp list
+ * @param id list id
+ */
+exports.mc_subscribe = async (req, res) => {
+  const { email } = req.body;
+  if (!email || !req.params.id) {
+    return res.status(400).send("Invalid request format");
+  }
+
+  try {
+    await new Promise((resolve, reject) => {
+      request.post(
+        `https://us20.api.mailchimp.com/3.0/lists/${req.params.id}/members`,
+        {
+          json: { email_address: email, status: "subscribed" },
+          auth: {
+            user: "gb",
+            pass: MC_API_KEY
+          }
+        },
+        function(error, response, body) {
+          if (!error && response.statusCode == 200) {
+            resolve(body);
+          } else {
+            reject(body);
+          }
+        }
+      );
+    });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send();
+  }
+
+  res.status(204).send();
+};
 
 /**
  * Get all userGroups
