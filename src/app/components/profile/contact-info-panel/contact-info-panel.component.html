@@ -1,0 +1,55 @@
+<mat-card>
+  <mat-card-content>
+    <form class="form" [formGroup]="form">
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            placeholder="Fisrt Name"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last Name" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" placeholder="Username" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            [formControl]="form.controls.email"
+            placeholder="Email"
+            type="email"
+          />
+          <mat-error *ngIf="form.controls.email.invalid">{{
+            getEmailErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="onCancel()" class="action-button">
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSave()"
+      class="action-button"
+    >
+      Save
+    </button>
+  </mat-card-actions>
+</mat-card>

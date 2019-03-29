@@ -1,0 +1,35 @@
+<app-bar [collapsed]="true">
+  <mat-sidenav-container>
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      class="sidenav"
+      [(opened)]="sidenavOpened"
+    >
+      <mat-action-list class="nav-list">
+        <button
+          mat-list-item
+          *ngFor="let tab of tabs"
+          (click)="onSelectedTabChange(tab)"
+          class="nav-list-item"
+          [ngClass]="{ selected: selectedTab.name === tab.name }"
+        >
+          {{ tab.label }}
+        </button>
+      </mat-action-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar class="toolbar">
+        <nav-menu-button
+          class="sidenav-button"
+          [(open)]="sidenavOpened"
+        ></nav-menu-button>
+        <span class="toolbar-text">{{ selectedTab.label }}</span>
+      </mat-toolbar>
+      <contact-info-panel *ngIf="selectedTab.name === 'CONTACT_INFO'">
+      </contact-info-panel>
+      <div *ngIf="selectedTab.name === 'HEALTH_HISTORY'">Health History</div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</app-bar>

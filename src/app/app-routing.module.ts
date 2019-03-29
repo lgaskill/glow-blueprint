@@ -10,6 +10,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { LoginViewComponent } from "./components/login-view/login-view.component";
 import { AdminGuard } from "./guards/admin.guard";
 import { WorkViewComponent } from "./components/work-view/work-view.component";
+import { ProfileViewComponent } from "./components/profile/profile-view/profile-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -30,6 +31,11 @@ const appRoutes: Routes = [
     pathMatch: "full"
   },
   { path: "my-story", component: MyStoryViewComponent, pathMatch: "full" },
+  {
+    path: "profile",
+    component: ProfileViewComponent,
+    canActivate: [AuthGuard]
+  },
   { path: "work-with-me", component: WorkViewComponent, pathMatch: "full" },
   {
     path: "**",

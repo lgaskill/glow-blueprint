@@ -87,7 +87,10 @@ exports.update = async (req, res) => {
 
   // First, make sure the thing exists
   try {
-    const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
+    const existingPost = await BlogPostModel.findOne(
+      { _id: blogPostId },
+      { _id: true }
+    );
     if (!existingPost) {
       return res.status(404).send("Intended blog post not found");
     }

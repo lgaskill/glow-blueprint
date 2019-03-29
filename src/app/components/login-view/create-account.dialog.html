@@ -20,6 +20,7 @@
           matInput
           [formControl]="registrationForm.controls.email"
           placeholder="Email"
+          type="email"
         />
         <mat-error *ngIf="registrationForm.controls.email.invalid">{{
           getEmailErrorMessage()

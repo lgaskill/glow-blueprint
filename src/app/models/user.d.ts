@@ -4,4 +4,7 @@ declare interface User {
   email: string;
   isAdmin: boolean;
   token: string;
+  notes: string;
+  firstName: string;
+  lastName: string;
 }

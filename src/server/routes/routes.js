@@ -20,7 +20,9 @@ router.all("/#/*", auth.optional, (req, res) => {
 //
 router.get("/users", auth.required, auth.admin, userRoutes.getAll);
 router.post("/authenticate", auth.optional, userRoutes.authenticate);
+router.get("/user", auth.required, userRoutes.getByToken);
 router.post("/user", auth.optional, userRoutes.create);
+router.patch("/user", auth.required, userRoutes.updateByToken);
 
 //
 // User Groups
