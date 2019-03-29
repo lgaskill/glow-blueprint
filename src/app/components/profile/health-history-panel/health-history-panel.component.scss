@@ -1,0 +1,60 @@
+@import "~@angular/material/theming";
+
+.action-button {
+  font-family: typewriter;
+  margin-right: 16px !important;
+}
+
+.card {
+  margin: 16px;
+}
+
+.card-title {
+  font-family: typewriter;
+  color: #e7abb6;
+  font-size: 36px;
+  margin-bottom: 16px !important;
+}
+
+.form-field {
+  font-family: typewriter;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+
+  @media only screen and (min-width: 800px) {
+    margin-right: 16px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    width: 100% !important;
+  }
+}
+
+.flex-3 {
+  width: calc(25% - 16px);
+}
+
+.flex-4 {
+  width: calc(33.3333% - 16px);
+}
+
+.flex-6 {
+  width: calc(50% - 16px);
+}
+
+.flex-8 {
+  width: calc(66.6666% - 16px);
+}
+
+.flex-12 {
+  width: 100%;
+}

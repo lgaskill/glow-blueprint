@@ -29,11 +29,11 @@ import { Constants } from "./config/constants";
 import { AdminGuard } from "./guards/admin.guard";
 import { ConfigService } from "./services/config.service";
 import { WorkViewModule } from "./components/work-view/work-view.module";
-import { BlogPostCreatorModule } from "./components/admin/blog-post-creator/blog-post-creator.module";
 import { UserGroupService } from "./services/userGroup.service";
 import { SubscribeDialogModule } from "./components/shared/subscribe-dialog/subscribe-dialog.module";
 import { ProfileViewModule } from "./components/profile/profile-view/profile-view.module";
 import { ContactInfoPanelModule } from "./components/profile/contact-info-panel/contact-info-panel.module";
+import { HealthHistoryPanelModule } from "./components/profile/health-history-panel/health-history-panel.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -71,7 +71,8 @@ export function configServiceFactory(service: ConfigService) {
     WorkViewModule,
     SubscribeDialogModule,
     ProfileViewModule,
-    ContactInfoPanelModule
+    ContactInfoPanelModule,
+    HealthHistoryPanelModule
   ],
   exports: [],
   providers: [

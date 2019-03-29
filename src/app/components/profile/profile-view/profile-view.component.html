@@ -29,7 +29,9 @@
       </mat-toolbar>
       <contact-info-panel *ngIf="selectedTab.name === 'CONTACT_INFO'">
       </contact-info-panel>
-      <div *ngIf="selectedTab.name === 'HEALTH_HISTORY'">Health History</div>
+      <health-history-panel
+        *ngIf="selectedTab.name === 'HEALTH_HISTORY'"
+      ></health-history-panel>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </app-bar>

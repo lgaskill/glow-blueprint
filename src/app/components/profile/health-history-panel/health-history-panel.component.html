@@ -1,0 +1,318 @@
+<form [formGroup]="form">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Personal</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            placeholder="Fisrt Name"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last Name" />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-3">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Age</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="age"
+            placeholder="Age"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-3">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Height</mat-label>
+          <input matInput formControlName="height" placeholder="Height" />
+        </mat-form-field>
+      </div>
+      <div class="column flex-3">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input
+            matInput
+            formControlName="dateOfBirth"
+            placeholder="Date of Birth"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-3">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Place of Birth</mat-label>
+          <input
+            matInput
+            formControlName="placeOfBirth"
+            placeholder="Place of Birth"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            [formControl]="form.controls.email"
+            placeholder="Email"
+            type="email"
+          />
+          <mat-error *ngIf="form.controls.email.invalid">{{
+            getEmailErrorMessage()
+          }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How often do you check email?</mat-label>
+          <input
+            matInput
+            formControlName="emailFreq"
+            placeholder="How often do you check email?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Mobile Phone</mat-label>
+          <input
+            matInput
+            formControlName="mobilePhone"
+            placeholder="Mobile Phone"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Work Phone</mat-label>
+          <input
+            matInput
+            formControlName="workPhone"
+            placeholder="Work Phone"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Home Phone</mat-label>
+          <input
+            matInput
+            formControlName="homePhone"
+            placeholder="Home Phone"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Would you like your weight to be different?</mat-label>
+          <input
+            matInput
+            formControlName="weightDiffPref"
+            placeholder="Would you like your weight to be different?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>If so, how?</mat-label>
+          <input
+            matInput
+            formControlName="weightDiffReason"
+            placeholder="If so, how?"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Social</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Relationship Status</mat-label>
+          <input
+            matInput
+            formControlName="relationshipStatus"
+            placeholder="Relationship Status"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Where do you live?</mat-label>
+          <input
+            matInput
+            formControlName="whereDoYouLive"
+            placeholder="Where do you live?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any Children?</mat-label>
+          <input
+            matInput
+            formControlName="anyChildren"
+            placeholder="Any Children?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any Pets?</mat-label>
+          <input matInput formControlName="anyPets" placeholder="Any Pets?" />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Occupation</mat-label>
+          <input
+            matInput
+            formControlName="occupation"
+            placeholder="Occupation"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How may hours do you work per week?</mat-label>
+          <input
+            matInput
+            formControlName="hoursWorkPerWeek"
+            placeholder="How may hours do you work per week?"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">General Health</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What are your main health concerns?</mat-label>
+          <textarea
+            matInput
+            formControlName="mainHealthConcerns"
+            placeholder="What are your main health concerns?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any other concerns and/or goals?</mat-label>
+          <textarea
+            matInput
+            formControlName="otherHealthConcerns"
+            placeholder="Any other concerns and/or goals?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >At what point in your life did you feel your best?</mat-label
+          >
+          <input
+            matInput
+            formControlName="pointFeltBest"
+            placeholder="At what point in your life did you feel your best?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Any current or previous serious illnesses, hospitalizations, or
+            injuries?</mat-label
+          >
+          <textarea
+            matInput
+            formControlName="currentSeriousIllnesses"
+            placeholder="Any current or previous serious illnesses, hospitalizations, or injuries?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How is/was your mother's health?</mat-label>
+          <input
+            matInput
+            formControlName="mothersHealth"
+            placeholder="How is/was your mother's health?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How is/was your father's health?</mat-label>
+          <input
+            matInput
+            formControlName="fathersHealth"
+            placeholder="How is/was your father's health?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-8">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What is your ancestry?</mat-label>
+          <input
+            matInput
+            formControlName="ancestry"
+            placeholder="What is your ancestry?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What is your blood type?</mat-label>
+          <input
+            matInput
+            formControlName="bloodType"
+            placeholder="What is your blood type?"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>
+
+<button mat-stroked-button (click)="onCancel()" class="action-button">
+  Cancel
+</button>
+<button
+  mat-raised-button
+  color="primary"
+  (click)="onSave()"
+  class="action-button"
+>
+  Save
+</button>

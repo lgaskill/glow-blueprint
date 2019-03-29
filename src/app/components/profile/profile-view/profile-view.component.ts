@@ -16,7 +16,7 @@ export class ProfileViewComponent {
       label: "Health History"
     }
   ];
-  selectedTab: any = this.tabs[0];
+  selectedTab: any = this.tabs[1];
   sidenavOpened: boolean = false;
 
   ngOnInit() {
