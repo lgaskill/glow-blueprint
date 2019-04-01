@@ -301,6 +301,642 @@
           />
         </mat-form-field>
       </div>
+
+      <div class="column flex-8">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How is your sleep?</mat-label>
+          <input
+            matInput
+            formControlName="sleepQuality"
+            placeholder="How is your sleep?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How many hours do you sleep per night?</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="sleepDuration"
+            placeholder="How many hours do you sleep per night?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Do you wake up during the night? If so, why?</mat-label>
+          <input
+            matInput
+            formControlName="sleepWaking"
+            placeholder="Do you wake up during the night? If so, why?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any pain, stiffness, or swelling?</mat-label>
+          <input
+            matInput
+            formControlName="painStiffnessOrSwelling"
+            placeholder="Any pain, stiffness, or swelling?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any constipation, diarrhea, or gas?</mat-label>
+          <input
+            matInput
+            formControlName="digestiveHealth"
+            placeholder="Any constipation, diarrhea, or gas?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Any allergies or sensitivities?</mat-label>
+          <input
+            matInput
+            formControlName="allergiesOrSensitivities"
+            placeholder="Any allergies or sensitivities?"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Women's Health</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Are your periods regular?</mat-label>
+          <input
+            matInput
+            formControlName="periodsRegular"
+            placeholder="Are your periods regular?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How many days is your flow?</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="flowDays"
+            placeholder="How many days is your flow?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How Frequent?</mat-label>
+          <input
+            matInput
+            formControlName="periodFreq"
+            placeholder="How Frequent?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Are your periods painful or symptomatic? If so, please
+            explain</mat-label
+          >
+          <input
+            matInput
+            formControlName="periodPains"
+            placeholder="Are your periods painful or symptomatic? If so, please explain"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Have you reached or are you approaching menopause? If so,
+            explain</mat-label
+          >
+          <input
+            matInput
+            formControlName="reachedMenopause"
+            placeholder="Have you reached or are you approaching menopause? If so, explain"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What is your birth control history?</mat-label>
+          <input
+            matInput
+            formControlName="birthControlHistory"
+            placeholder="What is your birth control history?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Do you experience any yeast infections or urinary tract infections?
+            If so, please explain</mat-label
+          >
+          <textarea
+            matInput
+            formControlName="infections"
+            placeholder="Do you experience any yeast infections or urinary tract infections? If so, please explain"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Medical</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>List all suppliments or medications</mat-label>
+          <textarea
+            matInput
+            formControlName="supplimentsOrMedications"
+            placeholder="List all suppliments or medications"
+          >
+          </textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Are you involved with any healers, helpers, or
+            therapies?</mat-label
+          >
+          <textarea
+            matInput
+            formControlName="healersOrTherapies"
+            placeholder="Are you involved with any healers, helpers, or therapies?"
+          >
+          </textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >What role do sports and exercise play in your life?</mat-label
+          >
+          <textarea
+            matInput
+            formControlName="sportsAndExercise"
+            placeholder="What role do sports and exercise play in your life?"
+          >
+          </textarea>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Food</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label
+            >Will your family and friends be supportive in your desire to make
+            food and/or lifestyle changes?</mat-label
+          >
+          <textarea
+            matInput
+            formControlName="peerSupport"
+            placeholder="Will your family and friends be supportive in your desire to make food and/or lifestyle changes?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-4">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Do you cook?</mat-label>
+          <input
+            matInput
+            formControlName="doYouCook"
+            placeholder="Do you cook?"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-8">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What percentage of food is home-cooked?</mat-label>
+          <input
+            matInput
+            formControlName="percentageHomeCooking"
+            placeholder="What percentage of food is home-cooked?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Where does your non-home-cooked food come from?</mat-label>
+          <input
+            matInput
+            formControlName="nonHomeCookedMeals"
+            placeholder="Where does your non-home-cooked food come from?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Occupation</mat-label>
+          <input
+            matInput
+            formControlName="occupation"
+            placeholder="Occupation"
+          />
+        </mat-form-field>
+      </div>
+      <div class="column flex-6">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>How may hours do you work per week?</mat-label>
+          <input
+            matInput
+            formControlName="hoursWorkPerWeek"
+            placeholder="How may hours do you work per week?"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <div class="row">
+          <div class="column table-label">
+            What foods did you eat as a child?
+          </div>
+        </div>
+        <div class="row">
+          <div class="table-column">Breakfast</div>
+          <div class="table-column">Lunch</div>
+          <div class="table-column">Dinner</div>
+          <div class="table-column">Snacks</div>
+          <div class="table-column">Liquids</div>
+        </div>
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietBreakfast1"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLunch1"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietDinner1"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietSnacks1"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLiquids1"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietBreakfast2"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLunch2"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietDinner2"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietSnacks2"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLiquids2"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietBreakfast3"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLunch3"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietDinner3"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietSnacks3"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="childhoodDietLiquids3"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="column flex-12">
+        <div class="row">
+          <div class="column table-label">
+            What foods fo you typically eat these days?
+          </div>
+        </div>
+        <div class="row">
+          <div class="table-column">Breakfast</div>
+          <div class="table-column">Lunch</div>
+          <div class="table-column">Dinner</div>
+          <div class="table-column">Snacks</div>
+          <div class="table-column">Liquids</div>
+        </div>
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietBreakfast1"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLunch1"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietDinner1"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietSnacks1"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLiquids1"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietBreakfast2"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLunch2"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietDinner2"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietSnacks2"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLiquids2"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietBreakfast3"
+                placeholder="Breakfast"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLunch3"
+                placeholder="Lunch"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietDinner3"
+                placeholder="Dinner"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietSnacks3"
+                placeholder="Snacks"
+              />
+            </mat-form-field>
+          </div>
+          <div class="table-column">
+            <mat-form-field class="form-field" appearance="outline">
+              <input
+                matInput
+                formControlName="currentDietLiquids3"
+                placeholder="Liquids"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Do you crave sugar, coffee, or cigarettes? Do you have any other major addictions?</mat-label>
+          <textarea
+            matInput
+            formControlName="addictions"
+            placeholder="Do you crave sugar, coffee, or cigarettes? Do you have any other major addictions?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>What is the most important thing you should change about your diet to improve your health?</mat-label>
+          <textarea
+            matInput
+            formControlName="priorityDietChange"
+            placeholder="What is the most important thing you should change about your diet to improve your health?"
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title class="card-title">Additional Comments</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="row">
+      <div class="column flex-12">
+        <mat-form-field class="form-field" appearance="outline">
+          <mat-label>Is there anything else you would like to share?</mat-label>
+          <textarea
+            matInput
+            formControlName="additionalComments"
+            placeholder="Is there anything else you would like to share?"
+          ></textarea>
+        </mat-form-field>
+      </div>
     </mat-card-content>
   </mat-card>
 </form>

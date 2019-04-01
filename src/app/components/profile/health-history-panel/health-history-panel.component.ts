@@ -53,7 +53,70 @@ export class HealthHistoryPanelComponent {
       mothersHealth: [""],
       fathersHealth: [""],
       ancestry: [""],
-      bloodType: [""]
+      bloodType: [""],
+      sleepQuality: [""],
+      sleepDuration: [""],
+      sleepWaking: [""],
+      painStiffnessOrSwelling: [""],
+      digestiveHealth: [""],
+      allergiesOrSensitivities: [""],
+
+      periodsRegular: [""],
+      flowDays: [""],
+      periodFreq: [""],
+      periodPains: [""],
+      reachedMenopause: [""],
+      birthControlHistory: [""],
+      infections: [""],
+
+      supplimentsOrMedications: [""],
+      healersOrTherapies: [""],
+      sportsAndExercise: [""],
+
+      peerSupport: [""],
+      doYouCook: [""],
+      percentageHomeCooking: [""],
+      nonHomeCookedMeals: [""],
+
+      childhoodDietBreakfast1: [""],
+      childhoodDietLunch1: [""],
+      childhoodDietDinner1: [""],
+      childhoodDietSnacks1: [""],
+      childhoodDietLiquids1: [""],
+
+      childhoodDietBreakfast2: [""],
+      childhoodDietLunch2: [""],
+      childhoodDietDinner2: [""],
+      childhoodDietSnacks2: [""],
+      childhoodDietLiquids2: [""],
+
+      childhoodDietBreakfast3: [""],
+      childhoodDietLunch3: [""],
+      childhoodDietDinner3: [""],
+      childhoodDietSnacks3: [""],
+      childhoodDietLiquids3: [""],
+
+      currentDietBreakfast1: [""],
+      currentDietLunch1: [""],
+      currentDietDinner1: [""],
+      currentDietSnacks1: [""],
+      currentDietLiquids1: [""],
+
+      currentDietBreakfast2: [""],
+      currentDietLunch2: [""],
+      currentDietDinner2: [""],
+      currentDietSnacks2: [""],
+      currentDietLiquids2: [""],
+
+      currentDietBreakfast3: [""],
+      currentDietLunch3: [""],
+      currentDietDinner3: [""],
+      currentDietSnacks3: [""],
+      currentDietLiquids3: [""],
+
+      addictions: [""],
+      priorityDietChange: [""],
+      additionalComments: [""]
     });
 
     await this.loadUser();

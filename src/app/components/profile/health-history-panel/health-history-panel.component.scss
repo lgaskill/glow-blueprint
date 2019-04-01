@@ -58,3 +58,23 @@
 .flex-12 {
   width: 100%;
 }
+
+textarea {
+  min-height: 50px;
+}
+
+.table-column {
+  flex-direction: column;
+  font-family: typewriter;
+  width: calc(20% - 8px);
+  margin: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.table-label {
+  font-family: typewriter;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 16px;
+}
