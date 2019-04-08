@@ -11,6 +11,7 @@ import { LoginViewComponent } from "./components/login-view/login-view.component
 import { AdminGuard } from "./guards/admin.guard";
 import { WorkViewComponent } from "./components/work-view/work-view.component";
 import { ProfileViewComponent } from "./components/profile/profile-view/profile-view.component";
+import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
   {
     path: "profile",
     component: ProfileViewComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    canDeactivate: [CanDeactivateGuard]
   },
   { path: "work-with-me", component: WorkViewComponent, pathMatch: "full" },
   {

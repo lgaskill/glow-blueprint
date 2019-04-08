@@ -27,10 +27,14 @@
         ></nav-menu-button>
         <span class="toolbar-text">{{ selectedTab.label }}</span>
       </mat-toolbar>
-      <contact-info-panel *ngIf="selectedTab.name === 'CONTACT_INFO'">
+      <contact-info-panel
+        [hidden]="selectedTab.name !== 'CONTACT_INFO'"
+        [(dirty)]="healthHistoryDirty"
+      >
       </contact-info-panel>
       <health-history-panel
-        *ngIf="selectedTab.name === 'HEALTH_HISTORY'"
+        [hidden]="selectedTab.name !== 'HEALTH_HISTORY'"
+        [(dirty)]="healthHistoryDirty"
       ></health-history-panel>
     </mat-sidenav-content>
   </mat-sidenav-container>

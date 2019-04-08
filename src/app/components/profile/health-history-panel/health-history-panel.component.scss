@@ -3,6 +3,16 @@
 .action-button {
   font-family: typewriter;
   margin-right: 16px !important;
+  font-size: 18px;
+  height: 48px;
+}
+
+.action-button-primary {
+  color: #fff;
+}
+
+.action-button-row {
+  margin: 16px;
 }
 
 .card {

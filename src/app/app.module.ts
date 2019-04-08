@@ -34,6 +34,7 @@ import { SubscribeDialogModule } from "./components/shared/subscribe-dialog/subs
 import { ProfileViewModule } from "./components/profile/profile-view/profile-view.module";
 import { ContactInfoPanelModule } from "./components/profile/contact-info-panel/contact-info-panel.module";
 import { HealthHistoryPanelModule } from "./components/profile/health-history-panel/health-history-panel.module";
+import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -80,6 +81,7 @@ export function configServiceFactory(service: ConfigService) {
     BlogService,
     AuthGuard,
     AdminGuard,
+    CanDeactivateGuard,
     AuthService,
     ConfigService,
     UserGroupService,

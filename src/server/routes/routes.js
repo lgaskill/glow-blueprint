@@ -7,6 +7,7 @@ const userGroupRoutes = require("./userGroupRoutes");
 const blogRoutes = require("./blogRoutes");
 const imageRoutes = require("./imageRoutes");
 const configRoutes = require("./configRoutes");
+const healthHistoryRoutes = require("./healthHistoryRoutes");
 
 const router = express.Router();
 
@@ -72,6 +73,29 @@ router.delete("/image/:id", auth.optional, auth.admin, imageRoutes.delete);
 router.get("/config", auth.optional, configRoutes.get);
 router.post("/config", auth.required, auth.admin, configRoutes.create);
 router.patch("/config/:id", auth.required, auth.admin, configRoutes.update);
+
+//
+// Health History
+//
+router.get(
+  "/health-history/:id",
+  auth.required,
+  auth.admin,
+  healthHistoryRoutes.getByUserId
+);
+router.get("/health-history", auth.required, healthHistoryRoutes.getByToken);
+router.post("/health-history", auth.required, healthHistoryRoutes.create);
+router.patch(
+  "/health-history/:id",
+  auth.required,
+  auth.admin,
+  healthHistoryRoutes.updateById
+);
+router.patch(
+  "/health-history",
+  auth.required,
+  healthHistoryRoutes.updateByToken
+);
 
 //
 // Misc

@@ -1,7 +1,6 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
-import { AuthService } from "src/app/services/auth.service";
 import { ApiService } from "src/app/services/api.service";
 
 @Component({
@@ -12,13 +11,20 @@ import { ApiService } from "src/app/services/api.service";
 export class ContactInfoPanelComponent {
   user: User;
   form: FormGroup;
+  isDirty: boolean = false;
+
+  @Input() dirty() {
+    return this.isDirty;
+  }
+  @Output() dirtyChange: EventEmitter<boolean>;
 
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    private authService: AuthService,
     private apiService: ApiService
-  ) {}
+  ) {
+    this.dirtyChange = new EventEmitter();
+  }
 
   async ngOnInit() {
     this.form = this.formBuilder.group({
@@ -26,6 +32,14 @@ export class ContactInfoPanelComponent {
       lastName: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       username: ["", Validators.required]
+    });
+
+    // Flip the dirty bit on form value change
+    this.form.valueChanges.subscribe(() => {
+      if (this.isDirty != this.form.dirty) {
+        this.isDirty = this.form.dirty;
+        this.dirtyChange.emit(this.isDirty);
+      }
     });
 
     await this.loadUser();
@@ -55,6 +69,10 @@ export class ContactInfoPanelComponent {
       lastName: this.user.lastName || "",
       email: this.user.email || ""
     });
+
+    // Clear the dirty bit
+    this.isDirty = false;
+    this.dirtyChange.emit(this.isDirty);
   }
 
   onCancel() {

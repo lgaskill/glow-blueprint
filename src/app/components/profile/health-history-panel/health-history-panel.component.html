@@ -561,27 +561,6 @@
         </mat-form-field>
       </div>
 
-      <div class="column flex-6">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Occupation</mat-label>
-          <input
-            matInput
-            formControlName="occupation"
-            placeholder="Occupation"
-          />
-        </mat-form-field>
-      </div>
-      <div class="column flex-6">
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>How may hours do you work per week?</mat-label>
-          <input
-            matInput
-            formControlName="hoursWorkPerWeek"
-            placeholder="How may hours do you work per week?"
-          />
-        </mat-form-field>
-      </div>
-
       <div class="column flex-12">
         <div class="row">
           <div class="column table-label">
@@ -900,7 +879,10 @@
 
       <div class="column flex-12">
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Do you crave sugar, coffee, or cigarettes? Do you have any other major addictions?</mat-label>
+          <mat-label
+            >Do you crave sugar, coffee, or cigarettes? Do you have any other
+            major addictions?</mat-label
+          >
           <textarea
             matInput
             formControlName="addictions"
@@ -911,7 +893,10 @@
 
       <div class="column flex-12">
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label>What is the most important thing you should change about your diet to improve your health?</mat-label>
+          <mat-label
+            >What is the most important thing you should change about your diet
+            to improve your health?</mat-label
+          >
           <textarea
             matInput
             formControlName="priorityDietChange"
@@ -941,14 +926,17 @@
   </mat-card>
 </form>
 
-<button mat-stroked-button (click)="onCancel()" class="action-button">
-  Cancel
-</button>
-<button
-  mat-raised-button
-  color="primary"
-  (click)="onSave()"
-  class="action-button"
->
-  Save
-</button>
+<mat-divider></mat-divider>
+<div class="action-button-row">
+  <button mat-stroked-button (click)="onCancel()" class="action-button">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSave()"
+    class="action-button action-button-primary"
+  >
+    Save
+  </button>
+</div>
