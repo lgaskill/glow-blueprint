@@ -2,6 +2,10 @@ const UserGroupModel = require("../models/userGroup");
 const request = require("request");
 
 const MC_API_KEY = process.env.MC_API_KEY;
+
+TODO: create endpoint to add / tag subscribter
+TODO: Store mailchimp subsciber id on users
+
 /**
  * Subscribe email address to mail chimp list
  * @param id list id

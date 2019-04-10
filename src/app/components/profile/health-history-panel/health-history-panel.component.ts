@@ -13,10 +13,14 @@ export class HealthHistoryPanelComponent {
   healthHistory: any = {};
   form: FormGroup;
 
+  @Input() showActions: boolean = true;
+
   @Input() dirty() {
     return this.isDirty;
   }
   @Output() dirtyChange: EventEmitter<boolean>;
+
+
 
   constructor(
     private formBuilder: FormBuilder,

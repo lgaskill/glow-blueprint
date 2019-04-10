@@ -14,6 +14,8 @@ export class CustomViewComponent {
   configFieldId: string;
   @Input()
   viewTitle: string;
+  @Input()
+  appBarCollapsed: boolean = false;
 
   form: FormGroup;
   body: string = "";
@@ -63,6 +65,6 @@ export class CustomViewComponent {
     this.editable = false;
 
     // Show toast message
-    this.snackBar.open("Successfully Updated!");
+    this.snackBar.open("Successfully Updated!", "", { duration: 2000 });
   }
 }

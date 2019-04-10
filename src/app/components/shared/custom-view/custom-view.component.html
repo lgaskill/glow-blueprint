@@ -1,4 +1,4 @@
-<app-bar>
+<app-bar [collapsed]="true">
   <mat-toolbar class="title">
     {{ viewTitle }}
     <button
@@ -29,8 +29,13 @@
       <mat-icon class="edit-icon">save</mat-icon>
     </button>
   </mat-toolbar>
-  <form [formGroup]="form">
-    <div *ngIf="isAdmin && editable" class="content">
+
+  <div class="title-actions">
+    <ng-content></ng-content>
+  </div>
+
+  <form *ngIf="isAdmin && editable" [formGroup]="form">
+    <div class="content">
       <quill-editor class="editor" formControlName="editor"></quill-editor>
     </div>
   </form>

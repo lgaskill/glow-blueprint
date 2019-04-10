@@ -926,8 +926,8 @@
   </mat-card>
 </form>
 
-<mat-divider></mat-divider>
-<div class="action-button-row">
+<mat-divider *ngIf="showActions"></mat-divider>
+<div *ngIf="showActions" class="action-button-row">
   <button mat-stroked-button (click)="onCancel()" class="action-button">
     Cancel
   </button>

@@ -1,14 +1,14 @@
-@import "~@angular/material/theming";
 @import "../../../assets/styles/app-theme.scss";
 
 $break-small: 800px;
 
 .title {
-  color: mat-color($app-accent, 200);
+  color: mat-color($app-accent, 300);
   text-align: center;
   margin-top: 16px;
-  font-size: 64px;
+  font-size: 84px;
   font-family: lemonTuesday;
+  line-height: 140px;
 }
 
 .typewriter {

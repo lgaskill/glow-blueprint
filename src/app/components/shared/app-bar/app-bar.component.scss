@@ -20,6 +20,7 @@ $break-small: 800px;
 .app-bar-collapsed {
   align-items: start;
   background-color: #e69aa8c7;
+  z-index: 999;
 
   @media only screen and (max-width: 800px) {
     padding-left: 0;
@@ -66,7 +67,7 @@ $break-small: 800px;
 }
 
 .app-content-wrapper {
-  background-color: #eceaea;
+  background-color: #fff;
   flex-direction: column;
 
   @media only screen and (max-width: 800px) {
@@ -123,7 +124,8 @@ $break-small: 800px;
 }
 
 .drawer-container {
-  background-color: #eceaea;
+  background-color: #fff;
+  height: 100%;
 }
 
 .drawer-content {

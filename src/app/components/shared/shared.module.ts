@@ -18,7 +18,9 @@ import {
   MatExpansionModule,
   MatSelectModule,
   MatMenuModule,
-  MatDividerModule
+  MatDividerModule,
+  MatStepperModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 import { CommonModule } from "@angular/common";
 import { TimeFromNowPipe } from "src/app/pipes/time-from-now.pipe";
@@ -50,6 +52,8 @@ const sharedModules = [
   MatSelectModule,
   MatMenuModule,
   MatDividerModule,
+  MatStepperModule,
+  MatProgressSpinnerModule,
 
   DropzoneModule
 ];

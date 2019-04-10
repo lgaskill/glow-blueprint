@@ -1,0 +1,47 @@
+<app-bar [collapsed]="true">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step label="Registration" [completed]="registrationComplete">
+      <div *ngIf="showSpinner" class="spinner-container">
+        <mat-spinner diameter="275" strokeWidth="12"></mat-spinner>
+      </div>
+      <div class="step-title-big">Register</div>
+      <div class="button-container">
+        <button
+          mat-raised-button
+          class="fancy-button"
+          (click)="onCreateAccount()"
+        >
+          Create Account
+        </button>
+      </div>
+      <div class="button-container">
+        <button mat-button (click)="onLogin()">Sign In</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Health History" [completed]="healthHistoryComplete">
+      <div class="no-margin">
+        <div class="step-title">Health History</div>
+        <health-history-panel
+          *ngIf="registrationComplete"
+          [showActions]="false"
+        ></health-history-panel>
+        <mat-divider></mat-divider>
+        <div class="action-button-row">
+          <button
+            mat-raised-button
+            (click)="onHealthHistorySave()"
+            class="fancy-button"
+          >
+            Save and Continue
+          </button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step
+      label="Payment / Confirmation"
+      [completed]="paymentComplete"
+    ></mat-step>
+  </mat-horizontal-stepper>
+</app-bar>

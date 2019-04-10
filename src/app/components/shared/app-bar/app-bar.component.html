@@ -21,6 +21,11 @@
         >Work With Me</a
       >
     </div>
+    <div class="side-nav-button-wrapper">
+      <a mat-button class="toolbar-button" [routerLink]="['/group-enrollment']"
+        >Group Enrollment</a
+      >
+    </div>
     <div
       *ngIf="currentUser && currentUser.isAdmin"
       class="side-nav-button-wrapper"
@@ -122,6 +127,13 @@
             class="toolbar-button"
             [routerLink]="['/work-with-me']"
             >Work With Me</a
+          >
+          <a
+            *ngIf="screenWidth > 800"
+            mat-button
+            class="toolbar-button"
+            [routerLink]="['/group-enrollment']"
+            >Group Enrollment</a
           >
           <a
             *ngIf="screenWidth > 800 && currentUser && currentUser.isAdmin"

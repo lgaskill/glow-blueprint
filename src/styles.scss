@@ -3,16 +3,6 @@
 @import "quill/dist/quill.snow.css";
 @import "./assets/styles/app-theme.scss";
 
-@include mat-core();
-
-// $app-primary: mat-palette($mat-pink, 200);
-// $app-accent: mat-palette($mat-light-green, 200);
-// $app-warn: mat-palette($mat-red);
-
-// $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
-
-// @include angular-material-theme($app-theme);
-
 @font-face {
   font-family: lemonTuesday;
   src: url(assets/fonts/lemon_tuesday.otf) format("opentype");
@@ -23,7 +13,12 @@
   src: url(assets/fonts/typewriter.otf) format("opentype");
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
-  background-color: #eceaea;
+  background-color: #fff;
 }

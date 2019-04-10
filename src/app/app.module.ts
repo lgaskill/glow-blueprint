@@ -35,6 +35,8 @@ import { ProfileViewModule } from "./components/profile/profile-view/profile-vie
 import { ContactInfoPanelModule } from "./components/profile/contact-info-panel/contact-info-panel.module";
 import { HealthHistoryPanelModule } from "./components/profile/health-history-panel/health-history-panel.module";
 import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
+import { GroupEnrollmentViewModule } from "./components/group-enrollment-view/group-enrollment-view.module";
+import { GroupEnrollmentRegistrationViewModule } from "./components/group-enrollment-registration-view/group-enrollment-registration-view.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -73,7 +75,9 @@ export function configServiceFactory(service: ConfigService) {
     SubscribeDialogModule,
     ProfileViewModule,
     ContactInfoPanelModule,
-    HealthHistoryPanelModule
+    HealthHistoryPanelModule,
+    GroupEnrollmentViewModule,
+    GroupEnrollmentRegistrationViewModule
   ],
   exports: [],
   providers: [
