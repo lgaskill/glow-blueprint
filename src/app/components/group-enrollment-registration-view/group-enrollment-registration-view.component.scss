@@ -43,15 +43,17 @@
 }
 
 .spinner-container {
-  position: absolute;
-  left: 0;
-  right: 0;
   justify-content: center;
   display: flex;
-  top: 112px;
+  height: 16px;
 }
 
 .action-button-row {
   margin-top: 16px;
   text-align: center;
+}
+
+.checkout-step-content {
+  text-align: center;
+  margin: 16px;
 }

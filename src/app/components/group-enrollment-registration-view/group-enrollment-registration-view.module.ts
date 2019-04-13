@@ -3,9 +3,10 @@ import { GroupEnrollmentRegistrationViewComponent } from "./group-enrollment-reg
 import { SharedModule } from "../shared/shared.module";
 import { AppBarModule } from "../shared/app-bar/app-bar.module";
 import { HealthHistoryPanelModule } from "../profile/health-history-panel/health-history-panel.module";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
-  imports: [SharedModule, AppBarModule, HealthHistoryPanelModule],
+  imports: [SharedModule, RouterModule, AppBarModule, HealthHistoryPanelModule],
   declarations: [GroupEnrollmentRegistrationViewComponent],
   providers: []
 })

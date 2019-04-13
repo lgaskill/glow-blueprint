@@ -20,8 +20,6 @@ export class HealthHistoryPanelComponent {
   }
   @Output() dirtyChange: EventEmitter<boolean>;
 
-
-
   constructor(
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
@@ -81,9 +79,9 @@ export class HealthHistoryPanelComponent {
   async onSave() {
     if (!this.form.valid) {
       this.snackBar.open(
-        "Whoops, looks like one or more answers are missing or invalid :/",
+        "Whoops, looks like one or more answers are missing or invalid",
         "",
-        { duration: 2000 }
+        { duration: 5000 }
       );
       return;
     }
@@ -109,7 +107,10 @@ export class HealthHistoryPanelComponent {
 
     await this.loadHealthHistory();
 
-    this.snackBar.open("Successfully Saved Changes :)", "", { duration: 2000 });
+    this.snackBar.open("Successfully Saved Health History", "", {
+      duration: 2000
+    });
+    return true;
   }
 }
 

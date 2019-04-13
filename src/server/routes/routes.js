@@ -8,6 +8,8 @@ const blogRoutes = require("./blogRoutes");
 const imageRoutes = require("./imageRoutes");
 const configRoutes = require("./configRoutes");
 const healthHistoryRoutes = require("./healthHistoryRoutes");
+const emailRoutes = require("./emailRoutes");
+const paypalRoutes = require("./paypalRoutes");
 
 const router = express.Router();
 
@@ -28,7 +30,6 @@ router.patch("/user", auth.required, userRoutes.updateByToken);
 //
 // User Groups
 //
-router.post("/subscribe_mc/:id", auth.optional, userGroupRoutes.mc_subscribe);
 router.get("/user_group", auth.required, auth.admin, userGroupRoutes.getAll);
 router.get(
   "/user_group/:id",
@@ -95,6 +96,24 @@ router.patch(
   "/health-history",
   auth.required,
   healthHistoryRoutes.updateByToken
+);
+
+//
+// Email
+//
+router.post("/subscribe_mc/:id", auth.optional, emailRoutes.mc_subscribe);
+router.post("/add_tag_mc", auth.optional, emailRoutes.mc_tag);
+
+//
+// PayPal
+//
+router.post("/pay", auth.required, paypalRoutes.pay);
+router.post("/execute-payment", auth.required, paypalRoutes.execute);
+router.post(
+  "/merch_item",
+  auth.required,
+  auth.admin,
+  paypalRoutes.createMerchItem
 );
 
 //
