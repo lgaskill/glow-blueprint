@@ -12,17 +12,17 @@ export class InstagramPanelComponent {
   constructor() {}
 
   recentImageKeys: string[] = [
-    "BsoRZvZjqXA",
-    "BsoMUA4DmeD",
-    "BsggnQnjY9P",
-    "BsdQxUnj17i",
-    "Bsa1OYaD3-1",
-    "BsZdHNxj91A",
-    "BsYJWI1DWOW",
-    "BsViLIWjofP",
-    "BsOW3viD70H",
-    "BsOGeCFDEEV",
-    "BsL2TOAjYXZ",
-    "BsJVRRADiWs"
+    "BwJ6sLbg2ss",
+    "BwH--AxgAIe",
+    "BwEzoDJA25_",
+    "BwA-wiNgV0q",
+    "Bv_mVOYAYq6",
+    "Bv9Ho4xghrv",
+    "Bv7Nyo5gXJA",
+    "Bv4vwVXgIAn",
+    "Bv2H2YTgRUv",
+    "BvywLB9gzJv",
+    "BvwLEpOAhv1",
+    "BvtlsDwgzNT"
   ];
 }

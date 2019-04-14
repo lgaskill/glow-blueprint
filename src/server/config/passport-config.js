@@ -11,7 +11,8 @@ passport.use(
       passwordField: "password"
     },
     (username, password, done) => {
-      UserModel.findOne({ username })
+      // Match on the username OR email
+      UserModel.findOne({ $or: [{ username }, { email: username }] })
         .then(user => {
           if (!user || !user.validatePassword(password)) {
             return done(null, false, {

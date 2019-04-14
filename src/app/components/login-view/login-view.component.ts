@@ -1,10 +1,5 @@
 import { Component, Inject } from "@angular/core";
-import {
-  FormControl,
-  Validators,
-  FormGroup,
-  FormBuilder
-} from "@angular/forms";
+import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { AuthService } from "src/app/services/auth.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import {
@@ -62,12 +57,14 @@ export class LoginViewComponent {
 
     try {
       await this.authService.login(username, password);
-      this.router.navigate([this.returnUrl]);
     } catch (err) {
       this.snackBar.open("Invalid username and/or password", "", {
         duration: 2000
       });
+      return;
     }
+
+    this.router.navigate([this.returnUrl]);
   }
 
   onCreateAccount() {

@@ -1,5 +1,5 @@
 <app-bar>
-  <scroll-animation direction="left">
+  <scroll-animation direction="right">
     <div class="story-card-wrapper">
       <mat-card class="story-card-full">
         <mat-card-content class="story-card-content">
@@ -17,6 +17,26 @@
           </div>
         </mat-card-content>
       </mat-card>
+    </div>
+  </scroll-animation>
+
+  <scroll-animation direction="left">
+    <div
+      matRipple
+      [matRippleUnbounded]="false"
+      [matRippleCentered]="true"
+      [routerLink]="['/group-enrollment']"
+      class="story-card-wrapper story-card-clickable"
+    >
+      <mat-card class="story-card">
+        <mat-card-title class="story-card-title">
+          <div class="story-card-title-button-sm">
+            Radical Whole Transformation
+          </div>
+          <div class="story-card-title-subtext">Group Program</div>
+        </mat-card-title>
+      </mat-card>
+      <div class="story-card-img story-card-img-ge"></div>
     </div>
   </scroll-animation>
 

@@ -1,6 +1,4 @@
-@import "~@angular/material/theming";
-
-$break-small: 800px;
+@import "../../../assets/styles/app-theme.scss";
 
 .lemon-tuesday-accent {
   font-family: lemonTuesday;
@@ -56,6 +54,10 @@ $break-small: 800px;
   width: 60%;
 }
 
+.story-card-img-ge {
+  background-image: url("../../../assets/images/group-enrollment.jpg");
+}
+
 .story-card-img-story {
   background-image: url("../../../assets/images/family-1.jpg");
 }
@@ -76,6 +78,7 @@ $break-small: 800px;
 .story-card-title {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .story-card-title-button {
@@ -85,6 +88,25 @@ $break-small: 800px;
   margin-top: 8px;
   padding: 24px;
   white-space: pre-line;
+  line-height: 56px;
+  text-align: center;
+}
+
+.story-card-title-button-sm {
+  font-family: lemonTuesday;
+  font-size: 48px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  white-space: pre-line;
+  line-height: 56px;
+  text-align: center;
+}
+
+.story-card-title-subtext {
+  color: mat-color($app-accent, 300);
+  margin-top: 8px;
+  white-space: pre-line;
+  text-align: center;
 }
 
 .story-card-wrapper {
@@ -101,5 +123,9 @@ $break-small: 800px;
 
   .story-card-title-button {
     font-size: 36px;
+  }
+
+  .story-card-title-button-sm {
+    font-size: 24px;
   }
 }

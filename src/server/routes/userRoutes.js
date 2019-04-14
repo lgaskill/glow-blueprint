@@ -25,7 +25,7 @@ exports.authenticate = async (req, res, next) => {
         return res.json({ user: user.toAuthJSON() });
       }
 
-      return status(400).info;
+      res.status(401).send("Authorization Failed");
     }
   )(req, res, next);
 };
