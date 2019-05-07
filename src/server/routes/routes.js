@@ -3,7 +3,6 @@ const express = require("express");
 const auth = require("../services/auth");
 
 const userRoutes = require("./userRoutes");
-const userGroupRoutes = require("./userGroupRoutes");
 const blogRoutes = require("./blogRoutes");
 const imageRoutes = require("./imageRoutes");
 const configRoutes = require("./configRoutes");
@@ -26,31 +25,6 @@ router.post("/authenticate", auth.optional, userRoutes.authenticate);
 router.get("/user", auth.required, userRoutes.getByToken);
 router.post("/user", auth.optional, userRoutes.create);
 router.patch("/user", auth.required, userRoutes.updateByToken);
-
-//
-// User Groups
-//
-router.get("/user_group", auth.required, auth.admin, userGroupRoutes.getAll);
-router.get(
-  "/user_group/:id",
-  auth.required,
-  auth.admin,
-  userGroupRoutes.getById
-);
-router.post("/user_group", auth.required, auth.admin, userGroupRoutes.create);
-router.patch(
-  "/user_group/:id",
-  auth.required,
-  auth.admin,
-  userGroupRoutes.update
-);
-router.delete("/user_group", auth.required, auth.admin, userGroupRoutes.delete);
-router.put("/user_group/add/:id", auth.optional, userGroupRoutes.addValue);
-router.put(
-  "/user_group/remove/:id",
-  auth.optional,
-  userGroupRoutes.removeValue
-);
 
 //
 // Blog

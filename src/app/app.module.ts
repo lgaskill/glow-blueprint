@@ -12,7 +12,6 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HomeModule } from "./components/home/home.module";
 import { SharedModule } from "./components/shared/shared.module";
 import { BlogViewModule } from "./components/blog-view/blog-view.module";
-import { CoachingViewModule } from "./components/coaching-view/coaching-view.module";
 import { MyStoryViewModule } from "./components/my-story-view/my-story-view.module";
 import { BlogService } from "./services/blog.service";
 import { ApiService } from "./services/api.service";
@@ -28,15 +27,15 @@ import { environment } from "src/environments/environment";
 import { Constants } from "./config/constants";
 import { AdminGuard } from "./guards/admin.guard";
 import { ConfigService } from "./services/config.service";
-import { WorkViewModule } from "./components/work-view/work-view.module";
-import { UserGroupService } from "./services/userGroup.service";
+import { UserService } from "./services/user.service";
 import { SubscribeDialogModule } from "./components/shared/subscribe-dialog/subscribe-dialog.module";
 import { ProfileViewModule } from "./components/profile/profile-view/profile-view.module";
 import { ContactInfoPanelModule } from "./components/profile/contact-info-panel/contact-info-panel.module";
 import { HealthHistoryPanelModule } from "./components/profile/health-history-panel/health-history-panel.module";
 import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
-import { GroupEnrollmentViewModule } from "./components/group-enrollment-view/group-enrollment-view.module";
 import { GroupEnrollmentRegistrationViewModule } from "./components/group-enrollment-registration-view/group-enrollment-registration-view.module";
+import { UserListModule } from "./components/admin/user-list/user-list.module";
+import { WorkWithMeViewModule } from "./components/work-with-me-view/work-with-me-view.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -65,19 +64,18 @@ export function configServiceFactory(service: ConfigService) {
     SharedModule,
     HomeModule,
     BlogViewModule,
-    CoachingViewModule,
     MyStoryViewModule,
     BlogListModule,
     BlogPostViewModule,
     AdminViewModule,
     LoginViewModule,
-    WorkViewModule,
     SubscribeDialogModule,
     ProfileViewModule,
     ContactInfoPanelModule,
     HealthHistoryPanelModule,
-    GroupEnrollmentViewModule,
-    GroupEnrollmentRegistrationViewModule
+    GroupEnrollmentRegistrationViewModule,
+    UserListModule,
+    WorkWithMeViewModule
   ],
   exports: [],
   providers: [
@@ -88,7 +86,7 @@ export function configServiceFactory(service: ConfigService) {
     CanDeactivateGuard,
     AuthService,
     ConfigService,
-    UserGroupService,
+    UserService,
     {
       provide: APP_INITIALIZER,
       useFactory: configServiceFactory,

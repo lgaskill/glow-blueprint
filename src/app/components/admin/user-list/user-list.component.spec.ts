@@ -1,20 +1,20 @@
 import { TestBed, async } from "@angular/core/testing";
-import { WorkViewComponent } from "./work-view.component";
-describe("WorkViewComponent", () => {
+import { UserListComponent } from "./user-list.component";
+describe("UserListComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WorkViewComponent]
+      declarations: [UserListComponent]
     }).compileComponents();
   }));
 
   it("should create the component", async(() => {
-    const fixture = TestBed.createComponent(WorkViewComponent);
+    const fixture = TestBed.createComponent(UserListComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
   it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(WorkViewComponent);
+    const fixture = TestBed.createComponent(UserListComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual("app");
   }));

@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges
+} from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
 import { ApiService } from "src/app/services/api.service";
@@ -9,9 +15,14 @@ import { ApiService } from "src/app/services/api.service";
   styleUrls: ["./contact-info-panel.component.scss"]
 })
 export class ContactInfoPanelComponent {
-  user: User;
   form: FormGroup;
   isDirty: boolean = false;
+
+  @Input()
+  isAdmin: boolean = false;
+
+  @Input()
+  user: User;
 
   @Input() dirty() {
     return this.isDirty;
@@ -45,6 +56,13 @@ export class ContactInfoPanelComponent {
     await this.loadUser();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // Update form fields on user changes
+    if (this.isAdmin && changes.user && !changes.user.firstChange) {
+      this.loadUser();
+    }
+  }
+
   getEmailErrorMessage() {
     return this.form.controls.email.hasError("email")
       ? "Not a valid email"
@@ -52,11 +70,14 @@ export class ContactInfoPanelComponent {
   }
 
   async loadUser() {
-    try {
-      this.user = await this.apiService.get("/user");
-    } catch (err) {
-      console.log(err);
-      return;
+    // Don't reload the user when the admin flag is set
+    if (!this.isAdmin) {
+      try {
+        this.user = await this.apiService.get("/user");
+      } catch (err) {
+        console.log(err);
+        return;
+      }
     }
 
     this.updateFormData();
@@ -83,6 +104,8 @@ export class ContactInfoPanelComponent {
     if (!this.form.valid) {
       return;
     }
+
+    // TODO: Admin stuff??
 
     try {
       await this.apiService.patch("/user", {

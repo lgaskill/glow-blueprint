@@ -28,12 +28,12 @@
         <span class="toolbar-text">{{ selectedTab.label }}</span>
       </mat-toolbar>
       <contact-info-panel
-        [hidden]="selectedTab.name !== 'CONTACT_INFO'"
+        [hidden]="selectedTab.name !== 'contact-info'"
         [(dirty)]="healthHistoryDirty"
       >
       </contact-info-panel>
       <health-history-panel
-        [hidden]="selectedTab.name !== 'HEALTH_HISTORY'"
+        [hidden]="selectedTab.name !== 'health-history'"
         [(dirty)]="healthHistoryDirty"
       ></health-history-panel>
     </mat-sidenav-content>

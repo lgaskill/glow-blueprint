@@ -40,14 +40,20 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-stroked-button (click)="onCancel()" class="action-button">
+    <button
+      mat-stroked-button
+      (click)="onCancel()"
+      [disabled]="!isDirty"
+      class="action-button"
+    >
       Cancel
     </button>
     <button
       mat-raised-button
       color="primary"
       (click)="onSave()"
-      class="action-button"
+      [disabled]="!isDirty"
+      class="action-button save-button"
     >
       Save
     </button>

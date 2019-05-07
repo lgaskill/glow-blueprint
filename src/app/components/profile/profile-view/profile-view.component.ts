@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ComponentCanDeactivate } from "src/app/guards/component-can-deactivate";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "profile-view",
@@ -9,11 +10,11 @@ import { ComponentCanDeactivate } from "src/app/guards/component-can-deactivate"
 export class ProfileViewComponent extends ComponentCanDeactivate {
   tabs: any[] = [
     {
-      name: "CONTACT_INFO",
+      name: "contact-info",
       label: "Contact Info"
     },
     {
-      name: "HEALTH_HISTORY",
+      name: "health-history",
       label: "Health History"
     }
   ];
@@ -22,7 +23,22 @@ export class ProfileViewComponent extends ComponentCanDeactivate {
   contactInfoDirty: boolean = false;
   healthHistoryDirty: boolean = false;
 
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    super();
+  }
+
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      // Initialize tab selection from query params
+      const selectedTab = params["selectedTab"];
+      if (selectedTab) {
+        const tab = this.tabs.find(t => t.name === selectedTab);
+        if (tab) {
+          this.selectedTab = tab;
+        }
+      }
+    });
+
     // Initialize the sidnav as Shown for large screens
     if (window.innerWidth > 600) {
       setTimeout(() => {
@@ -42,5 +58,7 @@ export class ProfileViewComponent extends ComponentCanDeactivate {
     if (window.innerWidth < 600) {
       this.sidenavOpened = false;
     }
+
+    this.router.navigate([`/profile/${selectedTab.name}`]);
   }
 }

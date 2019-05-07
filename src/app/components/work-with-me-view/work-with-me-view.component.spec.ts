@@ -1,20 +1,18 @@
 import { TestBed, async } from "@angular/core/testing";
-import { GroupEnrollmentViewComponent } from "./group-enrollment-view.component";
-describe("GroupEnrollmentViewComponent", () => {
+import { WorkWithMeViewComponent } from "./work-with-me-view.component";
+describe("WorkWithMeViewComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GroupEnrollmentViewComponent]
+      declarations: [WorkWithMeViewComponent]
     }).compileComponents();
   }));
-
   it("should create the component", async(() => {
-    const fixture = TestBed.createComponent(GroupEnrollmentViewComponent);
+    const fixture = TestBed.createComponent(WorkWithMeViewComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-
   it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(GroupEnrollmentViewComponent);
+    const fixture = TestBed.createComponent(WorkWithMeViewComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual("app");
   }));

@@ -66,4 +66,8 @@ export class SubscribeDialogComponent {
 
     this.dialogRef.close({ subscribed: true });
   }
+
+  onOptOut() {
+    this.dialogRef.close({ subscribed: true });
+  }
 }

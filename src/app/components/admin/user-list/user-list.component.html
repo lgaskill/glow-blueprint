@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="list-wrapper">
+    <mat-nav-list class="list">
+      <mat-list-item
+        *ngFor="let user of users"
+        [ngClass]="{
+          'list-item-selected': !!selectedUser && user._id === selectedUser._id
+        }"
+        (click)="onSelectionChange(user)"
+      >
+        <h4 mat-line>{{ user.firstName }} {{ user.lastName }}</h4>
+        <p mat-line>{{ user.email }}</p>
+      </mat-list-item>
+    </mat-nav-list>
+  </div>
+  <div class="details-wrapper">
+    <mat-tab-group>
+      <mat-tab label="Contact Info">
+        <contact-info-panel
+          *ngIf="selectedUser"
+          [isAdmin]="true"
+          [user]="selectedUser"
+        >
+        </contact-info-panel
+      ></mat-tab>
+      <mat-tab label="Health History"> Content 2 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

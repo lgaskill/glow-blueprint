@@ -1,0 +1,139 @@
+@import "../../../assets/styles/app-theme.scss";
+
+.auto-height {
+  min-height: auto !important;
+}
+
+.lemon-tuesday-accent {
+  font-family: lemonTuesday;
+  font-size: 24px;
+}
+
+.story-highlight {
+  color: #b65b6f;
+  font-size: 24px;
+  margin: 48px 16px;
+  line-height: 36px;
+}
+
+.story-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 18px;
+  width: 40%;
+}
+
+.story-card-clickable {
+  cursor: pointer;
+  position: relative;
+
+  > :hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+.story-card-clickable:focus {
+  outline: none;
+}
+
+.story-card-full {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 18px;
+  width: 100%;
+}
+
+.story-card-content {
+  font-family: typewriter;
+  font-size: 16px;
+  text-align: center;
+  line-height: 26px;
+}
+
+.story-card-img {
+  flex-direction: column;
+  background-position: center;
+  background-size: cover;
+  width: 60%;
+}
+
+.story-card-img-health-hist {
+  background-image: url("../../../assets/images/health-history.jpg");
+}
+
+.story-card-img-group-coaching {
+  background-image: url("../../../assets/images/group-coaching.jpg");
+}
+
+.story-card-img-one-on-one-coaching {
+  background-image: url("../../../assets/images/one-on-one-coaching.jpg");
+}
+
+.story-card-title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.story-card-title-button {
+  font-family: lemonTuesday;
+  font-size: 48px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  padding: 24px;
+  white-space: pre-line;
+  line-height: 56px;
+  text-align: center;
+}
+
+.story-card-title-button-sm {
+  font-family: lemonTuesday;
+  font-size: 48px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  white-space: pre-line;
+  line-height: 56px;
+  text-align: center;
+}
+
+.story-card-title-subtext {
+  color: mat-color($app-accent, 300);
+  margin-top: 8px;
+  white-space: pre-line;
+  text-align: center;
+}
+
+.story-card-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 100;
+  min-height: 500px;
+}
+
+.title {
+  color: mat-color($app-accent, 300);
+  background-color: inherit;
+  font-family: lemonTuesday;
+  font-size: 5rem;
+  margin: 28px 0;
+  height: auto;
+  white-space: normal;
+  line-height: 120px;
+  text-align: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .story-card-content {
+    font-size: 18px;
+  }
+
+  .story-card-title-button {
+    font-size: 36px;
+  }
+
+  .story-card-title-button-sm {
+    font-size: 24px;
+  }
+}

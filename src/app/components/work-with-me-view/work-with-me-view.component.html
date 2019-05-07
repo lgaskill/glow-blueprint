@@ -1,6 +1,9 @@
-<app-bar>
+<app-bar [collapsed]="true">
+  <mat-toolbar class="title">
+    Work With Me
+  </mat-toolbar>
   <scroll-animation direction="right">
-    <div class="story-card-wrapper">
+    <div class="story-card-wrapper auto-height">
       <mat-card class="story-card-full">
         <mat-card-content class="story-card-content">
           <span class="lemon-tuesday-accent">Welcome, gorgeous.</span> I am so
@@ -11,10 +14,6 @@
           with knowledge that propels us toward our healthiest, most joy-filled
           lives through proper nutrition, enjoyable exercise, and balance in all
           aspects of life.
-          <div class="story-highlight">
-            Mama, let’s map out your personal blueprint to a life full of love,
-            joy, and that ever sought after “glow”.
-          </div>
         </mat-card-content>
       </mat-card>
     </div>
@@ -25,15 +24,17 @@
       matRipple
       [matRippleUnbounded]="false"
       [matRippleCentered]="true"
-      [routerLink]="['/blog']"
+      [routerLink]="['/profile/health-history']"
       class="story-card-wrapper story-card-clickable"
     >
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <div class="story-card-title-button">Blog</div>
+          <div class="story-card-title-button-sm">
+            Schedule Your Free Health History Call
+          </div>
         </mat-card-title>
       </mat-card>
-      <div class="story-card-img story-card-img-blog"></div>
+      <div class="story-card-img story-card-img-health-hist"></div>
     </div>
   </scroll-animation>
 
@@ -42,15 +43,13 @@
       matRipple
       [matRippleUnbounded]="false"
       [matRippleCentered]="true"
-      [routerLink]="['/work-with-me']"
+      [routerLink]="['/group-enrollment-registration']"
       class="story-card-wrapper story-card-clickable"
     >
-      <div class="story-card-img story-card-img-work-with-me"></div>
+      <div class="story-card-img story-card-img-group-coaching"></div>
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <button mat-button class="story-card-title-button">
-            Work With Me
-          </button>
+          <div class="story-card-title-button">Group Coaching</div>
         </mat-card-title>
       </mat-card>
     </div>
@@ -61,15 +60,18 @@
       matRipple
       [matRippleUnbounded]="false"
       [matRippleCentered]="true"
-      [routerLink]="['/my-story']"
+      [routerLink]="['/work-with-me']"
       class="story-card-wrapper story-card-clickable"
     >
       <mat-card class="story-card">
         <mat-card-title class="story-card-title">
-          <div class="story-card-title-button">My Story</div>
+          <div class="story-card-title-button-sm">
+            One-On-One Coaching
+          </div>
+          <div class="story-card-title-subtext">(3 or 6 Month)</div>
         </mat-card-title>
       </mat-card>
-      <div class="story-card-img story-card-img-story"></div>
+      <div class="story-card-img story-card-img-one-on-one-coaching"></div>
     </div>
   </scroll-animation>
 

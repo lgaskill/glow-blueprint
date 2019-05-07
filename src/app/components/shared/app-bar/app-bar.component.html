@@ -7,23 +7,13 @@
       <a mat-button class="toolbar-button" [routerLink]="['/blog']">Blog</a>
     </div>
     <div class="side-nav-button-wrapper">
-      <a mat-button class="toolbar-button" [routerLink]="['/coaching']"
-        >Coaching</a
-      >
-    </div>
-    <div class="side-nav-button-wrapper">
-      <a mat-button class="toolbar-button" [routerLink]="['/my-story']"
-        >My Story</a
-      >
-    </div>
-    <div class="side-nav-button-wrapper">
       <a mat-button class="toolbar-button" [routerLink]="['/work-with-me']"
         >Work With Me</a
       >
     </div>
     <div class="side-nav-button-wrapper">
-      <a mat-button class="toolbar-button" [routerLink]="['/group-enrollment']"
-        >Group Enrollment</a
+      <a mat-button class="toolbar-button" [routerLink]="['/my-story']"
+        >My Story</a
       >
     </div>
     <div
@@ -54,7 +44,11 @@
         <mat-icon class="toolbar-icon">account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <a mat-menu-item [routerLink]="['/profile']" class="menu-item">
+        <a
+          mat-menu-item
+          [routerLink]="['/profile/contact-info']"
+          class="menu-item"
+        >
           <mat-icon>person</mat-icon>
           <span>Profile</span>
         </a>
@@ -111,20 +105,6 @@
             *ngIf="screenWidth > 800"
             mat-button
             class="toolbar-button"
-            [routerLink]="['/coaching']"
-            >Coaching</a
-          >
-          <a
-            *ngIf="screenWidth > 800"
-            mat-button
-            class="toolbar-button"
-            [routerLink]="['/my-story']"
-            >My Story</a
-          >
-          <a
-            *ngIf="screenWidth > 800"
-            mat-button
-            class="toolbar-button"
             [routerLink]="['/work-with-me']"
             >Work With Me</a
           >
@@ -132,8 +112,8 @@
             *ngIf="screenWidth > 800"
             mat-button
             class="toolbar-button"
-            [routerLink]="['/group-enrollment']"
-            >Group Enrollment</a
+            [routerLink]="['/my-story']"
+            >My Story</a
           >
           <a
             *ngIf="screenWidth > 800 && currentUser && currentUser.isAdmin"
@@ -160,7 +140,11 @@
             <mat-icon class="toolbar-icon">account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <a mat-menu-item [routerLink]="['/profile']" class="menu-item">
+            <a
+              mat-menu-item
+              [routerLink]="['/profile/contact-info']"
+              class="menu-item"
+            >
               <mat-icon>person</mat-icon>
               <span>Profile</span>
             </a>
