@@ -5,7 +5,6 @@ $break-small: 800px;
 .card {
   @include mat-elevation(8);
   cursor: pointer;
-  font-family: typewriter;
   margin: 16px;
 }
 
@@ -33,7 +32,6 @@ $break-small: 800px;
 }
 
 .card-title {
-  font-size: 24px;
   margin: 16px 0;
 }
 

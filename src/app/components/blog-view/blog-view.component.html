@@ -1,19 +1,12 @@
 <app-bar [collapsed]="true">
   <div class="title">The Blog</div>
   <div class="category-wrapper">
-    <mat-form-field class="typewriter">
-      <mat-select
-        class="typewriter"
-        placeholder="Category"
-        [(value)]="category"
-      >
-        <mat-option class="typewriter" [value]="">All</mat-option>
-        <mat-option
-          class="typewriter"
-          *ngFor="let cat of (categories | orderBy)"
-          [value]="cat"
-          >{{ cat }}</mat-option
-        >
+    <mat-form-field class="">
+      <mat-select placeholder="Category" [(value)]="category">
+        <mat-option [value]="">All</mat-option>
+        <mat-option *ngFor="let cat of categories | orderBy" [value]="cat">{{
+          cat
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

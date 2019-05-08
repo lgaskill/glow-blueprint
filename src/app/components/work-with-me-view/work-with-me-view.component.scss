@@ -45,7 +45,6 @@
 }
 
 .story-card-content {
-  font-family: typewriter;
   font-size: 16px;
   text-align: center;
   line-height: 26px;
@@ -115,7 +114,8 @@
   color: mat-color($app-accent, 300);
   background-color: inherit;
   font-family: lemonTuesday;
-  font-size: 5rem;
+  font-size: 56px;
+  font-weight: 500;
   margin: 28px 0;
   height: auto;
   white-space: normal;
@@ -135,5 +135,9 @@
 
   .story-card-title-button-sm {
     font-size: 24px;
+  }
+
+  .story-card-title-subtext {
+    font-size: 18px;
   }
 }

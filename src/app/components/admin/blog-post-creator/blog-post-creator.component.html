@@ -4,7 +4,7 @@
       <mat-label class="title-label">Title</mat-label>
       <input matInput formControlName="title" />
     </mat-form-field>
-    <mat-form-field class="category-field" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label class="category-label">Category</mat-label>
       <input
         matInput
@@ -12,11 +12,7 @@
         [matAutocomplete]="autoComplete"
       />
       <mat-autocomplete #autoComplete="matAutocomplete">
-        <mat-option
-          *ngFor="let category of categories"
-          [value]="category"
-          class="category-field"
-        >
+        <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-autocomplete>

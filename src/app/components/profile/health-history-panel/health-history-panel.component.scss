@@ -1,7 +1,6 @@
 @import "~@angular/material/theming";
 
 .action-button {
-  font-family: typewriter;
   margin-right: 16px !important;
   font-size: 18px;
   height: 48px;
@@ -20,7 +19,6 @@
 }
 
 .card-title {
-  font-family: typewriter;
   color: #e7abb6;
   font-size: 36px;
   line-height: 36px;
@@ -28,7 +26,6 @@
 }
 
 .form-field {
-  font-family: typewriter;
   width: 100%;
 }
 
@@ -76,7 +73,6 @@ textarea {
 
 .table-column {
   flex-direction: column;
-  font-family: typewriter;
   width: calc(20% - 8px);
   margin: 4px;
   text-overflow: ellipsis;
@@ -84,7 +80,6 @@ textarea {
 }
 
 .table-label {
-  font-family: typewriter;
   font-size: 18px;
   font-weight: bold;
   margin: 16px;
