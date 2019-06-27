@@ -23,7 +23,28 @@
         >
         </contact-info-panel
       ></mat-tab>
-      <mat-tab label="Health History"> Content 2 </mat-tab>
+      <mat-tab label="Health History">
+        <health-history-panel
+          *ngIf="
+            selectedUser &&
+            healthHistoryLookup &&
+            healthHistoryLookup[selectedUser._id]
+          "
+          [showActions]="false"
+          [isAdmin]="true"
+          [healthHistory]="healthHistoryLookup[selectedUser._id]"
+        ></health-history-panel>
+        <div
+          *ngIf="
+            !selectedUser ||
+            !healthHistoryLookup ||
+            !healthHistoryLookup[selectedUser._id]
+          "
+          class="raw-text"
+        >
+          No Health History found for this person ¯\_(ツ)_/¯
+        </div></mat-tab
+      >
     </mat-tab-group>
   </div>
 </div>

@@ -18,11 +18,8 @@ export class ContactInfoPanelComponent {
   form: FormGroup;
   isDirty: boolean = false;
 
-  @Input()
-  isAdmin: boolean = false;
-
-  @Input()
-  user: User;
+  @Input() isAdmin: boolean = false;
+  @Input() user: User;
 
   @Input() dirty() {
     return this.isDirty;
@@ -57,7 +54,7 @@ export class ContactInfoPanelComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // Update form fields on user changes
+    // Update form fields on external changes
     if (this.isAdmin && changes.user && !changes.user.firstChange) {
       this.loadUser();
     }

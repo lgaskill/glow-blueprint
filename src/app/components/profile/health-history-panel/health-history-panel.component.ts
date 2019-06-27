@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges
+} from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
 import { ApiService } from "src/app/services/api.service";
@@ -10,10 +16,11 @@ import { ApiService } from "src/app/services/api.service";
 })
 export class HealthHistoryPanelComponent {
   isDirty: boolean = false;
-  healthHistory: any = {};
   form: FormGroup;
 
+  @Input() healthHistory: HealthHistory = null;
   @Input() showActions: boolean = true;
+  @Input() isAdmin: boolean = false;
 
   @Input() dirty() {
     return this.isDirty;
@@ -42,6 +49,17 @@ export class HealthHistoryPanelComponent {
     await this.loadHealthHistory();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    // Update form fields on external changes
+    if (
+      this.isAdmin &&
+      changes.healthHistory &&
+      !changes.healthHistory.firstChange
+    ) {
+      this.loadHealthHistory();
+    }
+  }
+
   getEmailErrorMessage() {
     return this.form.controls.email.hasError("email")
       ? "Not a valid email"
@@ -49,14 +67,16 @@ export class HealthHistoryPanelComponent {
   }
 
   async loadHealthHistory() {
-    try {
-      this.healthHistory = await this.apiService.get("/health-history");
-      if (null == this.healthHistory) {
-        this.healthHistory = {};
+    if (!this.isAdmin) {
+      try {
+        this.healthHistory = await this.apiService.get("/health-history");
+        if (null == this.healthHistory) {
+          this.healthHistory = null;
+        }
+      } catch (err) {
+        console.log(err);
+        return;
       }
-    } catch (err) {
-      console.log(err);
-      return;
     }
 
     this.updateFormData();

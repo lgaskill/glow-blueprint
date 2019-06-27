@@ -18,6 +18,7 @@ exports.getByToken = async (req, res) => {
 };
 
 /**
+ * ADMIN-ONLY
  * Get health history by user id
  * @param id *Required*
  */
@@ -107,6 +108,7 @@ exports.updateByToken = async (req, res) => {
 };
 
 /**
+ * ADMIN-ONLY
  * Update Health History by id
  * @param id *Required*
  *
@@ -138,4 +140,19 @@ exports.updateById = async (req, res) => {
   } catch (err) {
     res.status(500).send("Failed to update health history");
   }
+};
+
+/**
+ * ADMIN-ONLY
+ * Get ALL health histories
+ */
+exports.getAll = async (req, res) => {
+  let healthHistories;
+  try {
+    healthHistories = await HealthHistoryModel.find({});
+  } catch (err) {
+    return res.status(500).send("Failed to get health histories");
+  }
+
+  res.send(healthHistories);
 };

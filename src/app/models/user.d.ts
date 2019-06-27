@@ -1,5 +1,5 @@
 declare interface User {
-  _id: String;
+  _id: string;
   username: string;
   password: string;
   email: string;

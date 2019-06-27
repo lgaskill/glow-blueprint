@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
-const historyItem = new mongoose.Schema({
+const purchaseHistoryItem = new mongoose.Schema({
   itemId: String,
   name: String,
   description: String,
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
   createdAt: Date,
   lastUpdatedAt: Date,
   purchaseHistory: {
-    type: [historyItem],
+    type: [purchaseHistoryItem],
     default: []
   }
 });

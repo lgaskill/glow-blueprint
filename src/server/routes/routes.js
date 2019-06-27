@@ -71,6 +71,12 @@ router.patch(
   auth.required,
   healthHistoryRoutes.updateByToken
 );
+router.get(
+  "/health-histories",
+  auth.required,
+  auth.admin,
+  healthHistoryRoutes.getAll
+);
 
 //
 // Email
