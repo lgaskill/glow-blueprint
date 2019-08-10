@@ -4,7 +4,7 @@ $break-small: 800px;
 
 .dialog-text {
   color: #ecb3be;
-  font-family: typewriter;
+  font-size: 20px;
   margin-top: 16px;
   margin-bottom: 36px;
 }
@@ -12,11 +12,12 @@ $break-small: 800px;
 .dialog-title {
   color: #ecb3be;
   font-family: lemonTuesday;
-  font-size: 32px;
+  font-size: 42px;
+  text-align: center;
+  line-height: 1.25;
 }
 
 .form-field {
-  font-family: typewriter;
   width: 100%;
 }
 
@@ -27,7 +28,6 @@ $break-small: 800px;
 .subscribe-button {
   color: #fff;
   font-size: 20px;
-  font-family: typewriter;
   height: 42px;
   background: linear-gradient(
     45deg,

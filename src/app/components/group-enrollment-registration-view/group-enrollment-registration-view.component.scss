@@ -1,0 +1,59 @@
+@import "../../../assets/styles/app-theme.scss";
+
+.button-container {
+  text-align: center;
+  margin: 16px;
+}
+
+.fancy-button {
+  color: #fff !important;
+  font-size: 20px;
+  white-space: normal;
+  min-height: 42px;
+  background: linear-gradient(
+    45deg,
+    rgba(231, 171, 182, 1) 0%,
+    rgb(255, 210, 219) 100%
+  );
+}
+
+.no-margin {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+.step-title {
+  color: mat-color($app-accent, 200);
+  text-align: center;
+  font-size: 64px;
+  font-family: lemonTuesday;
+  line-height: 64px;
+  margin-top: 36px;
+  margin-bottom: 64px;
+}
+
+.step-title-big {
+  color: mat-color($app-accent, 200);
+  text-align: center;
+  font-size: 64px;
+  font-family: lemonTuesday;
+  line-height: 160px;
+  margin-top: 36px;
+  margin-bottom: 64px;
+}
+
+.spinner-container {
+  justify-content: center;
+  display: flex;
+  height: 16px;
+}
+
+.action-button-row {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.checkout-step-content {
+  text-align: center;
+  margin: 16px;
+}

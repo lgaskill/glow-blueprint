@@ -1,51 +1,21 @@
-@import "~@angular/material/theming";
+@import "../../../assets/styles/app-theme.scss";
 
 $break-small: 800px;
 
-.background-exercise {
-  background-image: url(../../../assets/images/stock-exercise.jpg);
-}
-
-.background-lifestyle {
-  background-image: url(../../../assets/images/stock-lifestyle.jpg);
-}
-
-.background-nutrition {
-  background-image: url(../../../assets/images/stock-food.jpg);
-}
-
-.category-button {
-  width: 80%;
-  height: 80%;
-  background-size: cover;
-  background-position: center;
-  @media screen and (max-width: $break-small) {
-    width: 100%;
-  }
-}
-
-.category-grid {
-  margin: 16px;
-}
-
-.label {
-  width: 100px;
-  font-family: typewriter;
-  font-size: 18px;
-  background-color: #ffffff;
-  position: absolute;
-  bottom: 0px;
+.title {
+  color: mat-color($app-accent, 300);
   text-align: center;
-  padding: 8px;
-  @media screen and (max-width: $break-small) {
-    font-size: 16px;
-    width: 80px;
-  }
+  margin-top: 16px;
+  font-size: 84px;
+  font-family: lemonTuesday;
+  line-height: 140px;
 }
 
-.label-text {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  line-height: 28px;
-  padding: 2px;
+.category-wrapper {
+  padding-left: 16px;
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 16px;
+    text-align: center;
+  }
 }

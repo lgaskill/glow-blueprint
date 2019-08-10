@@ -2,6 +2,14 @@ const mongoose = require("mongoose");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 
+const purchaseHistoryItem = new mongoose.Schema({
+  itemId: String,
+  name: String,
+  description: String,
+  transactionId: String,
+  createdAt: Date
+});
+
 const userSchema = new mongoose.Schema({
   username: String,
   hash: String,
@@ -12,7 +20,11 @@ const userSchema = new mongoose.Schema({
   isAdmin: Boolean,
   notes: String,
   createdAt: Date,
-  lastUpdatedAt: Date
+  lastUpdatedAt: Date,
+  purchaseHistory: {
+    type: [purchaseHistoryItem],
+    default: []
+  }
 });
 
 userSchema.pre("save", function(next) {

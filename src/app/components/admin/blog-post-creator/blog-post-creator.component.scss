@@ -2,8 +2,8 @@
 
 $break-small: 800px;
 
-.category-field {
-  font-family: typewriter;
+.wrapper {
+  margin: 16px;
 }
 
 .centered-text {
@@ -26,7 +26,6 @@ $break-small: 800px;
 }
 
 .image-dropzone {
-  font-family: typewriter;
   font-size: 15px;
   max-width: 200px;
   height: 100%;
@@ -45,7 +44,6 @@ $break-small: 800px;
 }
 
 .title-field {
-  font-family: typewriter;
   width: 100%;
 
   input {

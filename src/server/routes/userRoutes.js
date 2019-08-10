@@ -25,7 +25,7 @@ exports.authenticate = async (req, res, next) => {
         return res.json({ user: user.toAuthJSON() });
       }
 
-      return status(400).info;
+      res.status(401).send("Authorization Failed");
     }
   )(req, res, next);
 };
@@ -66,6 +66,63 @@ exports.create = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to create blog posts");
+  }
+};
+
+/**
+ * Get current user by valid auth token
+ */
+exports.getByToken = async (req, res) => {
+  const { payload } = req;
+
+  let user;
+  try {
+    user = await UserModel.findOne(
+      { _id: payload.id },
+      {
+        username: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        notes: true
+      }
+    );
+  } catch (err) {
+    return res.status(500).send("Failed to get user");
+  }
+
+  res.send(user);
+};
+
+/**
+ * Update current user by valid auth token
+ */
+exports.updateByToken = async (req, res) => {
+  const { payload, body } = req;
+  if (!body) {
+    return res.status(400).send();
+  }
+
+  let user;
+  try {
+    user = await UserModel.findOne({ _id: payload.id }, { _id: true });
+  } catch (err) {
+    return res.status(500).send("Failed to get user");
+  }
+
+  if (!user) {
+    return res.status(404).send();
+  }
+
+  try {
+    UserModel.updateOne({ _id: payload.id }, body, (err, data) => {
+      if (err) {
+        return res.status(500).send("Failed to update blog post");
+      }
+      res.status(204).send();
+    });
+  } catch (err) {
+    res.status(500).send("Failed to update blog post");
   }
 };
 

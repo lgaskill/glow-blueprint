@@ -1,6 +1,5 @@
-import { Component, HostListener } from "@angular/core";
+import { Component, HostListener, Input, SimpleChanges } from "@angular/core";
 import { BlogService } from "src/app/services/blog.service";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "blog-list",
@@ -8,31 +7,33 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./blog-list.component.scss"]
 })
 export class BlogListComponent {
+  @Input()
+  category: string;
+
   blogPosts: BlogPost[];
   COLUMN_MAX_WIDTH: number = 400;
   columns: number[] = [];
 
-  constructor(
-    private blogService: BlogService,
-    private activatedRoute: ActivatedRoute
-  ) {
+  constructor(private blogService: BlogService) {
     this.onResize();
   }
 
   async ngOnInit() {
-    // Determine if posts should be filtered by category
-    const category = this.activatedRoute.snapshot.queryParams["category"];
+    this.loadBlogPosts();
+  }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.category && !changes.category.firstChange) {
+      this.loadBlogPosts();
+    }
+  }
+
+  async loadBlogPosts() {
     try {
-      this.blogPosts = await this.blogService.getAllBlogPosts(category);
+      this.blogPosts = await this.blogService.getAllBlogPosts(this.category);
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
-
-    // Sort by create date
-    this.blogPosts = this.blogPosts.sort((a, b) => {
-      return b.createdAt.getMilliseconds() - a.createdAt.getMilliseconds();
-    });
   }
 
   truncate(val: number): number {

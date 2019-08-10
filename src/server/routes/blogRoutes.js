@@ -9,11 +9,32 @@ exports.getAll = async (req, res) => {
 
   let blogPosts;
   try {
-    blogPosts = await BlogPostModel.find(category ? { category } : {});
+    blogPosts = await BlogPostModel.find(
+      category ? { category } : {},
+      {},
+      { sort: { createdAt: -1 } }
+    );
   } catch (err) {
     return res.status(500).send("Failed to get blog posts");
   }
   res.status(200).send(blogPosts);
+};
+
+/**
+ * Gets all blog post categories
+ */
+exports.getCategories = async (req, res) => {
+  let blogPosts;
+  try {
+    blogPosts = await BlogPostModel.find({}, ["category"]);
+  } catch (err) {
+    return res.status(500).send("Failed to get blog post categories");
+  }
+
+  // Generate a list on each unique category
+  const categories = Array.from(new Set(blogPosts.map(bp => bp.category)));
+
+  res.status(200).send(categories);
 };
 
 // GET blog post by id
@@ -66,7 +87,10 @@ exports.update = async (req, res) => {
 
   // First, make sure the thing exists
   try {
-    const existingPost = await BlogPostModel.findOne({ _id: blogPostId });
+    const existingPost = await BlogPostModel.findOne(
+      { _id: blogPostId },
+      { _id: true }
+    );
     if (!existingPost) {
       return res.status(404).send("Intended blog post not found");
     }

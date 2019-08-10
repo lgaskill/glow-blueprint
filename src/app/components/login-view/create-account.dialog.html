@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create Account</h1>
+<h1 mat-dialog-title class="title">Create Account</h1>
 <div mat-dialog-content>
   <form class="form" [formGroup]="registrationForm">
     <div>
@@ -20,6 +20,7 @@
           matInput
           [formControl]="registrationForm.controls.email"
           placeholder="Email"
+          type="email"
         />
         <mat-error *ngIf="registrationForm.controls.email.invalid">{{
           getEmailErrorMessage()
@@ -51,7 +52,12 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Nevermind</button>
   <span class="flex"></span>
-  <button mat-stroked-button (click)="onSubmit()" cdkFocusInitial>
+  <button
+    mat-stroked-button
+    class="register-button"
+    (click)="onSubmit()"
+    cdkFocusInitial
+  >
     Register
   </button>
 </div>

@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { MatDialog } from "@angular/material";
-import { CreateAccountDialog } from "./components/login-view/login-view.component";
 import { SubscribeDialogComponent } from "./components/shared/subscribe-dialog/subscribe-dialog.component";
 import { AuthService } from "./services/auth.service";
 
@@ -31,7 +30,6 @@ export class AppComponent {
           localStorage.setItem("subscribed", "true");
         }
       });
-    }, 500);
-    // }, 15000);
+    }, 5000);
   }
 }

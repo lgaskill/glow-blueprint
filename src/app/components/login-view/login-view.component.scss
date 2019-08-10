@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@import "../../../assets/styles/app-theme.scss";
 
 $break-small: 800px;
 
@@ -24,7 +24,6 @@ $break-small: 800px;
 
 .create-account-button {
   margin-top: 28px;
-  font-family: typewriter;
 }
 
 .form-field {
@@ -35,7 +34,6 @@ $break-small: 800px;
 .login-button {
   background-color: #e7abb6;
   color: #fff;
-  font-family: typewriter;
   font-size: 18px;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -43,7 +41,7 @@ $break-small: 800px;
 }
 
 .title {
-  color: #b65b6f;
+  color: mat-color($app-accent, 300);
   font-family: lemonTuesday;
   font-size: 24px;
   font-size: 42px;

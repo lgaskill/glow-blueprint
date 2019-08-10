@@ -1,0 +1,76 @@
+<app-bar [collapsed]="true">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step label="Registration" [completed]="registrationComplete">
+      <div *ngIf="showSpinner" class="spinner-container">
+        <mat-spinner diameter="275" strokeWidth="12"></mat-spinner>
+      </div>
+      <div class="step-title-big">Register</div>
+      <div *ngIf="!showSpinner" class="button-container">
+        <button
+          mat-raised-button
+          class="fancy-button"
+          (click)="onCreateAccount()"
+        >
+          Create Account
+        </button>
+      </div>
+      <div *ngIf="!showSpinner" class="button-container">
+        <button mat-button (click)="onLogin()">Sign In</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Health History" [completed]="healthHistoryComplete">
+      <div class="no-margin">
+        <div class="step-title">Health History</div>
+        <health-history-panel
+          *ngIf="registrationComplete"
+          [showActions]="false"
+        ></health-history-panel>
+        <mat-divider></mat-divider>
+        <div class="action-button-row">
+          <button
+            mat-raised-button
+            (click)="onHealthHistorySave()"
+            class="fancy-button"
+          >
+            Save and Continue
+          </button>
+        </div>
+      </div>
+    </mat-step>
+
+    <mat-step label="Payment / Confirmation" [completed]="paymentComplete">
+      <div *ngIf="!paymentComplete" class="step-title">Checkout</div>
+      <div *ngIf="paymentComplete" class="step-title">Success</div>
+
+      <div *ngIf="!paymentComplete" class="checkout-step-content">
+        <button
+          mat-raised-button
+          (click)="onCreatePayment()"
+          class="fancy-button"
+        >
+          Complete Payment via PayPal
+        </button>
+      </div>
+      <div *ngIf="!paymentComplete" class="checkout-step-content">
+        Total: $400.00
+      </div>
+
+      <div *ngIf="paymentComplete" class="checkout-step-content">
+        Welcome to the group! I'm so excited for this journey with you.
+      </div>
+      <div *ngIf="paymentComplete" class="checkout-step-content">
+        Check your inbox for an email with more information.
+      </div>
+      <div *ngIf="paymentComplete" class="checkout-step-content">
+        <a
+          mat-raised-button
+          [routerLink]="['/group-enrollment']"
+          class="fancy-button"
+        >
+          Done
+        </a>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</app-bar>

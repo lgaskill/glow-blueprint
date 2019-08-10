@@ -1,0 +1,36 @@
+@import "~@angular/material/theming";
+
+$break-small: 800px;
+
+.nav-list-item {
+  color: inherit;
+  font-size: 18px;
+}
+
+.selected {
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+.sidenav {
+  background-color: #ffc18c;
+  color: white;
+  width: 225px;
+}
+
+.sidenav-buttom {
+  transform: rotate(180deg);
+}
+
+.toolbar {
+  background-color: #7f946d73;
+  color: #fff;
+  font-family: lemonTuesday;
+  flex-direction: row;
+  font-size: 2rem;
+}
+
+.toolbar-text {
+  flex-grow: 1;
+  text-align: center;
+}

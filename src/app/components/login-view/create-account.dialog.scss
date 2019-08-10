@@ -1,6 +1,4 @@
-@import "~@angular/material/theming";
-
-$break-small: 800px;
+@import "../../../assets/styles/app-theme.scss";
 
 .form-field {
   width: 100%;
@@ -8,4 +6,16 @@ $break-small: 800px;
 
 .flex {
   flex-grow: 1;
+}
+
+.register-button {
+  background-color: mat-color($app-primary);
+  color: #fff;
+}
+
+.title {
+  color: mat-color($app-accent, 300);
+  font-family: lemonTuesday;
+  font-size: 36px;
+  margin: 8px 0 36px;
 }

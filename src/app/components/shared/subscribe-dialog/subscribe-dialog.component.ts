@@ -7,6 +7,7 @@ import {
   MatDialog
 } from "@angular/material";
 import { ApiService } from "src/app/services/api.service";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "subscribe-dialog",
@@ -22,7 +23,8 @@ export class SubscribeDialogComponent {
     private apiService: ApiService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
@@ -47,21 +49,25 @@ export class SubscribeDialogComponent {
     }
 
     try {
-      await this.apiService.put<any>(
-        "/user_group/add/5c7897d8064ee548906faee3",
-        { value: this.emailForm.controls.email.value }
-      );
+      await this.apiService.post("/subscribe_mc/a5fdf12a6c", {
+        email: this.emailForm.controls.email.value
+      });
     } catch (err) {
       console.error(err);
       this.snackBar.open("Failed to subscribe", "", {
         duration: 2000
       });
+      return;
     }
 
     this.snackBar.open("You did it!", "", {
       duration: 2000
     });
 
+    this.dialogRef.close({ subscribed: true });
+  }
+
+  onOptOut() {
     this.dialogRef.close({ subscribed: true });
   }
 }

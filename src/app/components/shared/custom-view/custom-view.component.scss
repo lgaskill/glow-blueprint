@@ -1,4 +1,4 @@
-@import "~@angular/material/theming";
+@import "../../../../assets/styles/app-theme.scss";
 
 $break-small: 800px;
 
@@ -17,7 +17,6 @@ $break-small: 800px;
 }
 
 .content {
-  font-family: typewriter;
   margin: 16px;
 }
 
@@ -31,9 +30,20 @@ $break-small: 800px;
 }
 
 .title {
+  color: mat-color($app-accent, 300);
   background-color: inherit;
   font-family: lemonTuesday;
+  font-size: 56px;
+  font-weight: 500;
+  margin: 28px 0;
+  height: auto;
+  white-space: normal;
+  line-height: 120px;
+  text-align: center;
   justify-content: center;
-  font-size: 3rem;
-  margin: 32px 0;
+}
+
+.title-actions {
+  margin: 16px;
+  text-align: center;
 }

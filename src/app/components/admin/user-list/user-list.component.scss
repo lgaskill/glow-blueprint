@@ -1,0 +1,30 @@
+@import "../../../../assets/styles/app-theme.scss";
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.list {
+  padding-top: 0;
+}
+
+.list-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.list-item-selected {
+  background-color: mat-color($app-primary, 100);
+}
+
+.raw-text {
+  margin: 16px;
+}
