@@ -1,10 +1,12 @@
 const paypal = require("paypal-rest-sdk");
 const MerchItemModel = require("../models/merchItem");
 const paymentService = require("../services/paymentService");
+const emailService = require("../services/emailService");
 
 const PP_ENV = process.env.PP_ENV;
 const PP_CLIENT_ID = process.env.PP_CLIENT_ID;
 const PP_SECRET = process.env.PP_SECRET;
+const BOSS_MAMA_EMAIL = process.env.BOSS_MAMA_EMAIL;
 
 paypal.configure({
   mode: PP_ENV,
@@ -68,6 +70,16 @@ exports.pay = async (req, res) => {
     if (!redirectLink) {
       return res.status(500).send("Failed to get redirect");
     }
+    // Notify Boss Mama
+    emailService.send({
+      recipients: [BOSS_MAMA_EMAIL],
+      subject: "Someone Initiated a Payment",
+      message: `<p>${payload.firstName} ${
+        payload.lastName
+      } has just initiated a payment for ${
+        merchItem.name
+      }!</p><p>(Log into paypal to get more deets)</p>`
+    });
 
     res.status(200).send({ redirect_url: redirectLink.href });
   });
@@ -115,6 +127,16 @@ exports.execute = async (req, res) => {
         transactionId: payment.id
       });
 
+      // Notify Boss Mama
+      emailService.send({
+        recipients: [BOSS_MAMA_EMAIL],
+        subject: "Someone Completed a Payment!!!",
+        message: `<p>${payload.firstName} ${
+          payload.lastName
+        } has just completed a payment for ${
+          merchItem.name
+        }!!!</p><p>(Log into paypal to get more deets)</p>`
+      });
       res.status(204).send();
     }
   );

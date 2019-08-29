@@ -1,5 +1,8 @@
 const UserModel = require("../models/user");
 const passport = require("passport");
+const emailService = require("../services/emailService");
+
+const BOSS_MAMA_EMAIL = process.env.BOSS_MAMA_EMAIL;
 
 require("../config/passport-config");
 
@@ -60,9 +63,18 @@ exports.create = async (req, res) => {
 
   try {
     const created = await user.save();
-    !!created
-      ? res.status(202).send()
-      : res.status(500).send("Failed to create user");
+
+    if (created) {
+      // Notify Boss Mama
+      emailService.send({
+        recipients: [BOSS_MAMA_EMAIL],
+        subject: "New Account Created",
+        message: `<p><b>${firstName} ${lastName}</b> has just created a new account!</p><p></p><p>Go Say Hi!</p>`
+      });
+      res.status(202).send();
+    } else {
+      res.status(500).send("Failed to create user");
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to create blog posts");

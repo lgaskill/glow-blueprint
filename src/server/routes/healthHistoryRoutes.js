@@ -1,5 +1,7 @@
 const HealthHistoryModel = require("../models/healthHistory");
-const request = require("request");
+const emailService = require("../services/emailService");
+
+const BOSS_MAMA_EMAIL = process.env.BOSS_MAMA_EMAIL;
 
 /**
  * Get health history by valid auth token
@@ -63,9 +65,19 @@ exports.create = async (req, res) => {
 
   try {
     const created = await healthHistoryModel.save();
-    !!created
-      ? res.status(202).send(created)
-      : res.status(500).send("Failed to create health history");
+    if (created) {
+      // Notify Boss Mama
+      emailService.send({
+        recipients: [BOSS_MAMA_EMAIL],
+        subject: "Health History Created",
+        message: `<p><b>${payload.firstName} ${
+          payload.lastName
+        }</b> has just filled-in their Health History!</p>`
+      });
+      res.status(202).send(created);
+    } else {
+      res.status(500).send("Failed to create health history");
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to create health history");
@@ -97,10 +109,19 @@ exports.updateByToken = async (req, res) => {
 
   try {
     HealthHistoryModel.updateOne({ userId: payload.id }, body, (err, data) => {
-      if (err) {
-        return res.status(500).send("Failed to update health history");
+      if (!err) {
+        // Notify Boss Mama
+        emailService.send({
+          recipients: [BOSS_MAMA_EMAIL],
+          subject: "Health History Updated",
+          message: `<p><b>${payload.firstName} ${
+            payload.lastName
+          }</b> has just filled-in their Health History!</p>`
+        });
+        res.status(204).send();
+      } else {
+        res.status(500).send("Failed to update health history");
       }
-      res.status(204).send();
     });
   } catch (err) {
     res.status(500).send("Failed to update health history");
