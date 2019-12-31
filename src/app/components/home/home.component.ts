@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { ConfigService } from "src/app/services/config.service";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "gb-home",
@@ -6,5 +8,18 @@ import { Component } from "@angular/core";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent {
-  constructor() {}
+  body: String = "";
+  isAdmin: boolean = false;
+
+  constructor(
+    private authService: AuthService,
+    private configService: ConfigService
+  ) {}
+
+  ngOnInit() {
+    const config: Config = this.configService.getConfig();
+
+    this.body = config.welcomeDesc;
+    this.isAdmin = this.authService.isAdmin();
+  }
 }

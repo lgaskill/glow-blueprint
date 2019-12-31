@@ -32,8 +32,11 @@ export class BlogService {
     return this.apiService.post<BlogPost>("/blog_post", blogPost);
   }
 
-  async updateBlogPost(patchObj: any): Promise<BlogPost> {
-    return this.apiService.patch<BlogPost>("/blog_post", patchObj);
+  async updateBlogPost(blogPostID: string, patchObj: any): Promise<BlogPost> {
+    return this.apiService.patch<BlogPost>(
+      `/blog_post/${blogPostID}`,
+      patchObj
+    );
   }
 
   private formatBlogPost(blogPost: BlogPost) {

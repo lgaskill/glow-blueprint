@@ -5,6 +5,7 @@ const configSchema = new mongoose.Schema({
   coachingDesc: String,
   groupEnrollmentDesc: String,
   storyDesc: String,
+  welcomeDesc: String,
   workDesc: String
 });
 

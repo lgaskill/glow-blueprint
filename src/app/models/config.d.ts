@@ -4,4 +4,5 @@ declare interface Config {
   groupEnrollmentDesc: string;
   storyDesc: string;
   workDesc: string;
+  welcomeDesc: string;
 }

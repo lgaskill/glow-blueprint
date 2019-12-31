@@ -19,6 +19,27 @@ $break-small: 800px;
   justify-content: center;
 }
 
+.dropzone-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.editor {
+  min-height: 500px;
+}
+
+.editable-content {
+  margin: 16px;
+  text-align: center;
+}
+
+.image-dropzone {
+  font-size: 15px;
+  max-width: 200px;
+  height: 100%;
+  margin-bottom: 16px;
+}
+
 .image-wrapper {
   text-align: center;
 }
@@ -33,6 +54,17 @@ $break-small: 800px;
   width: 100%;
 }
 
+.save-button {
+  color: #fff;
+  background-color: #e7abb6;
+  font-family: lemonTuesday;
+  font-size: 28px;
+  line-height: 48px;
+  margin-top: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 .side-content {
   flex-direction: column;
   width: 260px;
@@ -40,6 +72,19 @@ $break-small: 800px;
   @media screen and (max-width: $break-small) {
     display: none;
   }
+}
+
+.title-form-field {
+  width: 100%;
+
+  input {
+    font-size: 28px;
+    font-weight: bold;
+  }
+}
+
+.title-form-label {
+  font-size: 28px;
 }
 
 .title-panel {
