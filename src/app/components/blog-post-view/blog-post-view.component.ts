@@ -22,6 +22,7 @@ export class BlogPostViewComponent {
 
   editing: boolean = false;
   isAdmin: boolean = false;
+  publishDraft: boolean = false;
   form: FormGroup;
   categories: String[] = [];
   thumbnailLoaded: boolean = false;
@@ -125,13 +126,15 @@ export class BlogPostViewComponent {
     this.thumbnailLoaded = false;
   }
 
-  onSave() {
+  onSave(publishDraft: boolean = false) {
     if (!this.form.valid) {
       this.snackBar.open("Whoops...You missed a field :b", "", {
         duration: 2000
       });
       return;
     }
+
+    this.publishDraft = publishDraft;
 
     // Upload image if one is specified
     const files = this.dropzoneRef.directiveRef.dropzone().getQueuedFiles();
@@ -155,11 +158,11 @@ export class BlogPostViewComponent {
   async saveBlogPost(imageId: string = null) {
     try {
       await this.blogService.updateBlogPost(this.blogPostId, {
-        active: true,
         title: this.form.controls.title.value,
         body: this.form.controls.body.value,
         category: this.form.controls.category.value,
-        mainImageId: imageId
+        mainImageId: imageId,
+        isDraft: this.blogPost.isDraft && !this.publishDraft
       });
     } catch (err) {
       this.snackBar.open("Dang, something went wrong :/", "", {

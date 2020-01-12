@@ -12,7 +12,7 @@ const VIEWS: any = {
   styleUrls: ["./admin-view.component.scss"]
 })
 export class AdminViewComponent {
-  selectedView: string = "USERS";
+  selectedView: string = "BLOG";
 
   onSelectedViewChange(selected: string) {
     this.selectedView = selected;

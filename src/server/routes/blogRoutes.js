@@ -7,13 +7,19 @@ const eventService = require("../services/eventService");
  */
 exports.getAll = async (req, res) => {
   const { category } = req.query;
+  const isAdmin = !!req.payload && req.payload.isAdmin;
+
+  const filter = category ? { category } : {};
+  if (!isAdmin) {
+    filter.isDraft = { $ne: true };
+  }
 
   let blogPosts;
   try {
     blogPosts = await BlogPostModel.find(
-      category ? { category } : {},
+      filter,
       {},
-      { sort: { createdAt: -1 } }
+      { sort: { isDraft: -1, createdAt: -1 } }
     );
   } catch (err) {
     return res.status(500).send("Failed to get blog posts");
@@ -25,9 +31,13 @@ exports.getAll = async (req, res) => {
  * Gets all blog post categories
  */
 exports.getCategories = async (req, res) => {
+  const isAdmin = !!req.payload && req.payload.isAdmin;
+
+  const filter = !isAdmin ? { isDraft: { $ne: true } } : {};
+
   let blogPosts;
   try {
-    blogPosts = await BlogPostModel.find({}, ["category"]);
+    blogPosts = await BlogPostModel.find(filter, ["category"]);
   } catch (err) {
     return res.status(500).send("Failed to get blog post categories");
   }
@@ -96,17 +106,27 @@ exports.update = async (req, res) => {
   }
 
   // First, make sure the thing exists
+  let existingPost;
   try {
-    const existingPost = await BlogPostModel.findOne(
+    existingPost = await BlogPostModel.findOne(
       { _id: blogPostId },
-      { _id: true }
+      { _id: true, isDraft: true }
     );
-    if (!existingPost) {
-      return res.status(404).send("Intended blog post not found");
-    }
   } catch (err) {
     console.log(err);
     return res.status(500).send("Failed to validate blog post");
+  }
+
+  if (!existingPost) {
+    return res.status(404).send("Intended blog post not found");
+  }
+
+  const now = Date.now();
+  blogPostUpdate.lastUpdatedAt = now;
+
+  // Are we publishing a draft?
+  if (existingPost.isDraft && blogPostUpdate.isDraft === false) {
+    blogPostUpdate.createdAt = now;
   }
 
   try {

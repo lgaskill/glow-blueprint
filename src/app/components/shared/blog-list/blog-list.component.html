@@ -14,7 +14,10 @@
           <mat-card-content class="card-content">
             <div class="card-category">{{ blogPost.category }}</div>
             <h1 class="card-title">{{ blogPost.title }}</h1>
-            <div class="card-date">{{ blogPost.createdAt | timeFromNow }}</div>
+            <div *ngIf="!blogPost.isDraft" class="card-date">
+              {{ blogPost.createdAt | timeFromNow }}
+            </div>
+            <div *ngIf="blogPost.isDraft" class="card-draft">*Draft*</div>
           </mat-card-content>
           <div class="card-overlay"></div>
         </mat-card>

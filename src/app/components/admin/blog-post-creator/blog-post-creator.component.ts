@@ -17,6 +17,7 @@ import { AuthService } from "src/app/services/auth.service";
 export class BlogPostCreatorComponent {
   categories: String[] = [];
   form: FormGroup;
+  isDraft: boolean = true;
 
   dropzoneConfig: DropzoneConfigInterface = {
     autoProcessQueue: false,
@@ -57,13 +58,15 @@ export class BlogPostCreatorComponent {
     this.postBlogPost(res._id);
   }
 
-  async onCreate() {
+  async onCreate(isDraft: boolean = false) {
     if (!this.form.valid) {
       this.snackBar.open("Whoops...You missed a field :b", "", {
         duration: 2000
       });
       return;
     }
+
+    this.isDraft = isDraft;
 
     // Upload image if one is specified
     const files = this.dropzoneRef.directiveRef.dropzone().getQueuedFiles();
@@ -84,7 +87,7 @@ export class BlogPostCreatorComponent {
   async postBlogPost(imageId: string = null) {
     try {
       const res = await this.blogService.createBlogPost({
-        active: true,
+        isDraft: this.isDraft,
         title: this.form.controls.title.value,
         body: this.form.controls.editor.value,
         category: this.form.controls.category.value,

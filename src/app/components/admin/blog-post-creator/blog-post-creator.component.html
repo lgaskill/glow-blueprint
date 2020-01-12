@@ -30,6 +30,13 @@
     </div>
   </form>
   <div>
+    <button
+      mat-stroked-button
+      class="publish-draft-button"
+      (click)="onCreate(true)"
+    >
+      Save As Draft
+    </button>
     <button mat-stroked-button class="publish-button" (click)="onCreate()">
       Publish
     </button>

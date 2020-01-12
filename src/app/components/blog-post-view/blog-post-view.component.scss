@@ -65,6 +65,18 @@ $break-small: 800px;
   padding-right: 24px;
 }
 
+.save-draft-button {
+  color: #e7abb6;
+  background-color: #fff;
+  font-family: lemonTuesday;
+  font-size: 28px;
+  line-height: 48px;
+  margin-top: 48px;
+  margin-right: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 .side-content {
   flex-direction: column;
   width: 260px;
@@ -103,6 +115,12 @@ $break-small: 800px;
 .title-panel-date {
   font-size: 16px;
   color: #6d6d6d;
+}
+
+.title-panel-draft {
+  color: #b65b6f;
+  font-family: lemonTuesday;
+  font-size: 24px;
 }
 
 .title-panel-title {

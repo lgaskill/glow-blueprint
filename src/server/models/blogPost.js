@@ -6,7 +6,8 @@ const blogPostSchema = new mongoose.Schema({
   createdAt: Date,
   lastUpdatedAt: Date,
   mainImageId: String,
-  title: String
+  title: String,
+  isDraft: Boolean
 });
 
 blogPostSchema.pre("save", function(next) {
@@ -14,7 +15,7 @@ blogPostSchema.pre("save", function(next) {
 
   // Generate dates
   this.lastUpdatedAt = now;
-  if (!this.createdAt) {
+  if (!this.createdAt && !this.isDraft) {
     this.createdAt = now;
   }
 

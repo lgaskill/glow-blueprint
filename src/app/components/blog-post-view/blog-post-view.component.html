@@ -12,7 +12,12 @@
             <span class="title-panel-category">{{ blogPost.category }}</span></a
           >
           <h1 class="title-panel-title">{{ blogPost.title }}</h1>
-          <span class="title-panel-date">{{ blogPost.createdAt | date }}</span>
+          <span *ngIf="!blogPost.isDraft" class="title-panel-date">{{
+            blogPost.createdAt | date
+          }}</span>
+          <span *ngIf="blogPost.isDraft" class="title-panel-draft"
+            >*Draft*</span
+          >
           <button
             mat-icon-button
             *ngIf="isAdmin"
@@ -71,8 +76,23 @@
           <button mat-button (click)="onCancel()">
             Cancel
           </button>
-          <button mat-stroked-button class="save-button" (click)="onSave()">
+          <button
+            mat-stroked-button
+            [ngClass]="{
+              'save-button': !blogPost.isDraft,
+              'save-draft-button': blogPost.isDraft
+            }"
+            (click)="onSave()"
+          >
             Save
+          </button>
+          <button
+            *ngIf="blogPost.isDraft"
+            mat-stroked-button
+            class="save-button"
+            (click)="onSave(true)"
+          >
+            Publish
           </button>
         </div>
       </div>

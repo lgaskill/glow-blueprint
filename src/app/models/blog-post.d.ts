@@ -1,6 +1,6 @@
 declare interface BlogPost {
   _id?: string;
-  active: boolean;
+  isDraft: boolean;
   title: string;
   body: string;
   createdAt?: Date;
