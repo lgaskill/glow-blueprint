@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 const fs = require("fs");
 
+const DB_URL = process.env.DB_URL;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
 
-const URL = `mongodb+srv://${DB_USER}:${DB_PASS}@cluster0-1z9rk.mongodb.net/gb?retryWrites=true`;
+const URL = DB_USER
+  ? `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_URL}/gb?retryWrites=true`
+  : `mongodb://${DB_URL}/gb?retryWrites=true`;
 
 class Database {
   constructor() {
@@ -13,10 +16,7 @@ class Database {
 
   async _connect() {
     try {
-      await mongoose.connect(
-        URL,
-        { useNewUrlParser: true }
-      );
+      await mongoose.connect(URL, { useNewUrlParser: true });
 
       console.log("Sup mongo");
     } catch (err) {

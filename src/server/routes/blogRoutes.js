@@ -1,4 +1,5 @@
 const BlogPostModel = require("../models/blogPost");
+const eventService = require("../services/eventService");
 
 /**
  * Gets all blog posts
@@ -43,12 +44,21 @@ exports.get = async (req, res) => {
     return res.status(400).send();
   }
 
+  let blogPost;
   try {
-    const blogPost = await BlogPostModel.findOne({ _id: req.params.id });
-    res.status(200).send(blogPost);
+    blogPost = await BlogPostModel.findOne({ _id: req.params.id });
   } catch (err) {
-    res.status(500).send("Failed to get blog post " + id);
+    return res.status(500).send("Failed to get blog post " + id);
   }
+
+  res.status(200).send(blogPost);
+
+  // Register this miraculous event
+  eventService.registerPageView({
+    pageId: blogPost._id,
+    pageName: blogPost.title,
+    ipAddress: req.ip
+  });
 };
 
 // POST blog post
