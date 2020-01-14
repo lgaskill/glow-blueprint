@@ -1,7 +1,7 @@
 const PageViewModel = require("../models/pageView");
 
-exports.registerPageView = async ({ pageId, pageName, ipAddress }) => {
-  pageView = new PageViewModel({ pageId, pageName, ipAddress });
+exports.registerPageView = async ({ pageId, pageName, userId }) => {
+  pageView = new PageViewModel({ pageId, pageName, userId });
 
   let created;
   try {

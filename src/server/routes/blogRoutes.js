@@ -78,7 +78,7 @@ exports.get = async (req, res) => {
   eventService.registerPageView({
     pageId: blogPost._id,
     pageName: blogPost.title,
-    ipAddress: req.connection.remoteAddress
+    userId: req.payload && req.payload.id
   });
 };
 

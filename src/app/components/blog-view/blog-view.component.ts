@@ -69,7 +69,7 @@ export class BlogViewComponent {
     });
   }
 
-  public onSearch(selectedCategory) {
+  public onSearch() {
     const searchTerm = this.searchControl.value;
 
     if (this.categories.indexOf(searchTerm) >= 0) {

@@ -4,10 +4,10 @@ const pageViewSchema = new mongoose.Schema({
   pageId: String,
   pageName: String,
   date: Date,
-  ipAddress: String
+  userId: String
 });
 
-pageViewSchema.pre("save", function(next) {
+pageViewSchema.pre("save", function (next) {
   this.date = Date.now();
   next();
 });
