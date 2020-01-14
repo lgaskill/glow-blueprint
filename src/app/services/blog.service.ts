@@ -1,13 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
+import { environment } from "../../environments/environment";
+import { Constants } from "../config/constants";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class BlogService {
   constructor(private apiService: ApiService) {}
 
-  async getAllBlogPosts(category?: string): Promise<BlogPost[]> {
+  async getAllBlogPosts(category?: string, q?: string): Promise<BlogPost[]> {
     const blogPosts: BlogPost[] = await this.apiService.get<BlogPost[]>(
-      "/blog_post" + (category ? `?category=${category}` : "")
+      "/blog_post",
+      { category, q }
     );
 
     if (!blogPosts) {

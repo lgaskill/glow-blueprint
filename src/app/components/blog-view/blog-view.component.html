@@ -1,14 +1,35 @@
 <app-bar [collapsed]="true">
   <div class="title">The Blog</div>
   <div class="category-wrapper">
-    <mat-form-field class="">
-      <mat-select placeholder="Category" [(value)]="category">
-        <mat-option [value]="">All</mat-option>
-        <mat-option *ngFor="let cat of categories | orderBy" [value]="cat">{{
-          cat
-        }}</mat-option>
-      </mat-select>
+    <mat-form-field appearance="outline">
+      <mat-label>Search</mat-label>
+      <button mat-icon-button matPrefix (click)="onSearch()">
+        <mat-icon>search</mat-icon>
+      </button>
+      <input
+        matInput
+        [formControl]="searchControl"
+        aria-label="Search"
+        [matAutocomplete]="auto"
+        (keydown.enter)="onSearch()"
+      />
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSearch()">
+        <mat-option
+          *ngFor="let category of filteredCategories | async | orderBy"
+          [value]="category"
+          >{{ category }}</mat-option
+        > </mat-autocomplete
+      ><button
+        mat-button
+        *ngIf="searchControl.value"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="onClearSearch()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
   </div>
-  <blog-list [category]="category"></blog-list>
+  <blog-list [category]="category" [searchTerm]="searchTerm"></blog-list>
 </app-bar>

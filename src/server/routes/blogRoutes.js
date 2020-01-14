@@ -3,24 +3,35 @@ const eventService = require("../services/eventService");
 
 /**
  * Gets all blog posts
- * @param category catagory to filter posts
+ * @param category catagory to query posts
  */
 exports.getAll = async (req, res) => {
-  const { category } = req.query;
+  const { category, q } = req.query;
   const isAdmin = !!req.payload && req.payload.isAdmin;
 
-  const filter = category ? { category } : {};
-  if (!isAdmin) {
-    filter.isDraft = { $ne: true };
+  // Build the query
+  const query = {};
+  if (q) {
+    query.$text = { $search: q };
   }
+  if (category) {
+    query.category = category;
+  }
+  if (!isAdmin) {
+    query.isDraft = { $ne: true };
+  }
+
+  // Build the Sort
+  const sort = q
+    ? { score: { $meta: "textScore" } }
+    : { isDraft: -1, createdAt: -1 };
+
+  // Projection
+  const projection = q ? { score: { $meta: "textScore" } } : {};
 
   let blogPosts;
   try {
-    blogPosts = await BlogPostModel.find(
-      filter,
-      {},
-      { sort: { isDraft: -1, createdAt: -1 } }
-    );
+    blogPosts = await BlogPostModel.find(query, projection, { sort });
   } catch (err) {
     return res.status(500).send("Failed to get blog posts");
   }
@@ -33,11 +44,11 @@ exports.getAll = async (req, res) => {
 exports.getCategories = async (req, res) => {
   const isAdmin = !!req.payload && req.payload.isAdmin;
 
-  const filter = !isAdmin ? { isDraft: { $ne: true } } : {};
+  const query = !isAdmin ? { isDraft: { $ne: true } } : {};
 
   let blogPosts;
   try {
-    blogPosts = await BlogPostModel.find(filter, ["category"]);
+    blogPosts = await BlogPostModel.find(query, ["category"]);
   } catch (err) {
     return res.status(500).send("Failed to get blog post categories");
   }
@@ -67,7 +78,7 @@ exports.get = async (req, res) => {
   eventService.registerPageView({
     pageId: blogPost._id,
     pageName: blogPost.title,
-    ipAddress: req.ip
+    ipAddress: req.connection.remoteAddress
   });
 };
 

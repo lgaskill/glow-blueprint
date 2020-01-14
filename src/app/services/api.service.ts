@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { Constants } from "../config/constants";
 
@@ -11,8 +11,10 @@ export class ApiService {
     ? Constants.API_HOST_PROD
     : Constants.API_HOST_LOCAL;
 
-  async get<T>(url: string): Promise<T> {
-    return this.http.get<T>(this.API_HOST + url).toPromise();
+  async get<T>(url: string, params?: any): Promise<T> {
+    return this.http
+      .get<T>(this.API_HOST + url, { params })
+      .toPromise();
   }
 
   async post<T>(url: string, postObj: any): Promise<T> {

@@ -10,6 +10,9 @@ export class BlogListComponent {
   @Input()
   category: string;
 
+  @Input()
+  searchTerm: string;
+
   blogPosts: BlogPost[];
   COLUMN_MAX_WIDTH: number = 400;
   columns: number[] = [];
@@ -23,14 +26,20 @@ export class BlogListComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.category && !changes.category.firstChange) {
+    if (
+      (changes.category && !changes.category.firstChange) ||
+      (changes.searchTerm && !changes.searchTerm.firstChange)
+    ) {
       this.loadBlogPosts();
     }
   }
 
   async loadBlogPosts() {
     try {
-      this.blogPosts = await this.blogService.getAllBlogPosts(this.category);
+      this.blogPosts = await this.blogService.getAllBlogPosts(
+        this.category,
+        this.searchTerm
+      );
     } catch (err) {
       console.error("Failed to fetch blog posts ", err);
     }
