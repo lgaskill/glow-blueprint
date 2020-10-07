@@ -55,7 +55,7 @@ function run() {
     })
   );
 
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({ limit: '50mb' }));
 
   // Initialize the routers
   app.use("/", router);

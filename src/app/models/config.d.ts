@@ -5,4 +5,7 @@ declare interface Config {
   storyDesc: string;
   workDesc: string;
   welcomeDesc: string;
+  disclamer: String;
+  privacyPolicy: String;
+  termsAndConditions: String;
 }

@@ -7,7 +7,7 @@ const DB_PASS = process.env.DB_PASS;
 
 const URL = DB_USER
   ? `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_URL}/gb?retryWrites=true`
-  : `mongodb://${DB_URL}/gb?retryWrites=true`;
+  : `mongodb://${DB_URL}/gb?retryWrites=true&authSource=admin&readPreference=primary&ssl=false`;
 
 class Database {
   constructor() {

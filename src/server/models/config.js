@@ -6,7 +6,10 @@ const configSchema = new mongoose.Schema({
   groupEnrollmentDesc: String,
   storyDesc: String,
   welcomeDesc: String,
-  workDesc: String
+  workDesc: String,
+  disclamer: String,
+  privacyPolicy: String,
+  termsAndConditions: String,
 });
 
 module.exports = mongoose.model("Config", configSchema);

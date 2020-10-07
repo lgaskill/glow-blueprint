@@ -165,5 +165,10 @@
     <div [ngClass]="{ 'app-content-wrapper': collapsed }">
       <div class="app-content"><ng-content></ng-content></div>
     </div>
+    <footer class="footer">
+      <a class="footer-link" [routerLink]="['/about/disclamer']">disclamer</a>
+      <a class="footer-link" [routerLink]="['/about/privacy-policy']">privacy policy</a>
+      <a class="footer-link" [routerLink]="['/about/terms-and-conditions']">terms and conditions</a>
+    </footer>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -65,3 +65,5 @@ dist
 
 # vs code config
 .vscode
+
+mongo-volume

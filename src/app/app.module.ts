@@ -36,6 +36,9 @@ import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
 import { GroupEnrollmentRegistrationViewModule } from "./components/group-enrollment-registration-view/group-enrollment-registration-view.module";
 import { UserListModule } from "./components/admin/user-list/user-list.module";
 import { WorkWithMeViewModule } from "./components/work-with-me-view/work-with-me-view.module";
+import { DisclamerViewModule } from "./components/disclamer-view/disclamer-view.module";
+import { PrivacyPolicyViewModule } from "./components/privacy-policy-view/privacy-policy-view.module";
+import { TermsAndConditionsViewModule } from "./components/terms-and-conditions-view/terms-and-conditions-view.module";
 
 const BASE_URL = environment.production
   ? Constants.API_HOST_PROD
@@ -68,6 +71,9 @@ export function configServiceFactory(service: ConfigService) {
     BlogListModule,
     BlogPostViewModule,
     AdminViewModule,
+    DisclamerViewModule,
+    PrivacyPolicyViewModule,
+    TermsAndConditionsViewModule,
     LoginViewModule,
     SubscribeDialogModule,
     ProfileViewModule,

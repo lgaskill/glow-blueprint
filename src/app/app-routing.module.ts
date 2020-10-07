@@ -12,10 +12,16 @@ import { ProfileViewComponent } from "./components/profile/profile-view/profile-
 import { CanDeactivateGuard } from "./guards/can-deactivate.guard";
 import { GroupEnrollmentRegistrationViewComponent } from "./components/group-enrollment-registration-view/group-enrollment-registration-view.component";
 import { WorkWithMeViewComponent } from "./components/work-with-me-view/work-with-me-view.component";
+import { DisclamerViewComponent } from "./components/disclamer-view/disclamer-view.component";
+import { PrivacyPolicyViewComponent } from "./components/privacy-policy-view/privacy-policy-view.component";
+import { TermsAndConditionsViewComponent } from "./components/terms-and-conditions-view/terms-and-conditions-view.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "login", component: LoginViewComponent },
+  { path: "about/disclamer", component: DisclamerViewComponent },
+  { path: "about/privacy-policy", component: PrivacyPolicyViewComponent },
+  { path: "about/terms-and-conditions", component: TermsAndConditionsViewComponent },
   {
     path: "boss-mama",
     component: AdminViewComponent,
