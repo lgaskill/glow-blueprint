@@ -48,7 +48,7 @@
     "request": "^2.88.0",
     "rxjs": "^6.4.0",
     "serve-favicon": "^2.5.0",
-    "url-parse": ">=1.4.3",
+    "url-parse": ">=1.5.8",
     "validator": "^10.9.0",
     "webpack-cli": "^3.1.0",
     "yup": "^0.26.6",
